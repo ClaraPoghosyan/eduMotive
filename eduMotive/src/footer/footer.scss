@@ -1,0 +1,86 @@
+.custom-footer {
+  background-color: #062b25;
+  color: white;
+  padding: 40px 0;
+}
+
+.footer-inner {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.logo img {
+  height: 28px;
+}
+
+.footer-col h4 {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-col ul li {
+  margin: 6px 0;
+}
+.footer-col ul li a {
+  color: white;
+  text-decoration: none;
+}
+.footer-col ul li a:hover {
+  text-decoration: underline;
+}
+
+.social {
+  margin-top: 20px;
+}
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  color: white;
+}
+
+.subscribe-box {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.subscribe-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+}
+.subscribe-box input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+.arrow-btn {
+  color: #c8f15c;
+  font-size: 18px;
+}

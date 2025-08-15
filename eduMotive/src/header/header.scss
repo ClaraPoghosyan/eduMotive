@@ -1,0 +1,67 @@
+.ant-page-header{
+  border-radius: 20px;
+  border: 1px solid red;
+}
+/* Header container */
+.custom-header {
+  position: fixed;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* stays above other elements */
+  background: transparent;
+  display: flex;
+  justify-content: center;
+}
+/* Inner content with white rounded background */
+.header-inner {
+  width: 80%;
+  height: 80px;
+  background: #FFFFFF;
+  border-radius: 50px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* Logo */
+.logo {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.logo img {
+  height: 28px;
+}
+
+/* Menu */
+.menu {
+  flex: 1;
+  justify-content: center;
+  border-bottom: none;
+}
+.menu .active {
+  font-weight: bold;
+}
+
+/* Buttons */
+.header-buttons {
+  display: flex;
+  gap: 8px;
+}
+.btn-signin {
+  border-radius: 20px;
+}
+.btn-signup {
+  background-color: #c8f15c;
+  border: none;
+  border-radius: 20px;
+  color: black;
+  font-weight: bold;
+}
