@@ -1,0 +1,83 @@
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #062b25;
+  color: white;
+  padding: 150px 10%;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.hero-text p {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #d4d4d4;
+}
+
+.explore-btn {
+  background-color: #c8f15c;
+  color: black;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.learners {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.learner-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-right: -10px;
+}
+
+.learner-info {
+  margin-left: 15px;
+}
+
+.hero-image-container {
+  position: relative;
+  flex: 1;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.tag {
+  position: absolute;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.white-tag {
+  background-color: white;
+  color: black;
+}
+
+.green-tag {
+  background-color: #c8f15c;
+  color: black;
+}

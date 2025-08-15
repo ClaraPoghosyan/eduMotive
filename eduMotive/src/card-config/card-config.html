@@ -1,0 +1,11 @@
+<div>
+  <div nz-row [nzGutter]="8">
+    @for (card of cards; track card.title) {
+      <div nz-col [nzSpan]="8">
+        <nz-card [nzTitle]="card.title">
+          <p>{{ card.content }}</p>
+        </nz-card>
+      </div>
+    }
+  </div>
+</div>
