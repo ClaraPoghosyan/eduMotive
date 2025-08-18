@@ -29,12 +29,15 @@
 
 /* Logo */
 .logo {
-  width: 300px;
+  width: 100px;
+  height: 70px;
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 20px;
   font-weight: bold;
+  background: url("/assets/logo.png");
+  background-size: 100% 100%;
 }
 .logo img {
   height: 28px;
@@ -45,10 +48,14 @@
   flex: 1;
   justify-content: center;
   border-bottom: none;
+   &.active{
+     font-weight: bold;
+   }
+  li{
+    margin: 0 5px;
+  }
 }
-.menu .active {
-  font-weight: bold;
-}
+
 
 /* Buttons */
 .header-buttons {
@@ -65,3 +72,25 @@
   color: black;
   font-weight: bold;
 }
+
+:host .menu ::ng-deep .ant-menu-item:hover,
+:host .menu ::ng-deep .ant-menu-submenu-title:hover {
+  background: #c8f15c !important;
+  color: black !important;
+  border-radius: 15px;
+
+}
+
+:host .menu ::ng-deep .ant-menu-item::after,
+:host .menu ::ng-deep .ant-menu-submenu-title::after{
+  border-bottom: none !important;
+}
+
+/* Selected state for menu items */
+:host .menu ::ng-deep .ant-menu-item-selected,
+:host .menu ::ng-deep .ant-menu-submenu-selected {
+  background: #c8f15c !important;
+  color: black !important;
+  border-radius: 15px;
+}
+

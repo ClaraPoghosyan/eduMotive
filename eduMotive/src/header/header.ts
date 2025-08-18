@@ -9,7 +9,6 @@ import {NzHeaderComponent} from 'ng-zorro-antd/layout';
   imports: [
     NzMenuDirective,
     NzMenuItemComponent,
-    NzSubMenuComponent,
     NzButtonComponent,
     NzHeaderComponent
   ],
