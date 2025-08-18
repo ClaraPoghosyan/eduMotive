@@ -1,0 +1,25 @@
+<div class="step-section">
+  <div class="first-part">
+    <div class="texts">
+      <h1 class="title">📘 Քո ուսուցման ճանապարհը՝ առավել պարզ</h1>
+      <h3>Դասընթացներ գտիր, գրանցվիր հեշտությամբ և սովորիր քեզ հարմար տեմպով՝ մասնագետների կողմից մշակված դասերով ու
+        մատչելի նյութերով։</h3>
+    </div>
+    <div class="pic"></div>
+
+  </div>
+  <div class="second-part">
+    @for (step of steps; track step.id) {
+        <nz-card>
+          <div class="body">
+            <div class="card-title">
+              <p class="id">{{step.id}}</p>
+              <p>{{step.title}}</p>
+            </div>
+            <div> <p>{{ step.content }}</p></div>
+          </div>
+
+        </nz-card>
+    }
+  </div>
+</div>

@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import {CoursesConfig} from '../courses-config/courses-config';
 import {BenefitsSection} from "../benefits-section/benefits-section";
+import {StepsSection} from "../steps-section/steps-section";
 
 @Component({
   selector: 'app-home-page',
     imports: [
         CoursesConfig,
-        BenefitsSection
+        BenefitsSection,
+        StepsSection
     ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss'

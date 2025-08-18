@@ -1,0 +1,64 @@
+.step-section {
+  width: 100%;
+  padding: 100px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0E3128;
+
+
+  .title {
+    font-size: 50px;
+    color: #fff;
+
+  }
+
+  .first-part {
+    width: 50%;
+    h3 {
+      color: #fff;
+    }
+  .pic{
+    width: 80%;
+    height: 400px;
+    background: url("/assets/steps-student.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    margin-top: 100px;
+  }
+  }
+
+  .second-part {
+    width: 50%;
+    height: 100%;
+
+    nz-card {
+      width: 80%;
+      margin: 10px;
+      background: #15372E;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      .body {
+        display: flex;
+        align-items: center;
+
+        .card-title {
+          display: flex;
+          flex-direction: column;
+          margin-right: 20px;
+          font-size: 20px;
+
+
+          .id {
+            color: #c8f15c;
+          }
+        }
+      }
+    }
+  }
+}
+
