@@ -8,10 +8,10 @@ import {NzColDirective} from 'ng-zorro-antd/grid';
     NzCardComponent,
     NzColDirective
   ],
-  templateUrl: './steps-section.html',
-  styleUrl: './steps-section.scss'
+  templateUrl: './steps-section.component.html',
+  styleUrl: './steps-section.component.scss'
 })
-export class StepsSection {
+export class StepsSectionComponent {
 
   public steps = [
     {

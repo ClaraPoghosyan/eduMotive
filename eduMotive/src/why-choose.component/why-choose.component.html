@@ -1,0 +1,26 @@
+<div class="why-choose">
+  <h2>Ինչու ընտրել EduMotive-ը</h2>
+  <p>
+    Մենք տրամադրում ենք մասնագետների կողմից ստեղծված դասընթացներ, ճկուն ուսուցում,
+    բացառիկ աջակցություն, նորարարական գործիքներ և որակյալ ուսուցման փորձ։
+  </p>
+
+  <div class="cards">
+    @for (card of cards; track card.title) {
+      <div class="card">
+        <div class="card-front">
+          <div class="icon">{{ card.icon }}</div>
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.text }}</p>
+        </div>
+        <div class="card-back" [style.backgroundImage]="'linear-gradient(rgba(50, 76, 50, 0.6), rgba(116, 156, 116, 0.6)), url(' + card.img + ')'">
+          <div class="overlay">
+            <div class="icon">{{ card.icon }}</div>
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.text }}</p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

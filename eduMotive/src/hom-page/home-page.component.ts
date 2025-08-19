@@ -1,19 +1,23 @@
 import { Component } from '@angular/core';
-import {CoursesConfig} from '../courses-config/courses-config';
-import {BenefitsSection} from "../benefits-section/benefits-section";
-import {StepsSection} from "../steps-section/steps-section";
+import {CoursesConfigComponent} from '../courses-config/courses-config.component';
+import {BenefitsSectionComponent} from "../benefits-section/benefits-section.component";
+import {StepsSectionComponent} from "../steps-section/steps-section.component";
+import {AppFaqComponent} from "../app-faq/app-faq.component";
+import {WhyChooseComponent} from '../why-choose.component/why-choose.component';
 
 @Component({
   selector: 'app-home-page',
-    imports: [
-        CoursesConfig,
-        BenefitsSection,
-        StepsSection
-    ],
-  templateUrl: './home-page.html',
-  styleUrl: './home-page.scss'
+  imports: [
+    CoursesConfigComponent,
+    BenefitsSectionComponent,
+    StepsSectionComponent,
+    AppFaqComponent,
+    WhyChooseComponent
+  ],
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.scss'
 })
-export class HomePage {
+export class HomePageComponent {
   public featuredCoursesTitle: string= 'Our featured courses';
   public featuredCoursesSubTitle: string = 'Our featured courses inspire growth with expert instruction and practical skills.';
   public cards = [

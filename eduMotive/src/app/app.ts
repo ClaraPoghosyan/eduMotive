@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {Header} from '../header/header';
+import {HeaderComponent} from '../header/header.component';
 import {NzLayoutComponent} from 'ng-zorro-antd/layout';
-import {Footer} from '../footer/footer';
-import {HomePage} from '../hom-page/home-page';
+import {FooterComponent} from '../footer/footer.component';
+import {HomePageComponent} from '../hom-page/home-page.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, NzLayoutComponent, Footer, HomePage],
+  imports: [RouterOutlet, HeaderComponent, NzLayoutComponent, FooterComponent, HomePageComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

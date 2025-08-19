@@ -9,10 +9,10 @@ import {NzCardComponent} from 'ng-zorro-antd/card';
     NzColDirective,
     NzCardComponent
   ],
-  templateUrl: './card-config.html',
-  styleUrl: './card-config.scss'
+  templateUrl: './card-config.component.html',
+  styleUrl: './card-config.component.scss'
 })
-export class CardConfig {
+export class CardConfigComponent {
   @Input() cards: any[] = [];
 // public cards = [
 //   { title: 'Card title 1', content: 'Card content 1' },
