@@ -1,0 +1,13 @@
+.join-box {
+  width: 100%;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 43, 37, 0.92);
+    pointer-events: none;
+    z-index: 5;
+  }
+}

@@ -9,14 +9,10 @@
     @for (card of cards; track card.title) {
       <div class="card">
         <div class="card-front">
-          <div class="icon">{{ card.icon }}</div>
+          <div class="icon"><img src="{{card.icon}}"></div>
           <h3>{{ card.title }}</h3>
-          <p>{{ card.text }}</p>
-        </div>
-        <div class="card-back" [style.backgroundImage]="'linear-gradient(rgba(50, 76, 50, 0.6), rgba(116, 156, 116, 0.6)), url(' + card.img + ')'">
-          <div class="overlay">
-            <div class="icon">{{ card.icon }}</div>
-            <h3>{{ card.title }}</h3>
+
+          <div class="desc-part">
             <p>{{ card.text }}</p>
           </div>
         </div>

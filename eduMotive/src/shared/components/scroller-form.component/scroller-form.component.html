@@ -1,0 +1,21 @@
+<section class="reviews-section">
+  @for (row of countArray(); track row; let i = $index) {
+    <div class="reviews-row">
+      <div class="reviews-track" [class.alt]="i % 2 === 1">
+        @for (t of groups().concat(groups()); track t.name) {
+          <div class="reviews-slide">
+            <div class="card">
+              <div class="user">
+                <img [src]="t.img"
+                     [style.width.px]="imgWidth()"
+                     [style.height.px]="imgHeight()"
+                     alt="avatar" />
+              </div>
+              <p>{{ t.text }}  <strong>{{ t.name }}</strong></p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</section>

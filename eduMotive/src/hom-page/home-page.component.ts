@@ -4,6 +4,8 @@ import {BenefitsSectionComponent} from "../benefits-section/benefits-section.com
 import {StepsSectionComponent} from "../steps-section/steps-section.component";
 import {AppFaqComponent} from "../app-faq/app-faq.component";
 import {WhyChooseComponent} from '../why-choose.component/why-choose.component';
+import {ReviewsComponent} from '../reviews.component/reviews.component';
+import {JoinPartComponent} from '../join-part.component/join-part.component';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +14,9 @@ import {WhyChooseComponent} from '../why-choose.component/why-choose.component';
     BenefitsSectionComponent,
     StepsSectionComponent,
     AppFaqComponent,
-    WhyChooseComponent
+    WhyChooseComponent,
+    ReviewsComponent,
+    JoinPartComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'

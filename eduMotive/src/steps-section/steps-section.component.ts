@@ -5,8 +5,7 @@ import {NzColDirective} from 'ng-zorro-antd/grid';
 @Component({
   selector: 'app-steps-section',
   imports: [
-    NzCardComponent,
-    NzColDirective
+    NzCardComponent
   ],
   templateUrl: './steps-section.component.html',
   styleUrl: './steps-section.component.scss'
