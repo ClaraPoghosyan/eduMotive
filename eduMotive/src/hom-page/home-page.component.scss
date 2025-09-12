@@ -1,10 +1,12 @@
 .hero-section {
+  width: 100vw;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #062b25;
   color: white;
-  padding: 120px 10%;
+  padding: 120px 100px;
 }
 
 .hero-text {
@@ -52,7 +54,7 @@
   height: 40px;
   border-radius: 50%;
   border: 2px solid white;
-  margin-right: -10px;
+  //margin-right: -10px;
 }
 
 .learner-info {
