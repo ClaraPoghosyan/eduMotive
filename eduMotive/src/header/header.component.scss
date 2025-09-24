@@ -7,7 +7,7 @@
   position: fixed;
   top: 30px;
   left: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 1000; /* stays above other elements */
   background: transparent;
   display: flex;
@@ -36,6 +36,7 @@
   justify-content: center;
   background: url("/assets/logo.png");
   background-size: 100% 100%;
+  cursor: pointer;
 }
 .logo img {
   height: 28px;

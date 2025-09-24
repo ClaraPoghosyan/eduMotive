@@ -1,14 +1,14 @@
   <nz-header class="custom-header">
     <div class="header-inner">
       <!-- Logo -->
-      <div class="logo"></div>
+      <div class="logo" routerLink="/home"></div>
 
       <!-- Menu -->
       <ul nz-menu nzMode="horizontal" class="menu">
-        <li nz-menu-item class="active">Գլխավոր</li>
-        <li nz-menu-item>Մեր մասին</li>
-        <li nz-menu-item>Բլոգ</li>
-        <li nz-menu-item>Դասընթացներ</li>
+        <li nz-menu-item routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Գլխավոր</li>
+        <li nz-menu-item routerLink="/about" routerLinkActive="active">Մեր մասին</li>
+        <li nz-menu-item routerLink="/blog" routerLinkActive="active">Բլոգ</li>
+        <li nz-menu-item routerLink="/courses" routerLinkActive="active">Դասընթացներ</li>
       </ul>
 
       <!-- Buttons -->

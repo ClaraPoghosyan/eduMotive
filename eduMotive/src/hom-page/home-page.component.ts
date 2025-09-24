@@ -6,6 +6,9 @@ import {AppFaqComponent} from "../app-faq/app-faq.component";
 import {WhyChooseComponent} from '../why-choose.component/why-choose.component';
 import {ReviewsComponent} from '../reviews.component/reviews.component';
 import {JoinPartComponent} from '../join-part.component/join-part.component';
+import {FooterComponent} from '../footer/footer.component';
+import {HeaderComponent} from '../header/header.component';
+import {NzLayoutComponent} from 'ng-zorro-antd/layout';
 
 @Component({
   selector: 'app-home-page',
@@ -16,7 +19,10 @@ import {JoinPartComponent} from '../join-part.component/join-part.component';
     AppFaqComponent,
     WhyChooseComponent,
     ReviewsComponent,
-    JoinPartComponent
+    JoinPartComponent,
+    FooterComponent,
+    HeaderComponent,
+    NzLayoutComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'

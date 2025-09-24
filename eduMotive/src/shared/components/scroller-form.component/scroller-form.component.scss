@@ -1,6 +1,6 @@
 .reviews-section {
   overflow: hidden;
-  width: calc(100vw - 60px);
+
   padding: 2rem 0;
   margin-top: 50px;
 
@@ -14,11 +14,13 @@
 
     .reviews-track {
       display: flex;
-      width: max-content;
-      animation: scroll 30s linear infinite;
+      align-items: center;
+      justify-content: center;
+      animation: scroll 10s linear infinite;
+      overflow: hidden;
 
       &.alt {
-        animation: scroll-reverse 35s linear infinite;
+        animation: scroll-reverse 10s linear infinite;
       }
     }
 
