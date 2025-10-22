@@ -3,6 +3,7 @@
   background-color: #062b25;
   color: white;
   padding: 40px 0;
+  font-size: 17px;
 }
 
 .footer-inner {
@@ -17,13 +18,16 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 .logo img {
   height: 28px;
 }
-
+.footer-col{
+  margin-left: 30px;
+}
 .footer-col h4 {
   color: white;
   font-weight: bold;

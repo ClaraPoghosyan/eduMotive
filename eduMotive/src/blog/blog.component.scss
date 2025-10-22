@@ -1,0 +1,199 @@
+.about-us-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .head-part {
+    width: 100%;
+    min-height: 600px;
+    background-color: #062b25;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h1 {
+      font-size: 50px;
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 400;
+
+    }
+  }
+
+  .second-part {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+
+    .text-part {
+      width: 40%;
+
+      h1 {
+        font-size: 50px;
+        font-weight: 700;
+      }
+
+      p {
+        font-size: 20px;
+      }
+
+      .explore-btn {
+        background-color: #c8f15c;
+        color: black;
+        border: none;
+        border-radius: 25px;
+        padding: 25px 30px;
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: white;
+          cursor: pointer;
+          border: 3px solid #c8f15c;
+        }
+      }
+    }
+
+    .pic-part {
+      width: 30%;
+      height: 600px;
+      background: url("/assets/about-who.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      border-radius: 20px;
+      margin-left: 150px;
+    }
+  }
+
+  .numbers-part {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 50px 50px;
+    margin-bottom: 180px;
+
+    .title {
+      width: 50%;
+      font-size: 35px;
+    }
+
+    .success {
+      display: flex;
+
+      .succes {
+        color: grey;
+        font-size: 20px;
+        border-right: 3px solid #aaa6a6;
+        padding: 0 10px;
+        margin-right: 25px;
+
+        h2 {
+          font-size: 60px;
+
+          span {
+            color: #c8f15c;
+          }
+        }
+      }
+    }
+  }
+
+  .values-part {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #0E3128;
+    color: white;
+    margin: 30px 0;
+    padding: 30px 0;
+
+    .title-part {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      h1 {
+        font-size: 55px;
+        color: white;
+      }
+
+      p {
+        font-size: 25px;
+      }
+    }
+
+    .values {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 30px;
+      margin: 80px 0;
+
+      .value {
+        width: 20%;
+        height: 300px;
+        background: #15372E;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 18px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin: 0 20px;
+        padding: 0 20px;
+        text-align: center;
+        font-size: 15px;
+
+        .icon {
+          width: 40px;
+          height: 40px;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          margin-bottom: 30px;
+
+          &.rocket {
+            background: url("/assets/icons/rocket.svg");
+            fill: #c8f15c;
+          }
+
+          &.medal {
+            background: url("/assets/icons/medal.svg");
+          }
+
+          &.sparkle {
+            background: url("/assets/icons/sparkle.svg");
+          }
+        }
+
+        h1 {
+          color: white;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}

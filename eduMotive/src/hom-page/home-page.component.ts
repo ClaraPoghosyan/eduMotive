@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {CoursesConfigComponent} from '../courses-config/courses-config.component';
 import {BenefitsSectionComponent} from "../benefits-section/benefits-section.component";
 import {StepsSectionComponent} from "../steps-section/steps-section.component";
@@ -9,6 +9,7 @@ import {JoinPartComponent} from '../join-part.component/join-part.component';
 import {FooterComponent} from '../footer/footer.component';
 import {HeaderComponent} from '../header/header.component';
 import {NzLayoutComponent} from 'ng-zorro-antd/layout';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -28,6 +29,8 @@ import {NzLayoutComponent} from 'ng-zorro-antd/layout';
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent {
+  private readonly router: Router = inject(Router);
+
   public featuredCoursesTitle: string= 'Our featured courses';
   public featuredCoursesSubTitle: string = 'Our featured courses inspire growth with expert instruction and practical skills.';
   public cards = [
@@ -50,4 +53,8 @@ export class HomePageComponent {
     { title: 'Card title 2', content: 'Card content 2' },
     { title: 'Card title 3', content: 'Card content 3' }
   ];
+
+  public goToCourses(): void {
+    this.router.navigate(['/courses'])
+  }
 }
