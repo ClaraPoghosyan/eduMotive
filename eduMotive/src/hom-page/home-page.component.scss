@@ -1,11 +1,11 @@
 .hero-section {
-  max-width: 100%;        // ✅ never wider than viewport
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #062b25;
   color: white;
-  padding: 120px clamp(20px, 5vw, 100px); // ✅ responsive padding
+  padding: 120px clamp(20px, 5vw, 100px);
 }
 
 .hero-text {

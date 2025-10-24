@@ -31,8 +31,8 @@ import {Router} from '@angular/router';
 export class HomePageComponent {
   private readonly router: Router = inject(Router);
 
-  public featuredCoursesTitle: string = 'Our featured courses';
-  public featuredCoursesSubTitle: string = 'Our featured courses inspire growth with expert instruction and practical skills.';
+  public coursesTitle: string = 'Մեր լավագույն դասընթացները';
+  public coursesSubTitle: string = 'Սովորեք լավագույններից և ձեռք բերեք գործնական գիտելիքներ՝ ձեր առաջընթացի համար';
   public cards = [
     {
       title: 'SEO',
@@ -74,86 +74,6 @@ export class HomePageComponent {
       time: '6h 30m',
       isBlog: false
     },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    }
 
   ];
 
