@@ -31,27 +31,130 @@ import {Router} from '@angular/router';
 export class HomePageComponent {
   private readonly router: Router = inject(Router);
 
-  public featuredCoursesTitle: string= 'Our featured courses';
+  public featuredCoursesTitle: string = 'Our featured courses';
   public featuredCoursesSubTitle: string = 'Our featured courses inspire growth with expert instruction and practical skills.';
   public cards = [
-    { title: 'Card title 1', content: 'Card content 1' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 3', content: 'Card content 3' }
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    }
+
   ];
 
   public goToCourses(): void {
