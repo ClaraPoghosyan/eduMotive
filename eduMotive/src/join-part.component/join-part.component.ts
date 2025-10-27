@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ScrollerFormComponent} from '../shared/components/scroller-form.component/scroller-form.component';
+import {NzButtonComponent} from 'ng-zorro-antd/button';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-join-part',
   templateUrl: './join-part.component.html',
   styleUrl: './join-part.component.scss',
   imports: [
-    ScrollerFormComponent
+    ScrollerFormComponent,
+    NzButtonComponent
   ]
 })
 export class JoinPartComponent {
+  private readonly router: Router = inject(Router);
+
   testimonials = [
     {
       // name: '@davemccall',
@@ -48,4 +53,9 @@ export class JoinPartComponent {
     },
   ];
 
+  public onGo(): void {
+    this.router.navigate(['/courses']).then(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 }

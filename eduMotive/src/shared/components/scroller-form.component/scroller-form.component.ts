@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {Component, input, OnInit} from '@angular/core';
 import {NgForOf} from '@angular/common';
 interface Group {
   name?: string;
@@ -11,10 +11,13 @@ interface Group {
   templateUrl: './scroller-form.component.html',
   styleUrl: './scroller-form.component.scss'
 })
-export class ScrollerFormComponent {
+export class ScrollerFormComponent implements OnInit {
   groups = input<Group[]>([]);
   countArray = input<number[]>([0,1,2]);
   imgWidth = input<number>(100);
   imgHeight = input<number>(100);
 
+  ngOnInit() {
+    console.log(this.countArray());
+  }
 }

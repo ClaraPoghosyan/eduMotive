@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {CoursesConfigComponent} from '../courses-config/courses-config.component';
 import {BenefitsSectionComponent} from "../benefits-section/benefits-section.component";
 import {StepsSectionComponent} from "../steps-section/steps-section.component";
@@ -9,6 +9,7 @@ import {JoinPartComponent} from '../join-part.component/join-part.component';
 import {FooterComponent} from '../footer/footer.component';
 import {HeaderComponent} from '../header/header.component';
 import {NzLayoutComponent} from 'ng-zorro-antd/layout';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -28,26 +29,55 @@ import {NzLayoutComponent} from 'ng-zorro-antd/layout';
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent {
-  public featuredCoursesTitle: string= 'Our featured courses';
-  public featuredCoursesSubTitle: string = 'Our featured courses inspire growth with expert instruction and practical skills.';
+  private readonly router: Router = inject(Router);
+
+  public coursesTitle: string = 'Մեր լավագույն դասընթացները';
+  public coursesSubTitle: string = 'Սովորեք լավագույններից և ձեռք բերեք գործնական գիտելիքներ՝ ձեր առաջընթացի համար';
   public cards = [
-    { title: 'Card title 1', content: 'Card content 1' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 2', content: 'Card content 2' },
-    { title: 'Card title 3', content: 'Card content 3' }
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+    {
+      title: 'SEO',
+      price: 5000,
+      groupName: 'Marketing',
+      writer: 'Anahit Manukyan',
+      content: 'Card content 1',
+      lessons: '22',
+      time: '6h 30m',
+      isBlog: false
+    },
+
   ];
+
+  public goToCourses(): void {
+    this.router.navigate(['/courses'])
+  }
 }

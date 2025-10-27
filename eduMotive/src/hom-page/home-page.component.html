@@ -8,7 +8,7 @@
             Քո հաջողության ճանապարհը սկսվում է այստեղ։ Այստեղ դու կգտնես գիտելիքներ ու հմտություններ, որոնք կբացեն նոր
             հնարավորությունների դռներ։ Սկսիր այսօր և կառուցիր այն ապագան, որի մասին միշտ երազել ես!
         </p>
-        <button nz-button nzType="primary" class="explore-btn">Բացահայտիր մեր դասընթացները</button>
+        <button nz-button nzType="primary" class="explore-btn" (click)="goToCourses()">Բացահայտիր մեր դասընթացները</button>
 
         <div class="learners">
             <img src="/assets/user1.jpg" alt="User 1" class="learner-img"/>
@@ -36,8 +36,8 @@
 </div>
 <app-courses-config
         [cards]="cards"
-        [sectionTitle]="featuredCoursesTitle"
-        [sectionSubTitle]="featuredCoursesSubTitle"
+        [sectionTitle]="coursesTitle"
+        [sectionSubTitle]="coursesSubTitle"
 ></app-courses-config>
 <app-why-choose></app-why-choose>
 <app-benefits-section></app-benefits-section>

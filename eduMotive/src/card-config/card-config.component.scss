@@ -1,10 +1,138 @@
-.cards{
-  width: calc(100% - 100px);
-margin: 0;
-padding: 0;
+.cards {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-nz-card{
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+nz-card {
+  width: 400px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 20px;
+
+  &:hover {
+    .card-pic {
+      background-size: 110% 110%;
+
+      button {
+        background: #c8f15c;
+        color: #062b25;
+      }
+    }
+  }
+
+  .card-pic {
+    width: 350px;
+    height: 200px;
+    display: flex;
+    align-items: start;
+    border-radius: 15px;
+    background: url("/assets/lesson.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    transition: background-size 0.4s ease-in-out;
+
+    button {
+      width: 100px;
+      height: 40px;
+      border-radius: 15px;
+      margin: 10px;
+      background: #ffffff;
+      color: black;
+      border: none;
+      transition: background 0.3s ease, color 0.3s ease;
+      cursor: none;
+    }
+  }
+
+  .title-part {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .writer {
+    width: 100%;
+
+    p {
+      color: grey;
+      font-size: 16px;
+    }
+  }
+
+  .lesson-times {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .lessons {
+      border-right: 2px solid grey;
+      padding-right: 50px !important;
+    }
+
+    .lessons, .times {
+      display: flex;
+      flex-direction: column;
+      font-size: 20px;
+      margin: 10px;
+
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          padding-left: 5px;
+          font-style: italic;
+          color: grey;
+        }
+      }
+
+      p {
+        margin-left: 30px;
+        font-weight: bold;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+  }
+
+  .btn-part {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+
+    button {
+      width: 250px;
+      height: 50px;
+      border-radius: 15px;
+      color: #0E3128;
+      font-size: 16px;
+
+      &:hover{
+        background: #0E3128;
+        color: #FFFFFF;
+        border: none;
+      }
+    }
+  }
 }

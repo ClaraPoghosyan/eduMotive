@@ -1,11 +1,53 @@
-<div class="cards">
-  <div nz-row [nzGutter]="8">
+  <div nz-row  class="cards">
     @for (card of cards; track card.title) {
-      <div nz-col [nzSpan]="8">
-        <nz-card [nzTitle]="card.title">
-          <p>{{ card.content }}</p>
+      <div nz-col >
+        <nz-card>
+          <div class="card-pic">
+            @if (!card.isBlog) {
+              <button nz-button nzType="default">{{ card?.groupName ?? '' }}</button>
+            }
+          </div>
+          @if (!card.isBlog) {
+            <div class="title-part">
+              <h1>{{ card?.title }}</h1>
+              <h1>{{ card?.price }}AMD</h1>
+            </div>
+            <div class="writer">
+              <p>{{ card.writer }}</p>
+            </div>
+            <div class="lesson-times">
+              <div class="lessons">
+                <div class="title">
+                  <img src="./assets/file.png">
+                  <span>Դասեր</span>
+                </div>
+                <p>{{ card.lessons }} դաս</p>
+              </div>
+
+              <div class="times">
+                <div class="title">
+                  <img src="./assets/clock.png">
+                  <span>Տևողություն</span>
+                </div>
+                <p>{{ card.time }}</p>
+              </div>
+            </div>
+            <div class="btn-part">
+              <button nz-button nzType="default">Ավելին</button>
+            </div>
+          } @else {
+            <div class="dates-part">
+              <i></i>
+              <p>{{ card.createdDate }}</p>
+            </div>
+            <div class="content">
+              <h1>{{ card.title }}</h1>
+              <h1>{{ card.content }}</h1>
+              <p>Կարդալ ավելին</p>
+            </div>
+          }
         </nz-card>
       </div>
     }
   </div>
-</div>
+

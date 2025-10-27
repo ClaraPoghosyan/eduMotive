@@ -2,6 +2,61 @@
   max-width: 100%;
   position: relative;
 
+  .texts {
+    width: 100%;
+    position: absolute;
+    top: 150px;
+    text-align: center;
+    color: white;
+    z-index: 7;
+
+    .titles {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        img {
+          width: 50px;
+          margin-right: 10px;
+        }
+
+        font-size: 40px;
+        color: white;
+      }
+
+      .sub {
+        max-width: 700px;
+
+        h2 {
+          color: white;
+          font-weight: 400;
+        }
+      }
+
+      .explore-btn {
+        background-color: #c8f15c;
+        color: black;
+        border: none;
+        border-radius: 25px;
+        padding: 25px 30px;
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: white;
+          cursor: pointer;
+        }
+      }
+
+    }
+  }
+
   &::after {
     content: "";
     position: absolute;

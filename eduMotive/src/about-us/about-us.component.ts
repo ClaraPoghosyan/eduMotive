@@ -10,7 +10,7 @@ import {ReviewsComponent} from '../reviews.component/reviews.component';
 import {StepsSectionComponent} from '../steps-section/steps-section.component';
 
 @Component({
-  selector: 'app-about-us.component',
+  selector: 'app-about-us',
   imports: [
     HeaderComponent,
     NzButtonComponent,

@@ -1,60 +1,78 @@
 .reviews-section {
-  overflow: hidden;
-
+  width: 100%;
   padding: 2rem 0;
   margin-top: 50px;
+  box-sizing: border-box;
+  overflow: hidden; // hide anything outside the section
+}
 
-  .reviews-row {
-    overflow: hidden;
-    margin-bottom: 1rem;
+.reviews-row {
+  position: relative; // <-- container for absolute track
+  overflow: hidden; // hide track overflow
+  margin-bottom: 1rem;
+  min-height: 140px; // ensure row keeps space for absolutely-positioned track (adjust to card height)
 
-    &:last-child {
-      margin-bottom: 0;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  /* The animated track is absolutely positioned so it DOESN'T inflate page width */
+  .reviews-track {
+    position: absolute; // <-- key fix: remove from document flow
+    left: 0;
+    top: 0;
+    display: flex;
+    gap: 1rem;
+    width: 200%; // make it twice the visible width (you duplicated slides so -50% works)
+    height: 100%;
+    align-items: center;
+    //animation: scroll 30s linear infinite;
+    will-change: transform;
+    pointer-events: none; // allow hover/pass through to underlying layer if needed
+
+    &.alt {
+      animation: scroll-reverse 30s linear infinite;
     }
 
-    .reviews-track {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: scroll 30s linear infinite;
-      overflow: hidden;
-
-      &.alt {
-        animation: scroll-reverse 30s linear infinite;
-      }
-    }
-
+    /* keep slides natural width and non-wrapping */
     .reviews-slide {
       flex: 0 0 auto;
-      margin-right: 1rem;
+      pointer-events: auto;
+      // allow interaction with cards
+    }
+  }
 
-      .card {
-        display: flex;
-        //background: white;
-        border-radius: 1rem;
-        padding: 1rem;
-        width: 350px;
-        text-align: left;
+  /* ensure the visible area stays the right height so absolute track doesn't collapse layout */
+  .reviews-slide {
+    .card {
 
-        .user {
-          margin-right: 10px;
+      display: flex;
+      align-items: center;
+      border-radius: 1rem;
+      padding: 1rem;
+      width: 350px;
+      max-width: 80vw;
+      box-sizing: border-box;
 
-          img {
-            //width: 100px;
-            //height: 100px;
-            border-radius: 10px;
-          }
+      .user {
+        margin-right: 10px;
+
+        img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50px;
         }
+      }
 
-        p {
-          font-size: 0.9rem;
-          color: #333;
-        }
+      p {
+        font-size: 0.9rem;
+        color: #333;
       }
     }
   }
 }
 
+/* Animation: translate the absolute track left by 50% of its own width */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -62,6 +80,7 @@
   100% {
     transform: translateX(-50%);
   }
+  /* because track width is 200% (duplicated content) */
 }
 
 @keyframes scroll-reverse {
@@ -71,4 +90,9 @@
   100% {
     transform: translateX(0);
   }
+}
+
+/* Prevent any stray global horizontal scrollbar */
+html, body {
+  overflow-x: hidden !important;
 }
