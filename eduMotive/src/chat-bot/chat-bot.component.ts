@@ -21,7 +21,6 @@ export class ChatBotComponent implements  AfterViewChecked {
   input = new FormControl('');
   loading = false;
 
-  apiKey = '';
   ngAfterViewChecked() {
     this.scrollToBottom();
   }
@@ -41,7 +40,8 @@ export class ChatBotComponent implements  AfterViewChecked {
     this.loading = true;
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.apiKey}`
+      'Authorization': `Bearer `//apikey
+
     });
 
     this.http.post<any>('https://api.openai.com/v1/chat/completions', {
