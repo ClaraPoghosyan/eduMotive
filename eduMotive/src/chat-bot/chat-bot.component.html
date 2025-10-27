@@ -1,22 +1,22 @@
-<app-header></app-header>
+<!--<app-header></app-header>-->
 
-<div class="chat-box" #chatContainer>
-  @for(message of messages; track $index) {
-    <div class="message">
-      @if(message.ai) {
-        <p class="ai"><strong>EduMotive AI:</strong> {{ message.ai }}</p>
-      }@else {
-      <p class="user"><strong>You:</strong> {{ message.user }}</p>
-      }
-    </div>
-  }
+<!--<div class="chat-box" #chatContainer>-->
+<!--  @for(message of messages; track $index) {-->
+<!--    <div class="message">-->
+<!--      @if(message.ai) {-->
+<!--        <p class="ai"><strong>EduMotive AI:</strong> {{ message.ai }}</p>-->
+<!--      }@else {-->
+<!--      <p class="user"><strong>You:</strong> {{ message.user }}</p>-->
+<!--      }-->
+<!--    </div>-->
+<!--  }-->
 
-  @if(loading) {
-    <div class="loading">AI is typing...</div>
-  }
-</div>
+<!--  @if(loading) {-->
+<!--    <div class="loading">AI is typing...</div>-->
+<!--  }-->
+<!--</div>-->
 
-<div class="input-container">
-  <input [formControl]="input" (keyup.enter)="sendMessage()" placeholder="Type your message..." />
-  <button (click)="sendMessage()">Send</button>
-</div>
+<!--<div class="input-container">-->
+<!--  <input [formControl]="input" (keyup.enter)="sendMessage()" placeholder="Type your message..." />-->
+<!--  <button (click)="sendMessage()">Send</button>-->
+<!--</div>-->
