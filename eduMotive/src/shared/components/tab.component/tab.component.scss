@@ -1,0 +1,59 @@
+::ng-deep .ant-tabs-nav {
+  display: flex;
+  justify-content: center;
+  border-bottom: none;
+  margin-bottom: 20px;
+}
+
+::ng-deep .ant-tabs-tab {
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 8px 24px;
+  margin: 0 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid #0d332d;
+}
+
+::ng-deep .ant-tabs-tab .ant-tabs-tab-btn {
+  color: #0d332d !important; /* normal text color */
+  font-size: 16px;
+  transition: color 0.3s ease;
+
+}
+
+::ng-deep .ant-tabs-tab:hover {
+  border-color: #0d332d;
+}
+
+::ng-deep .ant-tabs-tab-active {
+  background: #0d332d; /* dark green background */
+  border: none;
+}
+
+::ng-deep .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #ffffff !important; /* make text white when active */
+}
+
+::ng-deep .ant-tabs-ink-bar {
+  display: none !important;
+}
+
+
+.top-courses {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 150px;
+
+  nz-tabs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+  }
+}

@@ -10,6 +10,7 @@ import {FooterComponent} from '../footer/footer.component';
 import {HeaderComponent} from '../header/header.component';
 import {NzLayoutComponent} from 'ng-zorro-antd/layout';
 import {Router} from '@angular/router';
+import {TabComponent} from '../shared/components/tab.component/tab.component';
 
 @Component({
   selector: 'app-home-page',
@@ -23,7 +24,8 @@ import {Router} from '@angular/router';
     JoinPartComponent,
     FooterComponent,
     HeaderComponent,
-    NzLayoutComponent
+    NzLayoutComponent,
+    TabComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
