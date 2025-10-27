@@ -21,8 +21,7 @@ export class ChatBotComponent implements  AfterViewChecked {
   input = new FormControl('');
   loading = false;
 
-  apiKey = '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'
-
+  apiKey = '';
   ngAfterViewChecked() {
     this.scrollToBottom();
   }
