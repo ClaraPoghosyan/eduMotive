@@ -1,7 +1,7 @@
 <div class="why-choose">
   <h2>Ինչու ընտրել EduMotive-ը</h2>
-  <p>
-    Մենք տրամադրում ենք մասնագետների կողմից ստեղծված դասընթացներ, ճկուն ուսուցում,
+  <p class="subTitle">
+    Մենք տրամադրում ենք մասնագետների կողմից ստեղծված դասընթացներ, ճկուն ուսուցում,<br>
     բացառիկ աջակցություն, նորարարական գործիքներ և որակյալ ուսուցման փորձ։
   </p>
 
@@ -9,13 +9,26 @@
     @for (card of cards; track card.title) {
       <div class="card">
         <div class="card-front">
-          <div class="icon"><img src="{{card.icon}}"></div>
-          <h3>{{ card.title }}</h3>
-
-          <div class="desc-part">
-            <p>{{ card.text }}</p>
+          <div class="title-wrap">
+            <img src="{{card.icon}}">
+            <h1>{{ card.title }}</h1>
+          </div>
+          <div class="text-part">
+            <p>{{card.text}}</p>
           </div>
         </div>
+        <div class="card-back"
+             [ngStyle]="{
+          'background-image':
+            'linear-gradient(#0e312833, #0e3128 79% 100%, #fff), url(' + card.img + ')'
+        }"
+        >
+          <div class="box-wrap">
+            <h1>{{ card.title }}</h1>
+            <p>{{card.text}}</p>
+          </div>
+        </div>
+
       </div>
     }
   </div>
