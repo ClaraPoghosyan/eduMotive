@@ -60,16 +60,33 @@
 .header-buttons {
   display: flex;
   gap: 8px;
-}
-.btn-signin {
-  border-radius: 20px;
-}
-.btn-signup {
-  background-color: #c8f15c;
-  border: none;
-  border-radius: 20px;
-  color: black;
-  font-weight: bold;
+
+  .btn-signin {
+    border-radius: 25px;
+    width: 130px;
+    height: 50px;
+    &:hover{
+      background: black;
+      color: white;
+      border: none;
+    }
+  }
+
+  .btn-signup {
+    background-color: #c8f15c;
+    border: none;
+    border-radius: 25px;
+    width: 130px;
+    height: 50px;
+    color: black;
+    font-weight: bold;
+
+    &:hover{
+      background: black;
+      color: white;
+      border: none;
+    }
+  }
 }
 
 :host .menu ::ng-deep .ant-menu-item:hover,

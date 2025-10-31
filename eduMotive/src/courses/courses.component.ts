@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {HeaderComponent} from '../header/header.component';
+import {HeaderComponent} from '../shared/components/header/header.component';
 import {AppFaqComponent} from '../app-faq/app-faq.component';
 import {FooterComponent} from '../footer/footer.component';
 import {JoinPartComponent} from '../join-part.component/join-part.component';

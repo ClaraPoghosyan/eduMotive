@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {HeaderComponent} from '../header/header.component';
+import {HeaderComponent} from '../shared/components/header/header.component';
 import {NzLayoutComponent} from 'ng-zorro-antd/layout';
 import {FooterComponent} from '../footer/footer.component';
 import {HomePageComponent} from '../hom-page/home-page.component';

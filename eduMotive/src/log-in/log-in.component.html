@@ -1,0 +1,49 @@
+<div class="login-container">
+  <div class="left-section">
+    <img src="/assets/log-in.png" alt="Login illustration" />
+  </div>
+
+  <div class="right-section">
+    <div class="login-card">
+      <div class="logo">
+        <h2>Edumotive</h2>
+      </div>
+
+      <h1>Մուտք գործիր քո հաշիվ</h1>
+      <p class="subtitle">Բարի վերադարձ! Ընտրիր մուտքի ձևը</p>
+
+      <form nz-form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <nz-form-item>
+          <nz-form-control>
+            <input nz-input placeholder="Email address" formControlName="email" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control>
+            <input nz-input type="password" placeholder="Password" formControlName="password" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <div class="options">
+          <a class="forgot" href="#">Մոռացե՞լ ես գաղտնաբառը</a>
+        </div>
+
+        <button
+          nz-button
+          class="login-btn"
+          [disabled]="form.invalid"
+          nzType="primary"
+          nzBlock
+        >
+          Մուտք գործել հիմա
+        </button>
+      </form>
+
+      <p class="footer">
+        Չունե՞ս հաշիվ
+        <a href="#">Գրանցվել</a>
+      </p>
+    </div>
+  </div>
+</div>

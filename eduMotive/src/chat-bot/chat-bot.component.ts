@@ -1,7 +1,7 @@
 import {AfterViewChecked, Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {HeaderComponent} from '../header/header.component';
+import {HeaderComponent} from '../shared/components/header/header.component';
 
 @Component({
   selector: 'app-chat-bot',

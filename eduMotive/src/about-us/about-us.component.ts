@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {HeaderComponent} from '../header/header.component';
+import {HeaderComponent} from '../shared/components/header/header.component';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {NzDividerComponent} from 'ng-zorro-antd/divider';
 import {WhyChooseComponent} from '../why-choose.component/why-choose.component';

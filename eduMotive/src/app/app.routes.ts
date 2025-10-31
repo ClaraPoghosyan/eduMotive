@@ -5,6 +5,7 @@ import {HomePageComponent} from '../hom-page/home-page.component';
 import {BlogComponent} from '../blog/blog.component';
 import {CoursesComponent} from '../courses/courses.component';
 import {ChatBotComponent} from '../chat-bot/chat-bot.component';
+import {LogInComponent} from '../log-in/log-in.component';
 
 export const routes: Routes = [
 
@@ -31,6 +32,10 @@ export const routes: Routes = [
       {
         path: 'chat-bot',
         component: ChatBotComponent,
+      },
+      {
+        path: 'log-in',
+        component: LogInComponent,
       },
     ]
   },
