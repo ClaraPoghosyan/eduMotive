@@ -83,6 +83,29 @@ $dark-bg: #062b25;
           color: #fff;
           padding: 0 16px;
           margin: 10px 0;
+
+
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+          }
+
+          &:focus {
+            border-color: $primary;
+            box-shadow: 0 0 0 3px rgba(200, 241, 92, 0.3);
+            background-color: #11443d;
+          }
+
+          &:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 1000px #0e3a34 inset !important;
+            -webkit-text-fill-color: #fff !important;
+            caret-color: #fff !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            transition: background-color 9999s ease-in-out 0s !important;
+          }
+
+          &:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0 1000px #11443d inset !important;
+          }
         }
 
         .options {

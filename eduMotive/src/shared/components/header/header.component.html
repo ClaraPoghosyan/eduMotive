@@ -14,8 +14,8 @@
 
       <!-- Buttons -->
       <div class="header-buttons">
-        <button nz-button nzType="default" class="btn-signin">Մուտք</button>
-        <button nz-button nzType="primary" class="btn-signup">Գրանցում</button>
+        <button nz-button nzType="default" class="btn-signin"  (click)="goToLogIn(false)">Մուտք</button>
+        <button nz-button nzType="primary" class="btn-signup" (click)="goToLogIn(true)">Գրանցում</button>
       </div>
     </div>
   </nz-header>
