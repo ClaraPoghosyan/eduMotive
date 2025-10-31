@@ -13,6 +13,13 @@
       <p class="subtitle">Բարի վերադարձ! Ընտրիր մուտքի ձևը</p>
 
       <form nz-form [formGroup]="form" (ngSubmit)="onSubmit()">
+        @if (isForgotPass){
+          <nz-form-item>
+          <nz-form-control>
+            <input nz-input placeholder="Full Name" formControlName="fullName" />
+          </nz-form-control>
+        </nz-form-item>
+        }
         <nz-form-item>
           <nz-form-control>
             <input nz-input placeholder="Email address" formControlName="email" />
@@ -24,26 +31,31 @@
             <input nz-input type="password" placeholder="Password" formControlName="password" />
           </nz-form-control>
         </nz-form-item>
-
+        @if (!isForgotPass){
         <div class="options">
-          <a class="forgot" href="#">Մոռացե՞լ ես գաղտնաբառը</a>
+          <a class="forgot" (click)="isForgotPass = !isForgotPass">Մոռացե՞լ ես գաղտնաբառը</a>
         </div>
-
+        }
         <button
           nz-button
           class="login-btn"
           [disabled]="form.invalid"
           nzType="primary"
-          nzBlock
-        >
+          nzBlock>
           Մուտք գործել հիմա
         </button>
-      </form>
 
+      </form>
       <p class="footer">
-        Չունե՞ս հաշիվ
-        <a href="#">Գրանցվել</a>
+        @if (!isForgotPass){
+          Չունե՞ս հաշիվ
+        <a (click)="isForgotPass = !isForgotPass">Գրանցվել</a>
+        }@else{
+          Արդեն ունե՞ք հաշիվ
+          <a (click)="isForgotPass = !isForgotPass">Մուտք գործել</a>
+        }
       </p>
+
     </div>
   </div>
 </div>

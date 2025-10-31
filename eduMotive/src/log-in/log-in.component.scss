@@ -53,7 +53,7 @@ $dark-bg: #062b25;
       }
 
       h1 {
-        font-size: 50px;
+        font-size: 40px;
         font-weight: 700;
         color: #FFFFFF;
       }
@@ -68,31 +68,55 @@ $dark-bg: #062b25;
         margin-bottom: 16px;
       }
 
-      input[nz-input] {
-        height: 48px;
-        border-radius: 24px;
-        padding: 0 16px;
-      }
-
-      .options {
+      form {
+        width: 100%;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 16px;
+        align-items: start;
+        flex-direction: column;
 
-        .forgot {
+        input[nz-input] {
+          width: 500px;
+          height: 60px;
+          border-radius: 30px;
+          background-color: #0e3a34 !important;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #fff;
+          padding: 0 16px;
+          margin: 10px 0;
+        }
+
+        .options {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 16px;
+
+          .forgot {
+            color: $primary;
+            font-size: 14px;
+          }
+        }
+
+
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        margin-right: 120px;
+
+        a {
           color: $primary;
-          font-size: 14px;
         }
       }
-
       .login-btn {
+        max-width: 500px;
         background-color: $primary;
         border: none;
         color: $dark-bg;
         font-weight: 600;
-        height: 48px;
-        border-radius: 24px;
+        height: 60px;
+        border-radius: 30px;
         transition: all 0.3s;
 
         &:hover {
@@ -100,15 +124,6 @@ $dark-bg: #062b25;
         }
       }
 
-      .footer {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 14px;
-
-        a {
-          color: $primary;
-        }
-      }
     }
   }
 }
@@ -129,7 +144,6 @@ $dark-bg: #062b25;
 
       .login-card {
         width: 100%;
-        max-width: 360px;
         background-color: $dark-bg;
       }
     }
@@ -141,6 +155,7 @@ $dark-bg: #062b25;
     h1 {
       font-size: 20px;
     }
+
     .subtitle {
       font-size: 13px;
     }

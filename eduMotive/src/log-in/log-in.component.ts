@@ -21,7 +21,7 @@ import {NzButtonComponent} from 'ng-zorro-antd/button';
 })
 export class LogInComponent {
   form: FormGroup;
-
+  isForgotPass: boolean = false;
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
