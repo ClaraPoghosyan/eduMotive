@@ -25,7 +25,7 @@ export class LogInComponent implements OnInit {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly fb: FormBuilder = inject(FormBuilder);
 
-  form: FormGroup;
+  form!: FormGroup;
   isForgotPass: boolean = false;
 
   ngOnInit() {
