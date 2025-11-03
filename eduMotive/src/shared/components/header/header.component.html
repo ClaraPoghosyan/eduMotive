@@ -1,21 +1,37 @@
-  <nz-header class="custom-header">
-    <div class="header-inner">
-      <!-- Logo -->
-      <div class="logo" routerLink="/home"></div>
+<nz-header class="custom-header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <div class="logo" routerLink="/home"></div>
 
-      <!-- Menu -->
-      <ul nz-menu nzMode="horizontal" class="menu">
-        <li nz-menu-item routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Գլխավոր</li>
-        <li nz-menu-item routerLink="/about" routerLinkActive="active">Մեր մասին</li>
-        <li nz-menu-item routerLink="/blog" routerLinkActive="active">Բլոգ</li>
-        <li nz-menu-item routerLink="/courses" routerLinkActive="active">Դասընթացներ</li>
-        <li nz-menu-item routerLink="/chat-bot" routerLinkActive="active">Քո օնլայն օգնականը</li>
-      </ul>
+    <!-- Desktop Menu -->
+    <ul nz-menu nzMode="horizontal" class="menu">
+      <li nz-menu-item routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Գլխավոր</li>
+      <li nz-menu-item routerLink="/about" routerLinkActive="active">Մեր մասին</li>
+      <li nz-menu-item routerLink="/blog" routerLinkActive="active">Բլոգ</li>
+      <li nz-menu-item routerLink="/courses" routerLinkActive="active">Դասընթացներ</li>
+      <li nz-menu-item routerLink="/chat-bot" routerLinkActive="active">Քո օնլայն օգնականը</li>
+    </ul>
 
-      <!-- Buttons -->
-      <div class="header-buttons">
-        <button nz-button nzType="default" class="btn-signin"  (click)="goToLogIn(false)">Մուտք</button>
-        <button nz-button nzType="primary" class="btn-signup" (click)="goToLogIn(true)">Գրանցում</button>
-      </div>
+    <!-- Desktop Buttons -->
+    <div class="header-buttons">
+      <button nz-button nzType="default" class="btn-signin" (click)="goToLogIn(false)">Մուտք</button>
+      <button nz-button nzType="primary" class="btn-signup" (click)="goToLogIn(true)">Գրանցում</button>
     </div>
-  </nz-header>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" (click)="isMenuOpen = !isMenuOpen">
+      {{ isMenuOpen ? 'X' : '☰' }}
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  @if (isMenuOpen) {
+    <ul class="mobile-menu">
+      <li><a routerLink="/home" (click)="closeMenu()">Գլխավոր</a></li>
+      <li><a routerLink="/about" (click)="closeMenu()">Մեր մասին</a></li>
+      <li><a routerLink="/blog" (click)="closeMenu()">Բլոգ</a></li>
+      <li><a routerLink="/courses" (click)="closeMenu()">Դասընթացներ</a></li>
+      <li><a routerLink="/chat-bot" (click)="closeMenu()">Քո օնլայն օգնականը</a></li>
+    </ul>
+  }
+</nz-header>

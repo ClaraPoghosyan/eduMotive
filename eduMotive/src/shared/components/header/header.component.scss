@@ -1,46 +1,35 @@
-.ant-page-header{
-  width: 100%;
-  border-radius: 20px;
-  border: 1px solid red;
-}
-/* HeaderComponent container */
+/* HEADER CONTAINER */
 .custom-header {
   position: fixed;
   top: 30px;
   left: 0;
   width: 100%;
-  z-index: 1000; /* stays above other elements */
+  z-index: 1000;
   background: transparent;
   display: flex;
   justify-content: center;
 }
-/* Inner content with white rounded background */
+
+/* Inner header box */
 .header-inner {
   width: 75%;
   height: 90px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 50px;
   padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 
 /* Logo */
 .logo {
   width: 140px;
   height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url("/assets/logo.png");
-  background-size: 100% 100%;
+  background: url("/assets/logo.png") no-repeat center center;
+  background-size: contain;
   cursor: pointer;
-}
-.logo img {
-  height: 28px;
 }
 
 /* Menu */
@@ -51,14 +40,11 @@
   text-align: end;
   font-size: 16px;
   font-weight: 500;
-   &.active{
-     font-weight: bold;
-   }
-  li{
+
+  li {
     margin: 0 5px;
   }
 }
-
 
 /* Buttons */
 .header-buttons {
@@ -69,7 +55,8 @@
     border-radius: 25px;
     width: 130px;
     height: 50px;
-    &:hover{
+
+    &:hover {
       background: black;
       color: white;
       border: none;
@@ -85,28 +72,21 @@
     color: black;
     font-weight: bold;
 
-    &:hover{
+    &:hover {
       background: black;
       color: white;
-      border: none;
     }
   }
 }
 
+/* Hover + Selected Menu Item */
 :host .menu ::ng-deep .ant-menu-item:hover,
 :host .menu ::ng-deep .ant-menu-submenu-title:hover {
   background: #c8f15c !important;
   color: black !important;
   border-radius: 15px;
-
 }
 
-:host .menu ::ng-deep .ant-menu-item::after,
-:host .menu ::ng-deep .ant-menu-submenu-title::after{
-  border-bottom: none !important;
-}
-
-/* Selected state for menu items */
 :host .menu ::ng-deep .ant-menu-item-selected,
 :host .menu ::ng-deep .ant-menu-submenu-selected {
   background: #c8f15c !important;
@@ -114,3 +94,88 @@
   border-radius: 15px;
 }
 
+/* --- Responsive Section --- */
+
+/* Hide full menu and buttons on tablet/mobile */
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 1690px) {
+  .menu {
+    display: none;
+  }
+
+  .header-buttons {
+    display: none;
+  }
+
+  .header-inner {
+    width: 90%;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: transparent;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: black;
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px 0;
+    text-align: center;
+    list-style: none;
+    animation: fadeIn 0.3s ease;
+
+    li {
+      margin: 15px 0;
+
+      a {
+        color: black;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+
+        &:hover {
+          color: #c8f15c;
+        }
+      }
+    }
+
+    .mobile-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+  .hero-text {
+    h1 {
+      font-size: 20px;
+    }
+  }
+
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
