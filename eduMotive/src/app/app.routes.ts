@@ -6,6 +6,7 @@ import {BlogComponent} from '../blog/blog.component';
 import {CoursesComponent} from '../courses/courses.component';
 import {ChatBotComponent} from '../chat-bot/chat-bot.component';
 import {LogInComponent} from '../log-in/log-in.component';
+import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
 
 export const routes: Routes = [
 
@@ -15,28 +16,34 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: HomePageComponent,
+        loadComponent: () => import('../hom-page/home-page.component').then(c=> c.HomePageComponent) ,
+
       },
       {
         path: 'about',
-        component: AboutUsComponent,
+        loadComponent: () => import('../about-us/about-us.component').then(c=> c.AboutUsComponent) ,
       },
       {
         path: 'blog',
-        component: BlogComponent,
+        loadComponent: () => import('../blog/blog.component').then(c=> c.BlogComponent) ,
       },
       {
         path: 'courses',
-        component: CoursesComponent,
+        loadComponent: () => import('../courses/courses.component').then(c=> c.CoursesComponent) ,
       },
       {
         path: 'chat-bot',
-        component: ChatBotComponent,
+        loadComponent: () => import('../chat-bot/chat-bot.component').then(c=> c.ChatBotComponent) ,
       },
       {
         path: 'log-in',
-        component: LogInComponent,
+        loadComponent: () => import('../log-in/log-in.component').then(c=> c.LogInComponent) ,
       },
+      {
+        path: '**',
+        loadComponent: () =>
+          import('../page-not-found/page-not-found.component').then(c => c.PageNotFoundComponent),
+      }
     ]
   },
 

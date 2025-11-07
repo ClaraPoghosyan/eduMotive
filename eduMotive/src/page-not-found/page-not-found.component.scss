@@ -1,0 +1,51 @@
+nz-layout {
+  width: 100%;
+  height: auto;
+  background: #0E3128;
+
+  .container {
+    width: 100%;
+    padding: 150px 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .pic {
+      width: 60%;
+      height: 900px;
+      background: url("/assets/not-found.png");
+      background-size: 70% 80%;
+      background-repeat: no-repeat;
+    }
+
+    .text {
+      width: 40%;
+      height: 900px;
+      padding-top: 150px;
+      color: white;
+      font-size: 20px;
+
+      h1{
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+      }
+    }
+
+    button {
+      background-color: #c8f15c;
+      border: none;
+      border-radius: 20px;
+      width: 200px;
+      height: 50px;
+      color: black;
+      font-weight: bold;
+
+      &:hover {
+        background: black;
+        color: white;
+      }
+    }
+  }
+
+}
