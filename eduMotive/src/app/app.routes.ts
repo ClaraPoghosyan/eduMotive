@@ -40,6 +40,14 @@ export const routes: Routes = [
         loadComponent: () => import('../log-in/log-in.component').then(c=> c.LogInComponent) ,
       },
       {
+        path: 'course',
+        loadComponent: () => import('../shared/components/course-page/course-page.component').then(c=> c.CoursePageComponent) ,
+      },
+      {
+        path: 'author',
+        loadComponent: () => import('../shared/components/author-page/author-page.component').then(c=> c.AuthorPageComponent) ,
+      },
+      {
         path: '**',
         loadComponent: () =>
           import('../page-not-found/page-not-found.component').then(c => c.PageNotFoundComponent),

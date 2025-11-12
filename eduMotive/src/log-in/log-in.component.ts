@@ -21,7 +21,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrl: './log-in.component.scss'
 })
 export class LogInComponent implements OnInit {
-
+  private readonly router: Router = inject(Router);
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly fb: FormBuilder = inject(FormBuilder);
 
@@ -46,5 +46,9 @@ export class LogInComponent implements OnInit {
     } else {
       console.log('Login flow');
     }
+  }
+
+  public goToHome(): void {
+    this.router.navigate(['/home'])
   }
 }

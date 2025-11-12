@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
+import {FoldableContainerComponent} from '../shared/components/foldable-container/foldable-container.component';
 
 @Component({
   selector: 'app-app-faq',
-  imports: [],
+  imports: [
+    FoldableContainerComponent
+  ],
   templateUrl: './app-faq.component.html',
   styleUrl: './app-faq.component.scss'
 })
@@ -31,7 +34,4 @@ export class AppFaqComponent {
     }
   ];
 
-  public toggleFaq(faq: any) {
-    faq.open = !faq.open;
-  }
 }

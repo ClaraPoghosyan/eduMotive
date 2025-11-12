@@ -1,0 +1,14 @@
+@for (faq of faqs; track faq) {
+  <div class="faq-item" [class.open]="faq.open">
+    <div class="faq-question" (click)="toggleFaq(faq)">
+      <span class="icon"> {{ faq.open ? 'x' : '+' }}</span>
+      <h3>{{ faq.question }}</h3>
+    </div>
+
+    @if (faq.open) {
+      <div class="faq-answer">
+        <p>{{ faq.answer }}</p>
+      </div>
+    }
+  </div>
+}

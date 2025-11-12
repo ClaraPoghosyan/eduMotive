@@ -4,14 +4,35 @@
   color: white;
   padding: 40px 0;
   font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+.copy{
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .border{
+    width: 80%;
+    border-top: 1px solid grey;
+  }
+  .text{
+    width: 80%;
+    margin-top: 30px;
+    text-align: start;
+  }
+}
+
 
 .footer-inner {
   width: 80%;
-  //margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-  gap: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
@@ -22,12 +43,19 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
+
 .logo img {
   height: 28px;
 }
-.footer-col{
+
+.footer-col {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+
   margin-left: 30px;
 }
+
 .footer-col h4 {
   color: white;
   font-weight: bold;
@@ -38,13 +66,16 @@
   list-style: none;
   padding: 0;
 }
+
 .footer-col ul li {
   margin: 6px 0;
 }
+
 .footer-col ul li a {
   color: white;
   text-decoration: none;
 }
+
 .footer-col ul li a:hover {
   text-decoration: underline;
 }
@@ -52,21 +83,24 @@
 .social {
   margin-top: 20px;
 }
+
 .social-icons {
   display: flex;
   gap: 10px;
   margin-top: 8px;
 }
+
 .social-icons a {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   width: 36px;
   height: 36px;
   color: red;
-  nz-icon{
+
+  nz-icon {
     border-color: red
   }
 }
@@ -74,20 +108,23 @@
 .subscribe-box {
   display: flex;
   align-items: center;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   overflow: hidden;
   margin-top: 10px;
 }
+
 .subscribe-box input {
   flex: 1;
   background: transparent;
   border: none;
   color: white;
 }
+
 .subscribe-box input::placeholder {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
+
 .arrow-btn {
   color: #c8f15c;
   font-size: 18px;

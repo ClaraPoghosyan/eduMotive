@@ -1,0 +1,171 @@
+.head {
+  width: 100%;
+  background: #0E3128;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 250px 200px 150px 200px;
+
+  .pic {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 631px;
+      border-radius: 16px;
+    }
+  }
+
+  .info {
+    width: 50%;
+    color: #FFFFFF;
+    font-size: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+
+    .author {
+      cursor: pointer;
+
+      &:hover {
+        color: #c8f15c;
+      }
+    }
+
+    h1 {
+      font-size: 50px;
+      color: #FFFFFF;
+      margin-bottom: 50px;
+    }
+
+    .courseBtn {
+      margin-top: 100px;
+      background-color: #c8f15c;
+      border: none;
+      border-radius: 35px;
+      width: 300px;
+      height: 70px;
+      color: black;
+      font-weight: bold;
+
+      &:hover {
+        background: black;
+        color: white;
+      }
+    }
+  }
+}
+
+.body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 50px;
+
+  app-foldable-container {
+    width: 50%;
+  }
+
+  .class-info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .info {
+      text-align: start;
+      font-size: 20px;
+      b{
+        margin-left: 10px;
+      }
+    }
+    .courseBtn{
+      margin-top: 20px;
+    }
+    .lesson-times {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .lessons {
+        border-right: 2px solid grey;
+        padding-right: 50px !important;
+      }
+
+      .lessons, .times {
+        display: flex;
+        flex-direction: column;
+        font-size: 20px;
+        margin: 10px;
+
+        .title {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          span {
+            padding-left: 5px;
+            font-style: italic;
+            color: grey;
+          }
+        }
+
+        p {
+          margin-left: 30px;
+          font-weight: bold;
+        }
+
+        img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+    }
+
+  }
+  .courseBtn {
+    background-color: #c8f15c;
+    border: none;
+    border-radius: 25px;
+    width: 300px;
+    height: 50px;
+    color: black;
+    font-weight: bold;
+
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+
+
+}
+.videos{
+  width: 100%;
+  .cards {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  nz-card {
+    width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 20px;
+  }
+}

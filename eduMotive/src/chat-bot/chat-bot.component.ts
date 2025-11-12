@@ -13,50 +13,51 @@ import {HeaderComponent} from '../shared/components/header/header.component';
   ]
 })
 export class ChatBotComponent  {
-  // private readonly http: HttpClient = inject(HttpClient);
-  //
-  // @ViewChild('chatContainer') private chatContainer!: ElementRef;
-  //
-  // messages: { user: string, ai?: string }[] = [];
-  // input = new FormControl('');
-  // loading = false;
-  //
-  // ngAfterViewChecked() {
-  //   this.scrollToBottom();
-  // }
-  //
-  // scrollToBottom() {
-  //   if (this.chatContainer) {
-  //     this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-  //   }
-  // }
-  //
-  // sendMessage() {
-  //   const message = this.input.value;
-  //   if (!message) return;
-  //
-  //   this.messages.push({ user: message });
-  //   this.input.setValue('');
-  //   this.loading = true;
-  //
-  //   const headers = new HttpHeaders({
-  //     'Authorization': `Bearer `//apikey
-  //
-  //   });
-  //
-  //   this.http.post<any>('https://api.openai.com/v1/chat/completions', {
-  //     model: 'gpt-4o-mini',
-  //     messages: [{ role: 'user', content: message }]
-  //   }, { headers }).subscribe({
-  //     next: (res:any) => {
-  //       const aiResponse = res.choices[0].message.content;
-  //       this.messages.push({ user: message, ai: aiResponse });
-  //       this.loading = false;
-  //     },
-  //     error: (err: any) => {
-  //       this.messages.push({ user: message, ai: 'Error: Unable to fetch response.' });
-  //       this.loading = false;
-  //     }
-  //   });
-  // }
+  private readonly http: HttpClient = inject(HttpClient);
+
+  @ViewChild('chatContainer') private chatContainer!: ElementRef;
+
+  messages: { user: string, ai?: string }[] = [];
+  input = new FormControl('');
+  loading = false;
+  private apiKey = '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';
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    if (this.chatContainer) {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+    }
+  }
+
+  sendMessage() {
+    const message = this.input.value;
+    if (!message) return;
+
+    this.messages.push({ user: message });
+    this.input.setValue('');
+    this.loading = true;
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.apiKey}`
+
+    });
+
+    this.http.post<any>('https://api.openai.com/v1/chat/completions', {
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'user', content: message }]
+    }, { headers }).subscribe({
+      next: (res:any) => {
+        const aiResponse = res.choices[0].message.content;
+        this.messages.push({ user: message, ai: aiResponse });
+        this.loading = false;
+      },
+      error: (err: any) => {
+        this.messages.push({ user: message, ai: 'Error: Unable to fetch response.' });
+        this.loading = false;
+      }
+    });
+  }
 }

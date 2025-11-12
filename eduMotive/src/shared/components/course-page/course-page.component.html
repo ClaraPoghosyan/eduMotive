@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div class="head">
+  <div class="pic">
+    <img src="/assets/lesson.png" alt="User 1" class="learner-img"/>
+  </div>
+  <div class="info">
+    <h1>Վերնագիր</h1>
+    <div>
+      <span>Հեղինակ`</span><span (click)="goOnAuthor()" class="author"> Anun</span>
+    </div>
+    <p>երկար բարակ անիմաստ ինֆո թե էս դասընթացը ինչի մասին ա ինչի դու պիտի սա սովորես։երկար բարակ անիմաստ ինֆո թե էս
+      դասընթացը ինչի մասին ա ինչի դու պիտի սա սովորես։</p>
+    <button nz-button nzType="primary" class="courseBtn">Բացահայտիր մեր դասընթացները</button>
+
+  </div>
+</div>
+
+<div class="body">
+  <app-foldable-container
+    [faqs]="faqs"
+  ></app-foldable-container>
+  <div class="class-info">
+    <h1>Դասընթացի մանրամսները</h1>
+    <div class="lesson-times">
+      <div class="lessons">
+        <div class="title">
+          <img src="./assets/file.png">
+          <span>Դասեր</span>
+        </div>
+        <p>{{ card.lessons }} դաս</p>
+      </div>
+
+      <div class="times">
+        <div class="title">
+          <img src="./assets/clock.png">
+          <span>Տևողություն</span>
+        </div>
+        <p>{{ card.time }}</p>
+      </div>
+    </div>
+    <div class="info">
+      <p>Ուսանող՝<b>600</b></p>
+      <p>Լեզու՝<b>հայերեն</b></p>
+      <p>Սերտիֆիկատ՝<b>ավարտի պահին</b></p>
+    </div>
+    <button nz-button nzType="primary" class="courseBtn">Բացահայտիր մեր դասընթացները</button>
+
+  </div>
+
+</div>
+<div class="videos">
+  <div nz-row  class="cards">
+
+    @for (video of videos; track video.title) {
+      <div nz-col >
+        <nz-card>
+          <iframe
+            width="100%"
+            height="250"
+            [src]="video.url | safeUrl"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </nz-card>
+      </div>
+    }
+  </div>
+</div>
+
+<app-join-part></app-join-part>
+<app-footer></app-footer>
