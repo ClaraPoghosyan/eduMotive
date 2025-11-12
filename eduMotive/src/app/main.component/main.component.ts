@@ -4,6 +4,7 @@ import {HeaderComponent} from '../../shared/components/header/header.component';
 import {HomePageComponent} from '../../hom-page/home-page.component';
 import {NzLayoutComponent} from 'ng-zorro-antd/layout';
 import {RouterOutlet} from '@angular/router';
+import {ChatBotComponent} from '../../chat-bot/chat-bot.component';
 
 @Component({
   selector: 'app-main.component',
@@ -12,7 +13,8 @@ import {RouterOutlet} from '@angular/router';
     HeaderComponent,
     HomePageComponent,
     NzLayoutComponent,
-    RouterOutlet
+    RouterOutlet,
+    ChatBotComponent
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'

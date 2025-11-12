@@ -5,6 +5,8 @@ import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {NzHeaderComponent} from 'ng-zorro-antd/layout';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {NzIconDirective} from 'ng-zorro-antd/icon';
+import {NzDropDownDirective} from 'ng-zorro-antd/dropdown';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,9 @@ import {NzIconDirective} from 'ng-zorro-antd/icon';
     NzHeaderComponent,
     RouterLink,
     RouterLinkActive,
-    NzIconDirective
+    NzIconDirective,
+    NzSubMenuComponent,
+    NzDropDownDirective
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
