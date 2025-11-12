@@ -22,8 +22,8 @@ export class ChatBotComponent  {
   messages: { from: 'user' | 'ai', text: string | SafeHtml }[] = [];
   input = new FormControl('');
   loading = false;
-  private apiKey = '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';
-
+  // private apiKey = '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';
+private apiKey: string = 'df';
   public toggleChat() {
     this.isOpen = !this.isOpen;
 
