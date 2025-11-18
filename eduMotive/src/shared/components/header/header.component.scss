@@ -97,6 +97,9 @@
 
   li {
     margin: 0 5px;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -139,6 +142,11 @@
   background: #c8f15c !important;
   color: black !important;
   border-radius: 15px;
+  text-decoration: none;
+  border-bottom: none;
+  &::after{
+    border-bottom: none !important;
+  }
 }
 
 :host .menu ::ng-deep .ant-menu-item-selected,
@@ -146,6 +154,11 @@
   background: #c8f15c !important;
   color: black !important;
   border-radius: 15px;
+  text-decoration: none;
+  border-bottom: none;
+  &::after{
+    border-bottom: none !important;
+  }
 }
 
 /* --- Responsive Section --- */
