@@ -1,0 +1,45 @@
+<nz-layout>
+  <app-header></app-header>
+  <div class="head-part">
+    <h1>Կապ հաստատեք Edumotive-ի հետ</h1>
+    <p>Հարցեր ունե՞ք, օգնության կարի՞ք կա, կամ ուզում եք հետադարձ կապ տալ։ Մենք միշտ պատրաստ ենք օգնելու։ Գրեք մեզ, և
+      մեր թիմը արագ կպատասխանի ձեր հարցերին ու կլուծի խնդիրները։</p>
+    <div class="contacts">
+      <span>+1 (123) 456-7890</span>
+      <span>support@edumotive.com</span>
+    </div>
+  </div>
+  <div class="body">
+    <h1>Ուղարկել հարցում</h1>
+    <p>Լրացրեք ստորև ներկայացված ձևը, և մեր թիմը ձեզ կպատասխանի 24 ժամվա ընթացքում։</p>
+    <form nz-form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <nz-form-item>
+          <nz-form-control>
+            <input nz-input placeholder="Անուն Ազգանուն" formControlName="fullName" />
+          </nz-form-control>
+        </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <input nz-input placeholder="էլեկտրոնային փոստի հասցե" formControlName="email" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <input nz-input  placeholder="Թեմա" formControlName="subject" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <input nz-input  placeholder="Նամակ" formControlName="message" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <button nz-button nzType="primary" [disabled]="form.invalid" class="explore-btn">Ուղարկել հաղորդագրություն</button>
+
+</form>
+
+  </div>
+  <app-footer></app-footer>
+</nz-layout>

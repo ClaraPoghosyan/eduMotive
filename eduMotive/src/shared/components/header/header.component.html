@@ -9,14 +9,10 @@
       <li nz-menu-item routerLink="/about" routerLinkActive="active">Մեր մասին</li>
       <li nz-menu-item routerLink="/blog" routerLinkActive="active">Բլոգ</li>
       <li nz-menu-item routerLink="/courses" routerLinkActive="active">Դասընթացներ</li>
+      <li nz-menu-item routerLink="/contact-us" routerLinkActive="active">Կապ մեզ հետ</li>
 
-      <li nz-submenu nzTitle="Էջեր">
-        <ul>
-          <li nz-menu-item routerLink="/privacy" routerLinkActive="active">Գաղտնիության քաղաքականություն</li>
-          <li nz-menu-item routerLink="/terms" routerLinkActive="active">Պայմաններ և դրույթներ</li>
-          <li nz-menu-item routerLink="/contact" routerLinkActive="active">Կապ մեզ հետ</li>
-        </ul>
-      </li>
+
+
 
     </ul>
 
@@ -40,7 +36,11 @@
       <li><a routerLink="/about" (click)="closeMenu()">Մեր մասին</a></li>
       <li><a routerLink="/blog" (click)="closeMenu()">Բլոգ</a></li>
       <li><a routerLink="/courses" (click)="closeMenu()">Դասընթացներ</a></li>
-      <li><a routerLink="/chat-bot" (click)="closeMenu()">Քո օնլայն օգնականը</a></li>
+      <ul class="pages-mobile">
+        <li><a routerLink="/pages/privacy" routerLinkActive="active">Գաղտնիության քաղաքականություն</a></li>
+        <li><a routerLink="/pages/terms" routerLinkActive="active">Պայմաններ և դրույթներ</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">Կապ մեզ հետ</a></li>
+      </ul>
     </ul>
   }
 </nz-header>
