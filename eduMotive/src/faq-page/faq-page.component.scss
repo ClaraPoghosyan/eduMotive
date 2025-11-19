@@ -1,0 +1,29 @@
+nz-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .head-part {
+    width: 100%;
+    min-height: 550px;
+    padding-top: 100px;
+    background: #0E3128;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-size: 50px;
+      text-align: center;
+      color: #fff;
+    }
+
+    p {
+      width: 45%;
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+}

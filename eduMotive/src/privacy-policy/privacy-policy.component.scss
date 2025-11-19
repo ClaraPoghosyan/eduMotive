@@ -1,0 +1,56 @@
+nz-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .head-part {
+    width: 100%;
+    min-height: 550px;
+    padding-top: 100px;
+    background: #0E3128;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-size: 50px;
+      text-align: center;
+      color: #fff;
+    }
+
+    p {
+      width: 45%;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .contacts {
+      display: flex;
+      font-size: 20px;
+      margin-top: 30px;
+
+    }
+  }
+
+  .body {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 18px;
+    color: #0E3128;
+    padding: 40px;
+    text-align: start;
+    .desc{
+      width: 60%;
+      margin-top: 80px;
+      margin-bottom: 100px;
+    }
+  .ol-container{
+    width: 50%;
+  }
+  }
+}

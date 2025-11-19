@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import {HeaderComponent} from '../shared/components/header/header.component';
 import {NzLayoutComponent} from 'ng-zorro-antd/layout';
 import {FooterComponent} from '../footer/footer.component';
-import {HomePageComponent} from '../hom-page/home-page.component';
+import {HomePageComponent} from '../home-page/home-page.component';
 
 @Component({
   selector: 'app-root',

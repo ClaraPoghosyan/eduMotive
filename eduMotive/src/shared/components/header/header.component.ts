@@ -1,12 +1,9 @@
 import {Component, inject} from '@angular/core';
-import {NzPageHeaderComponent} from 'ng-zorro-antd/page-header';
-import {NzMenuDirective, NzMenuItemComponent, NzSubMenuComponent} from 'ng-zorro-antd/menu';
+import {NzMenuDirective, NzMenuItemComponent} from 'ng-zorro-antd/menu';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {NzHeaderComponent} from 'ng-zorro-antd/layout';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
-import {NzIconDirective} from 'ng-zorro-antd/icon';
-import {NzDropDownDirective} from 'ng-zorro-antd/dropdown';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import {NzTooltipDirective} from 'ng-zorro-antd/tooltip';
 
 @Component({
   selector: 'app-header',
@@ -17,9 +14,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     NzHeaderComponent,
     RouterLink,
     RouterLinkActive,
-    NzIconDirective,
-    NzSubMenuComponent,
-    NzDropDownDirective
+    NzTooltipDirective
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

@@ -15,7 +15,7 @@ export const routes: Routes = [
       {
         path: 'home',
         loadComponent: () =>
-          import('../hom-page/home-page.component').then(c => c.HomePageComponent),
+          import('../home-page/home-page.component').then(c => c.HomePageComponent),
       },
       {
         path: 'about',
@@ -53,6 +53,16 @@ export const routes: Routes = [
         path: 'contact-us',
         loadComponent: () =>
           import('../contact-us/contact-us.component').then(c => c.ContactUsComponent),
+      },
+      {
+        path: 'privacy-policy',
+        loadComponent: () =>
+          import('../privacy-policy/privacy-policy.component').then(c => c.PrivacyPolicyComponent),
+      },
+      {
+        path: 'faq',
+        loadComponent: () =>
+          import('../faq-page/faq-page.component').then(c => c.FaqPageComponent),
       },
       {
         path: '**',

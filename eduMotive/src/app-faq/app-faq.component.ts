@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import {FoldableContainerComponent} from '../shared/components/foldable-container/foldable-container.component';
 
@@ -11,6 +11,8 @@ import {FoldableContainerComponent} from '../shared/components/foldable-containe
   styleUrl: './app-faq.component.scss'
 })
 export class AppFaqComponent {
+  @Input() showTitle: boolean = true;
+
   public faqs = [
     {
       question: 'Ի՞նչ տեսակի դասընթացներ եք առաջարկում։',

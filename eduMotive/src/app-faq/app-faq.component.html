@@ -1,5 +1,7 @@
 <div class="faq-section">
-  <h1 class="title">Հաճախ տրվող հարցեր</h1>
+  @if (showTitle){
+    <h1 class="title">Հաճախ տրվող հարցեր</h1>
+  }
   <app-foldable-container
     [faqs]="faqs"
   ></app-foldable-container>
