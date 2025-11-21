@@ -9,18 +9,21 @@
   align-items: center;
   justify-content: center;
 }
-.copy{
+
+.copy {
   margin-top: 50px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  .border{
+
+  .border {
     width: 80%;
     border-top: 1px solid grey;
   }
-  .text{
+
+  .text {
     width: 80%;
     margin-top: 30px;
     text-align: start;
@@ -42,11 +45,17 @@
   font-size: 25px;
   font-weight: bold;
   margin-bottom: 10px;
+
+  P {
+    box-sizing: border-box;
+    padding-top: 25px;
+  }
+
+  img {
+    height: 28px;
+  }
 }
 
-.logo img {
-  height: 28px;
-}
 
 .footer-col {
   width: 30%;
