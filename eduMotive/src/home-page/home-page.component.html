@@ -24,13 +24,17 @@
 
     <div class="hero-image-container">
       <div class="tags">
-        <a href="/ui-ux" class="tag">UI/UX Դիզայն</a>
-        <a href="/graphics-design" class="tag">Գրաֆիկական դիզայն</a>
-        <a href="/data-analyst" class="tag">Տվյալների վերլուծություն</a>
-        <a href="/programming" class="tag">Java</a>
-        <a href="/marketing" class="tag">Angular</a>
-        <a href="/marketing" class="tag">JavaScript</a>
-        <a href="/marketing" class="tag">React Js</a>
+        @for (course of courses; track course.name) {
+          <a href="/{{course.name}}" class="tag">{{course.value}}</a>
+        }
+
+<!--          <a href="/ui-ux" class="tag">UI/UX Դիզայն</a>-->
+<!--        <a href="/graphics-design" class="tag">Գրաֆիկական դիզայն</a>-->
+<!--        <a href="/data-analyst" class="tag">Տվյալների վերլուծություն</a>-->
+<!--        <a href="/programming" class="tag">Java</a>-->
+<!--        <a href="/marketing" class="tag">Angular</a>-->
+<!--        <a href="/marketing" class="tag">JavaScript</a>-->
+<!--        <a href="/marketing" class="tag">React Js</a>-->
       </div>
 
     </div>

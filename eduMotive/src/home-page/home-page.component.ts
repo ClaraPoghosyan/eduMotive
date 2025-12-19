@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, DestroyRef, inject, OnInit} from '@angular/core';
 import {CoursesConfigComponent} from '../courses-config/courses-config.component';
 import {BenefitsSectionComponent} from "../benefits-section/benefits-section.component";
 import {StepsSectionComponent} from "../steps-section/steps-section.component";
@@ -11,6 +11,9 @@ import {HeaderComponent} from '../shared/components/header/header.component';
 import {NzLayoutComponent} from 'ng-zorro-antd/layout';
 import {Router} from '@angular/router';
 import {TabComponent} from '../shared/components/tab.component/tab.component';
+import {HttpClient} from '@angular/common/http';
+import {CoursesService} from '../shared/services/courses.service';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-home-page',
@@ -30,9 +33,11 @@ import {TabComponent} from '../shared/components/tab.component/tab.component';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
   private readonly router: Router = inject(Router);
-
+  private readonly destroyRef: DestroyRef = inject(DestroyRef);
+  private readonly coursesService: CoursesService = inject(CoursesService);
+  public courses: { name: string; value: string }[] = [];
   public coursesTitle: string = 'Մեր լավագույն դասընթացները';
   public coursesSubTitle: string = 'Սովորեք լավագույններից և ձեռք բերեք գործնական գիտելիքներ՝ ձեր առաջընթացի համար';
   public cards = [
@@ -78,6 +83,16 @@ export class HomePageComponent {
     },
 
   ];
+
+  public ngOnInit() {
+    this.getCourses();
+  }
+
+  public getCourses() {
+    this.coursesService.getCourses()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res) => this.courses = res)
+  }
 
   public goToCourses(): void {
     this.router.navigate(['/courses'])
