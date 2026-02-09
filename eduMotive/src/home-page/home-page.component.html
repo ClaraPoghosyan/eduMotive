@@ -24,8 +24,8 @@
 
     <div class="hero-image-container">
       <div class="tags">
-        @for (course of courses; track course.name) {
-          <a href="/{{course.name}}" class="tag">{{course.value}}</a>
+        @for (course of courses; track course.slug) {
+          <a href="/{{course.slug}}" class="tag">{{course.title}}</a>
         }
 
 <!--          <a href="/ui-ux" class="tag">UI/UX Դիզայն</a>-->

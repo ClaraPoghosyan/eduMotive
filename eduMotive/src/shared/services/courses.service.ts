@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 export class CoursesService {
   private http: HttpClient = inject(HttpClient);
 
-  public getCourses(): Observable<{name: string;value: string}[]> {
-   return this.http.get<{name: string;value: string}[]>('/api/courses')
+  public getCourses(): Observable<{slug: string;title: string}[]> {
+   return this.http.get<{slug: string;title: string}[]>('/api/courses')
   }
 }

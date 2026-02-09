@@ -14,6 +14,7 @@ import {TabComponent} from '../shared/components/tab.component/tab.component';
 import {HttpClient} from '@angular/common/http';
 import {CoursesService} from '../shared/services/courses.service';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {NzButtonComponent} from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-home-page',
@@ -28,7 +29,8 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
     FooterComponent,
     HeaderComponent,
     NzLayoutComponent,
-    TabComponent
+    TabComponent,
+    NzButtonComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
@@ -37,7 +39,7 @@ export class HomePageComponent implements OnInit {
   private readonly router: Router = inject(Router);
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly coursesService: CoursesService = inject(CoursesService);
-  public courses: { name: string; value: string }[] = [];
+  public courses: { slug: string; title: string }[] = [];
   public coursesTitle: string = 'Մեր լավագույն դասընթացները';
   public coursesSubTitle: string = 'Սովորեք լավագույններից և ձեռք բերեք գործնական գիտելիքներ՝ ձեր առաջընթացի համար';
   public cards = [
