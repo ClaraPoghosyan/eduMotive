@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {CardConfigComponent} from '../card-config/card-config.component';
+import {Course} from '../shared/interfaces/courses.interface';
 
 @Component({
   selector: 'app-courses-config',
@@ -12,7 +13,7 @@ import {CardConfigComponent} from '../card-config/card-config.component';
 export class CoursesConfigComponent {
   @Input() sectionTitle: string = '';
   @Input() sectionSubTitle: string = '';
-  @Input() cards: any[] = [];
+  @Input() cards: Course[] = [];
 
 
 }

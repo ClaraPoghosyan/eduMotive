@@ -2,7 +2,7 @@
     @for (card of cards; track card.title) {
       <div nz-col >
         <nz-card>
-          <div class="card-pic">
+          <div class="card-pic"   [style.background-image]="'url(/assets/' + card.imageUrl + ')'">
             @if (!card.isBlog) {
               <button nz-button nzType="default">{{ card?.groupName ?? '' }}</button>
             }
@@ -10,10 +10,10 @@
           @if (!card.isBlog) {
             <div class="title-part">
               <h1>{{ card?.title }}</h1>
-              <h1>{{ card?.price }}AMD</h1>
+              <h1>{{ card?.priceAmd }}Դրամ</h1>
             </div>
             <div class="writer">
-              <p>{{ card.writer }}</p>
+              <p>{{  card.authorName }}</p>
             </div>
             <div class="lesson-times">
               <div class="lessons">
@@ -21,7 +21,7 @@
                   <img src="./assets/file.png">
                   <span>Դասեր</span>
                 </div>
-                <p>{{ card.lessons }} դաս</p>
+                <p>{{ card.lessonsCount }} դաս</p>
               </div>
 
               <div class="times">
@@ -29,7 +29,7 @@
                   <img src="./assets/clock.png">
                   <span>Տևողություն</span>
                 </div>
-                <p>{{ card.time }}</p>
+                <p>{{ card.duration }}</p>
               </div>
             </div>
             <div class="btn-part">
@@ -38,11 +38,11 @@
           } @else {
             <div class="dates-part">
               <i></i>
-              <p>{{ card.createdDate }}</p>
+              <p>{{ card.duration }}</p>
             </div>
             <div class="content">
               <h1>{{ card.title }}</h1>
-              <h1>{{ card.content }}</h1>
+              <h1>{{ card.duration }}</h1>
               <p>Կարդալ ավելին</p>
             </div>
           }

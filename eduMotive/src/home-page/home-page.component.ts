@@ -15,6 +15,9 @@ import {HttpClient} from '@angular/common/http';
 import {CoursesService} from '../shared/services/courses.service';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
+import {Course} from '../shared/interfaces/courses.interface';
+import {FaqService} from '../shared/services/faq.service';
+import {Faq} from '../shared/interfaces/faq.interface';
 
 @Component({
   selector: 'app-home-page',
@@ -38,65 +41,47 @@ import {NzButtonComponent} from 'ng-zorro-antd/button';
 export class HomePageComponent implements OnInit {
   private readonly router: Router = inject(Router);
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
+  private readonly faqService: FaqService = inject(FaqService);
   private readonly coursesService: CoursesService = inject(CoursesService);
-  public courses: { slug: string; title: string }[] = [];
+
+  public faqs: Faq[] = [];
+  public courses:Course[] = [];
   public coursesTitle: string = 'Մեր լավագույն դասընթացները';
   public coursesSubTitle: string = 'Սովորեք լավագույններից և ձեռք բերեք գործնական գիտելիքներ՝ ձեր առաջընթացի համար';
-  public cards = [
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-    {
-      title: 'SEO',
-      price: 5000,
-      groupName: 'Marketing',
-      writer: 'Anahit Manukyan',
-      content: 'Card content 1',
-      lessons: '22',
-      time: '6h 30m',
-      isBlog: false
-    },
-
-  ];
+  public bestCourses : Course[] = []
 
   public ngOnInit() {
+    this.getFAQ();
     this.getCourses();
   }
 
-  public getCourses() {
+  public getCourses(): void {
     this.coursesService.getCourses()
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((res) => this.courses = res)
+      .subscribe((res: Course[]) => {
+
+        this.courses = res.map(course => ({
+          ...course,
+          isBlog: false
+        }));
+
+        this.bestCourses = [...this.courses]
+          .filter(course => course.rating != null)
+          .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))
+          .slice(0, 4);
+      });
+  }
+
+  public getFAQ(): void {
+    this.faqService.getFAQ()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res: Faq[]) => {
+        this.faqs = res;
+      })
   }
 
   public goToCourses(): void {
     this.router.navigate(['/courses'])
   }
+
 }

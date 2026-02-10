@@ -27,29 +27,20 @@
         @for (course of courses; track course.slug) {
           <a href="/{{course.slug}}" class="tag">{{course.title}}</a>
         }
-
-<!--          <a href="/ui-ux" class="tag">UI/UX Դիզայն</a>-->
-<!--        <a href="/graphics-design" class="tag">Գրաֆիկական դիզայն</a>-->
-<!--        <a href="/data-analyst" class="tag">Տվյալների վերլուծություն</a>-->
-<!--        <a href="/programming" class="tag">Java</a>-->
-<!--        <a href="/marketing" class="tag">Angular</a>-->
-<!--        <a href="/marketing" class="tag">JavaScript</a>-->
-<!--        <a href="/marketing" class="tag">React Js</a>-->
       </div>
-
     </div>
   </div>
   <app-courses-config
-    [cards]="cards"
+    [cards]="bestCourses"
     [sectionTitle]="coursesTitle"
     [sectionSubTitle]="coursesSubTitle"
   ></app-courses-config>
   <app-why-choose></app-why-choose>
-  <app-tab></app-tab>
+  <app-tab [cards]="courses"></app-tab>
   <app-benefits-section></app-benefits-section>
   <app-reviews></app-reviews>
   <app-steps-section></app-steps-section>
-  <app-app-faq></app-app-faq>
+  <app-app-faq [faqs]="faqs" ></app-app-faq>
   <app-join-part></app-join-part>
   <app-footer></app-footer>
 </nz-layout>

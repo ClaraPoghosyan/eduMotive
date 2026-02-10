@@ -36,14 +36,14 @@ nz-card {
     display: flex;
     align-items: start;
     border-radius: 15px;
-    background: url("/assets/lesson.png");
+    //background: url("/assets/lesson.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     overflow: hidden;
     transition: background-size 0.4s ease-in-out;
 
     button {
-      width: 100px;
+      width: 120px;
       height: 40px;
       border-radius: 15px;
       margin: 10px;
