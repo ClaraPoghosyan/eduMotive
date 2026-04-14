@@ -33,7 +33,13 @@
               </div>
             </div>
             <div class="btn-part">
-              <button nz-button nzType="default">Ավելին</button>
+              <button
+                nz-button
+                nzType="default"
+                (click)="goToCourse(card.id)"
+              >
+                Ավելին
+              </button>
             </div>
           } @else {
             <div class="dates-part">

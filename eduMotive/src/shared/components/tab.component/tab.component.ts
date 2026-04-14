@@ -4,6 +4,7 @@ import {CoursesConfigComponent} from '../../../courses-config/courses-config.com
 import {CardConfigComponent} from '../../../card-config/card-config.component';
 import {Course} from '../../interfaces/courses.interface';
 import {log} from 'ng-zorro-antd/core/logger';
+import {Blog} from '../../interfaces/blog.interface';
 
 @Component({
   selector: 'app-tab',
@@ -16,7 +17,7 @@ import {log} from 'ng-zorro-antd/core/logger';
   styleUrl: './tab.component.scss'
 })
 export class TabComponent implements OnChanges {
-  @Input() cards: Course[] = [];
+  @Input() cards: any[] = [];
   public programmingCards: Course[] = [];
   public dataCards: Course[] = [];
   public designCards: Course[] = [];

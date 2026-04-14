@@ -1,8 +1,42 @@
 import { Routes } from '@angular/router';
 import {MainComponent} from './main.component/main.component';
+import { adminGuard } from '../admin/admin.guard';
 
 
 export const routes: Routes = [
+  {
+    path: 'admin',
+    children: [
+      {
+        path: '',
+        canActivate: [adminGuard],
+        loadComponent: () =>
+          import('../admin/admin-layout/admin-layout.component').then(c => c.AdminLayoutComponent),
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'dashboard',
+          },
+          {
+            path: 'dashboard',
+            loadComponent: () =>
+              import('../admin/dashboard/dashboard.component').then(c => c.DashboardComponent),
+          },
+          {
+            path: 'courses',
+            loadComponent: () =>
+              import('../admin/admin-courses/admin-courses.component').then(c => c.AdminCoursesComponent),
+          },
+          {
+            path: 'blogs',
+            loadComponent: () =>
+              import('../admin/admin-blogs/admin-blogs.component').then(c => c.AdminBlogsComponent),
+          },
+        ],
+      },
+    ],
+  },
   {
     path: '',
     component: MainComponent,
@@ -38,13 +72,13 @@ export const routes: Routes = [
           import('../log-in/log-in.component').then(c => c.LogInComponent),
       },
       {
-        path: 'course',
+        path: 'course/:id',
         loadComponent: () =>
           import('../shared/components/course-page/course-page.component')
             .then(c => c.CoursePageComponent),
       },
       {
-        path: 'author',
+        path: 'author/:id',
         loadComponent: () =>
           import('../shared/components/author-page/author-page.component')
             .then(c => c.AuthorPageComponent),

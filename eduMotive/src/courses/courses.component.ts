@@ -22,6 +22,7 @@ import {CoursesService} from '../shared/services/courses.service';
   styleUrl: './courses.component.scss'
 })
 export class CoursesComponent implements OnInit {
+
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly coursesService: CoursesService = inject(CoursesService);
 

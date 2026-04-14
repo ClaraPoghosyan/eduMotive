@@ -1,0 +1,179 @@
+<div class="page-header">
+  <h2 class="page-title">Courses Management</h2>
+  <button nz-button nzType="primary" (click)="openAddModal()">
+    <span nz-icon nzType="plus"></span>
+    Add Course
+  </button>
+</div>
+
+<nz-table
+  #table
+  [nzData]="courses"
+  [nzLoading]="loading"
+  nzTableLayout="fixed"
+  [nzPageSize]="10"
+  nzBordered
+>
+  <thead>
+    <tr>
+      <th nzWidth="60px">ID</th>
+      <th>Title</th>
+      <th nzWidth="120px">Group</th>
+      <th nzWidth="100px">Language</th>
+      <th nzWidth="100px">Price (AMD)</th>
+      <th nzWidth="80px">Rating</th>
+      <th>Author</th>
+      <th nzWidth="130px">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of table.data">
+      <td>{{ course.id }}</td>
+      <td>{{ course.title }}</td>
+      <td>
+        <nz-tag [nzColor]="course.groupName === 'Programming' ? 'blue' : course.groupName === 'Data' ? 'green' : course.groupName === 'Design' ? 'purple' : 'orange'">
+          {{ course.groupName }}
+        </nz-tag>
+      </td>
+      <td>{{ course.language }}</td>
+      <td>{{ course.priceAmd | number }}</td>
+      <td>{{ course.rating }}</td>
+      <td>{{ course.authorName }}</td>
+      <td>
+        <button nz-button nzType="default" nzSize="small" (click)="openEditModal(course)" class="action-btn">
+          <span nz-icon nzType="edit"></span>
+        </button>
+        <button
+          nz-button nzType="default" nzDanger nzSize="small"
+          nz-popconfirm
+          nzPopconfirmTitle="Delete this course?"
+          (nzOnConfirm)="deleteCourse(course.id)"
+        >
+          <span nz-icon nzType="delete"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<nz-modal
+  [(nzVisible)]="modalVisible"
+  [nzTitle]="editingId ? 'Edit Course' : 'Add Course'"
+  [nzOkLoading]="modalLoading"
+  (nzOnOk)="handleModalOk()"
+  (nzOnCancel)="handleModalCancel()"
+  nzWidth="640px"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="form" nzLayout="vertical">
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Title</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <input nz-input formControlName="title" placeholder="Course title" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Slug</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <input nz-input formControlName="slug" placeholder="course-slug" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Short Description</nz-form-label>
+        <nz-form-control nzErrorTip="Required">
+          <textarea nz-input formControlName="shortDescription" [nzAutosize]="{ minRows: 2, maxRows: 4 }" placeholder="Brief description"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Group</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <nz-select formControlName="groupName" nzPlaceHolder="Select group">
+                <nz-option *ngFor="let g of groups" [nzValue]="g" [nzLabel]="g"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Language</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <nz-select formControlName="language" nzPlaceHolder="Select language">
+                <nz-option *ngFor="let l of languages" [nzValue]="l" [nzLabel]="l"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="8">
+          <nz-form-item>
+            <nz-form-label nzRequired>Duration</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <input nz-input formControlName="duration" placeholder="e.g. 3 months" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-form-item>
+            <nz-form-label nzRequired>Lessons Count</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <nz-input-number formControlName="lessonsCount" [nzMin]="1" style="width:100%"></nz-input-number>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-form-item>
+            <nz-form-label nzRequired>Price (AMD)</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <nz-input-number formControlName="priceAmd" [nzMin]="0" style="width:100%"></nz-input-number>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Rating</nz-form-label>
+            <nz-form-control nzErrorTip="0 – 5">
+              <nz-input-number formControlName="rating" [nzMin]="0" [nzMax]="5" [nzStep]="0.1" style="width:100%"></nz-input-number>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Author ID</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <nz-input-number formControlName="authorId" [nzMin]="1" style="width:100%"></nz-input-number>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Author Name</nz-form-label>
+        <nz-form-control nzErrorTip="Required">
+          <input nz-input formControlName="authorName" placeholder="Author full name" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Image URL</nz-form-label>
+        <nz-form-control nzErrorTip="Required">
+          <input nz-input formControlName="imageUrl" placeholder="https://..." />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

@@ -1,0 +1,52 @@
+<nz-layout class="admin-layout">
+  <nz-sider
+    nzCollapsible
+    [(nzCollapsed)]="isCollapsed"
+    nzTheme="dark"
+    [nzTrigger]="null"
+    class="admin-sider"
+  >
+    <div class="sider-logo">
+      <span *ngIf="!isCollapsed">eduMotive Admin</span>
+      <span *ngIf="isCollapsed">EM</span>
+    </div>
+
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item routerLink="/admin/dashboard" routerLinkActive="ant-menu-item-selected">
+        <span nz-icon nzType="dashboard"></span>
+        <span>Dashboard</span>
+      </li>
+      <li nz-menu-item routerLink="/admin/courses" routerLinkActive="ant-menu-item-selected">
+        <span nz-icon nzType="book"></span>
+        <span>Courses</span>
+      </li>
+      <li nz-menu-item routerLink="/admin/blogs" routerLinkActive="ant-menu-item-selected">
+        <span nz-icon nzType="file-text"></span>
+        <span>Blogs</span>
+      </li>
+    </ul>
+
+    <div class="sider-footer">
+      <button nz-button nzType="text" nzDanger (click)="logout()" class="logout-btn">
+        <span nz-icon nzType="logout"></span>
+        <span *ngIf="!isCollapsed">Logout</span>
+      </button>
+    </div>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-header class="admin-header">
+      <span
+        class="collapse-trigger"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"
+      ></span>
+      <span class="header-title">Admin Panel</span>
+    </nz-header>
+
+    <nz-content class="admin-content">
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

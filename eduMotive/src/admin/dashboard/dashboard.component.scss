@@ -1,0 +1,26 @@
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #1a1a2e;
+}
+
+.stat-card {
+  border-radius: 8px;
+  border-top: 4px solid transparent;
+
+  &--courses { border-top-color: #1890ff; }
+  &--blogs   { border-top-color: #52c41a; }
+  &--total   { border-top-color: #faad14; }
+}
+
+.quick-links {
+  margin-top: 40px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #333;
+  }
+}

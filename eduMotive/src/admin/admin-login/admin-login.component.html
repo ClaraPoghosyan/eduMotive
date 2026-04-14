@@ -1,0 +1,27 @@
+<div class="login-wrapper">
+  <nz-card class="login-card" nzTitle="Admin Login">
+    <form nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="onSubmit()">
+      <nz-form-item>
+        <nz-form-label nzRequired>Email</nz-form-label>
+        <nz-form-control nzErrorTip="Please enter a valid email.">
+          <nz-input-group nzPrefixIcon="mail">
+            <input nz-input formControlName="email" placeholder="admin@edumotive.com" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Password</nz-form-label>
+        <nz-form-control nzErrorTip="Please enter your password.">
+          <nz-input-group nzPrefixIcon="lock">
+            <input nz-input type="password" formControlName="password" placeholder="Password" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <button nz-button nzType="primary" nzBlock [nzLoading]="loading" type="submit">
+        Sign In
+      </button>
+    </form>
+  </nz-card>
+</div>

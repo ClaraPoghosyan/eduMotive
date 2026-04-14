@@ -1,0 +1,37 @@
+<h2 class="page-title">Dashboard</h2>
+
+<div nz-row [nzGutter]="[24, 24]">
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
+    <nz-card [nzLoading]="loading" class="stat-card stat-card--courses">
+      <nz-statistic nzTitle="Total Courses" [nzValue]="coursesCount"></nz-statistic>
+    </nz-card>
+  </div>
+
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
+    <nz-card [nzLoading]="loading" class="stat-card stat-card--blogs">
+      <nz-statistic nzTitle="Total Blogs" [nzValue]="blogsCount"></nz-statistic>
+    </nz-card>
+  </div>
+
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8">
+    <nz-card [nzLoading]="loading" class="stat-card stat-card--total">
+      <nz-statistic nzTitle="Total Content" [nzValue]="coursesCount + blogsCount"></nz-statistic>
+    </nz-card>
+  </div>
+</div>
+
+<div class="quick-links">
+  <h3>Quick Actions</h3>
+  <div nz-row [nzGutter]="[16, 16]">
+    <div nz-col [nzXs]="24" [nzSm]="12">
+      <a routerLink="/admin/courses" nz-button nzType="primary" nzSize="large">
+        Manage Courses
+      </a>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="12">
+      <a routerLink="/admin/blogs" nz-button nzType="default" nzSize="large">
+        Manage Blogs
+      </a>
+    </div>
+  </div>
+</div>
