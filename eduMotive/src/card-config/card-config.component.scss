@@ -136,3 +136,15 @@ nz-card {
     }
   }
 }
+
+.read-more {
+  color: #0E3128;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #c8f15c;
+    text-decoration: underline;
+  }
+}

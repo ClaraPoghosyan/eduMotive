@@ -6,6 +6,7 @@ import {NzCheckboxComponent} from 'ng-zorro-antd/checkbox';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AdminAuthService} from '../admin/admin-auth.service';
+import {UserAuthService} from '../shared/services/user-auth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -26,6 +27,7 @@ export class LogInComponent implements OnInit {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly fb: FormBuilder = inject(FormBuilder);
   private readonly adminAuth: AdminAuthService = inject(AdminAuthService);
+  private readonly userAuth: UserAuthService = inject(UserAuthService);
 
   form!: FormGroup;
   isForgotPass: boolean = false;
@@ -42,14 +44,17 @@ export class LogInComponent implements OnInit {
   }
 
   public onSubmit() {
+    const { email, password } = this.form.value;
+
     if (this.isForgotPass) {
-      console.log('Register flow');
+      this.userAuth.login(email);
+      this.router.navigate(['/user']);
     } else {
-      const { email, password } = this.form.value;
       if (this.adminAuth.login(email, password)) {
         this.router.navigate(['/admin/dashboard']);
       } else {
-        console.log('Login flow');
+        this.userAuth.login(email);
+        this.router.navigate(['/user']);
       }
     }
   }

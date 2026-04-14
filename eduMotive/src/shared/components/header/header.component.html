@@ -18,9 +18,16 @@
 
     <!-- Desktop Buttons -->
     <div class="header-buttons">
-      <button nz-button nzType="default" class="btn-signin" (click)="goToLogIn(false)">Մուտք</button>
-      <button nz-button nzType="primary" class="btn-signup" (click)="goToLogIn(true)">Գրանցում</button>
-      <div class="user-pic"></div>
+      <ng-container *ngIf="!userAuth.isLoggedIn(); else loggedIn">
+        <button nz-button nzType="default" class="btn-signin" (click)="goToLogIn(false)">Մուտք</button>
+        <button nz-button nzType="primary" class="btn-signup" (click)="goToLogIn(true)">Գրանցում</button>
+      </ng-container>
+      <ng-template #loggedIn>
+        <div class="user-avatar" (click)="goToProfile()" nz-tooltip [nzTooltipTitle]="userAuth.getUserEmail()">
+          {{ userInitial }}
+        </div>
+        <button nz-button nzType="default" class="btn-signin" (click)="logout()">Ելք</button>
+      </ng-template>
     </div>
 
     <!-- Mobile Menu Toggle -->

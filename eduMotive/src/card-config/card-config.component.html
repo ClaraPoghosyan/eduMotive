@@ -49,7 +49,7 @@
             <div class="content">
               <h1>{{ card.title }}</h1>
               <h1>{{ card.duration }}</h1>
-              <p>Կարդալ ավելին</p>
+              <p class="read-more" (click)="goToBlog(card.id)">Կարդալ ավելին</p>
             </div>
           }
         </nz-card>

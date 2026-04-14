@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<div class="user-page">
+  <div class="profile-card">
+    <div class="avatar">{{ initials }}</div>
+
+    <div class="user-info">
+      <h2 class="username">{{ email }}</h2>
+      <p class="role">Ուսանող</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn-courses" (click)="goToCourses()">
+        Դիտել դասընթացները
+      </button>
+      <button class="btn-logout" (click)="logout()">
+        Ելք
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import {MainComponent} from './main.component/main.component';
 import { adminGuard } from '../admin/admin.guard';
+import { userGuard } from '../shared/guards/user.guard';
 
 
 export const routes: Routes = [
@@ -72,13 +73,28 @@ export const routes: Routes = [
           import('../log-in/log-in.component').then(c => c.LogInComponent),
       },
       {
+        path: 'user',
+        canActivate: [userGuard],
+        loadComponent: () =>
+          import('../user-page/user-page.component').then(c => c.UserPageComponent),
+      },
+      {
         path: 'course/:id',
+        canActivate: [userGuard],
         loadComponent: () =>
           import('../shared/components/course-page/course-page.component')
             .then(c => c.CoursePageComponent),
       },
       {
+        path: 'blog/:id',
+        canActivate: [userGuard],
+        loadComponent: () =>
+          import('../shared/components/blog-page/blog-page.component')
+            .then(c => c.BlogPageComponent),
+      },
+      {
         path: 'author/:id',
+        canActivate: [userGuard],
         loadComponent: () =>
           import('../shared/components/author-page/author-page.component')
             .then(c => c.AuthorPageComponent),
