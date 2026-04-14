@@ -15,20 +15,22 @@ nz-layout {
     justify-content: center;
 
     h1 {
-      font-size: 50px;
+      font-size: clamp(28px, 5vw, 50px);
       text-align: center;
       color: #fff;
     }
 
     p {
-      width: 45%;
-      font-size: 20px;
+      width: clamp(280px, 70%, 600px);
+      font-size: clamp(16px, 2vw, 20px);
       text-align: center;
     }
 
     .contacts {
       display: flex;
-      font-size: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: clamp(15px, 2vw, 20px);
       margin-top: 30px;
 
       span {
@@ -57,7 +59,7 @@ nz-layout {
     }
 
     form {
-      width: 40%;
+      width: clamp(300px, 60%, 600px);
       display: flex;
       align-items: start;
       flex-direction: column;
@@ -127,5 +129,12 @@ nz-layout {
     }
 
 
+  }
+}
+
+@media (max-width: 768px) {
+  nz-layout {
+    .head-part { min-height: 400px; padding-top: 80px; }
+    .body form { width: 90%; }
   }
 }

@@ -5,10 +5,12 @@
   .texts {
     width: 100%;
     position: absolute;
-    top: 150px;
+    top: 50%;
+    transform: translateY(-50%);
     text-align: center;
     color: white;
     z-index: 7;
+    padding: 0 20px;
 
     .titles {
       display: flex;
@@ -18,11 +20,11 @@
 
       h1 {
         img {
-          width: 50px;
+          width: clamp(30px, 4vw, 50px);
           margin-right: 10px;
         }
 
-        font-size: 40px;
+        font-size: clamp(24px, 4vw, 40px);
         color: white;
       }
 

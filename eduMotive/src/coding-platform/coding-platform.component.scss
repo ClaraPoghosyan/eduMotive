@@ -1,0 +1,297 @@
+// ─── Design tokens ───────────────────────────────────────
+$editor-bg: #1e1e1e;
+$editor-text: #d4d4d4;
+$gutter-bg: #252526;
+$gutter-text: #858585;
+$toolbar-bg: #2d2d2d;
+$border: #3c3c3c;
+$accent: #c8f15c;
+$accent-dark: #062b25;
+$output-bg: #1a1a1a;
+
+// ─── Wrapper ──────────────────────────────────────────────
+.platform-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 130px);   // leave room for fixed header
+  margin-top: 130px;
+  background: $editor-bg;
+  overflow: hidden;
+}
+
+// ─── Toolbar ─────────────────────────────────────────────
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $toolbar-bg;
+  border-bottom: 1px solid $border;
+  padding: 8px 20px;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.platform-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-right: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+  &--red    { background: #ff5f57; }
+  &--yellow { background: #febc2e; }
+  &--green  { background: #28c840; }
+}
+
+.lang-select {
+  width: 150px;
+
+  ::ng-deep .ant-select-selector {
+    background: $editor-bg !important;
+    border-color: $border !important;
+    color: $editor-text !important;
+  }
+
+  ::ng-deep .ant-select-arrow { color: $gutter-text; }
+  ::ng-deep .ant-select-item  { background: $gutter-bg; color: $editor-text; }
+}
+
+.run-btn {
+  background: $accent !important;
+  border-color: $accent !important;
+  color: $accent-dark !important;
+  font-weight: 700;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+// ─── Workspace ───────────────────────────────────────────
+.workspace {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+// ─── Editor panel ────────────────────────────────────────
+.editor-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 60%;
+  border-right: 1px solid $border;
+  overflow: hidden;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: $gutter-bg;
+  padding: 6px 16px;
+  border-bottom: 1px solid $border;
+  flex-shrink: 0;
+}
+
+.file-name {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.lang-tag {
+  font-size: 11px;
+}
+
+.editor-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.line-numbers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background: $gutter-bg;
+  color: $gutter-text;
+  font-family: 'Courier New', Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 16px 12px 16px 8px;
+  min-width: 48px;
+  user-select: none;
+  overflow: hidden;
+  margin: 0;
+  border-right: 1px solid $border;
+
+  span {
+    display: block;
+    height: 22.4px;  // must match textarea line-height × font-size
+  }
+}
+
+.code-textarea {
+  flex: 1;
+  background: $editor-bg;
+  color: $editor-text;
+  font-family: 'Courier New', Consolas, 'Lucida Console', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 16px;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow-y: auto;
+  white-space: pre;
+  tab-size: 2;
+  caret-color: #fff;
+
+  &::selection {
+    background: #264f78;
+  }
+
+  &::placeholder {
+    color: #555;
+  }
+}
+
+// ─── Output panel ────────────────────────────────────────
+.output-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 40%;
+  background: $output-bg;
+  overflow: hidden;
+}
+
+.output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: $gutter-bg;
+  border-bottom: 1px solid $border;
+  font-size: 13px;
+  color: #ccc;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.output-header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.clear-btn {
+  color: $gutter-text !important;
+
+  &:hover { color: #ff6b6b !important; }
+}
+
+.output-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  font-family: 'Courier New', Consolas, monospace;
+  font-size: 13px;
+}
+
+.running-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  color: #888;
+  text-align: center;
+
+  p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  kbd {
+    background: $gutter-bg;
+    border: 1px solid $border;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 12px;
+    color: $editor-text;
+  }
+}
+
+.output-stdout {
+  color: #89d185;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0;
+}
+
+.output-stderr {
+  color: #f48771;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 8px 0 0;
+}
+
+.output-empty {
+  color: #666;
+  font-style: italic;
+}
+
+// ─── Responsive ──────────────────────────────────────────
+@media (max-width: 900px) {
+  .workspace {
+    flex-direction: column;
+  }
+
+  .editor-panel {
+    flex: 0 0 55%;
+    border-right: none;
+    border-bottom: 1px solid $border;
+  }
+
+  .output-panel {
+    flex: 0 0 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .toolbar {
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .toolbar-left, .toolbar-right {
+    flex-wrap: wrap;
+  }
+
+  .platform-title { font-size: 13px; }
+  .lang-select { width: 120px; }
+
+  .platform-wrapper {
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+  }
+}

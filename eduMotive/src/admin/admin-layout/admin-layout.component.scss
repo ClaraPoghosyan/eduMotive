@@ -86,3 +86,22 @@ nz-layout > nz-layout {
 nz-sider.ant-layout-sider-collapsed + nz-layout {
   margin-left: 80px;
 }
+
+@media (max-width: 768px) {
+  .admin-sider {
+    z-index: 200;
+  }
+
+  nz-layout > nz-layout {
+    margin-left: 0 !important;
+  }
+
+  .admin-content {
+    margin: 12px;
+    padding: 16px;
+  }
+
+  .admin-header {
+    padding: 0 12px;
+  }
+}

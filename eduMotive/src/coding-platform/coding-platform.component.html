@@ -1,0 +1,153 @@
+<app-header></app-header>
+
+<div class="platform-wrapper">
+
+  <!-- ── Toolbar ── -->
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <span class="platform-title">
+        <span class="dot dot--red"></span>
+        <span class="dot dot--yellow"></span>
+        <span class="dot dot--green"></span>
+        Code Lab
+      </span>
+
+      <nz-select
+        [(ngModel)]="selectedLanguage"
+        (ngModelChange)="onLanguageChange()"
+        nzSize="default"
+        class="lang-select"
+        [nzLoading]="runtimesLoading"
+      >
+        <nz-option
+          *ngFor="let lang of languages"
+          [nzValue]="lang"
+          [nzLabel]="lang.label"
+        ></nz-option>
+      </nz-select>
+    </div>
+
+    <div class="toolbar-right">
+      <button
+        nz-button
+        nzType="default"
+        nz-tooltip
+        nzTooltipTitle="Copy code"
+        (click)="copyCode()"
+      >
+        <span nz-icon nzType="copy"></span>
+        Copy
+      </button>
+
+      <button
+        nz-button
+        nzType="default"
+        nz-tooltip
+        nzTooltipTitle="Download file"
+        (click)="downloadCode()"
+      >
+        <span nz-icon nzType="download"></span>
+        Download
+      </button>
+
+      <button
+        nz-button
+        nzType="primary"
+        class="run-btn"
+        [nzLoading]="running"
+        [disabled]="runtimesLoading"
+        (click)="runCode()"
+        nz-tooltip
+        nzTooltipTitle="Ctrl + Enter"
+      >
+        <span nz-icon nzType="caret-right" *ngIf="!running"></span>
+        Run
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Editor + Output ── -->
+  <div class="workspace">
+
+    <!-- Editor panel -->
+    <div class="editor-panel">
+      <div class="editor-header">
+        <span class="file-name">main.{{ selectedLanguage.extension }}</span>
+        <nz-tag [nzColor]="'blue'" class="lang-tag">{{ selectedLanguage.label }}</nz-tag>
+      </div>
+
+      <div class="editor-body">
+        <!-- Line numbers -->
+        <pre class="line-numbers" #lineNumbersEl>
+          <span *ngFor="let n of lineNumbers">{{ n }}</span>
+        </pre>
+
+        <!-- Code textarea -->
+        <textarea
+          #editorTextarea
+          class="code-textarea"
+          [(ngModel)]="code"
+          [placeholder]="'Write your ' + selectedLanguage.label + ' code here...'"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          (scroll)="onScroll()"
+          (keydown)="onKeyDown($event)"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- Output panel -->
+    <div class="output-panel">
+      <div class="output-header">
+        <span>Output</span>
+        <div class="output-header-right">
+          <nz-tag
+            *ngIf="hasRun"
+            [nzColor]="exitSuccess ? 'success' : 'error'"
+          >
+            Exit {{ output?.code }}
+          </nz-tag>
+          <button
+            *ngIf="hasRun"
+            nz-button
+            nzType="text"
+            nzSize="small"
+            (click)="clearOutput()"
+            class="clear-btn"
+          >
+            <span nz-icon nzType="delete"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="output-body">
+        <!-- Running spinner -->
+        <div *ngIf="running" class="running-state">
+          <nz-spin nzSimple nzSize="large"></nz-spin>
+          <p>Executing {{ selectedLanguage.label }} code…</p>
+        </div>
+
+        <!-- Empty state -->
+        <div *ngIf="!running && !hasRun" class="empty-state">
+          <span nz-icon nzType="code" style="font-size: 40px; color: #555;"></span>
+          <p>Click <strong>Run</strong> or press <kbd>Ctrl + Enter</kbd><br>to execute your code</p>
+        </div>
+
+        <!-- Result -->
+        <ng-container *ngIf="!running && hasRun && output">
+          <pre class="output-stdout" *ngIf="output.stdout">{{ output.stdout }}</pre>
+          <pre class="output-stderr" *ngIf="output.stderr">{{ output.stderr }}</pre>
+          <p
+            *ngIf="!output.stdout && !output.stderr"
+            class="output-empty"
+          >
+            (no output)
+          </p>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+</div>

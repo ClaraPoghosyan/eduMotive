@@ -34,8 +34,10 @@
 .footer-inner {
   width: 80%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
 .logo {
@@ -58,11 +60,10 @@
 
 
 .footer-col {
-  width: 30%;
+  width: clamp(200px, 28%, 340px);
   display: flex;
   flex-direction: column;
-
-  margin-left: 30px;
+  margin-left: 0;
 }
 
 .footer-col h4 {
@@ -137,4 +138,10 @@
 .arrow-btn {
   color: #c8f15c;
   font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .footer-inner { width: 95%; }
+  .footer-col { width: 100%; max-width: 400px; }
+  .copy .border, .copy .text { width: 95%; }
 }

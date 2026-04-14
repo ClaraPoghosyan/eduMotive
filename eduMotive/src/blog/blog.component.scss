@@ -10,7 +10,7 @@
 
   .head-part {
     width: 100%;
-    min-height: 600px;
+    min-height: 400px;
     background-color: #062b25;
     color: #FFFFFF;
     display: flex;
@@ -18,17 +18,18 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: clamp(80px, 12vw, 150px) 16px 40px;
 
     h1 {
-      font-size: 50px;
+      font-size: clamp(28px, 5vw, 50px);
       color: #FFFFFF;
       font-weight: 700;
     }
 
     p {
-      font-size: 20px;
+      font-size: clamp(16px, 2vw, 20px);
       font-weight: 400;
-
+      max-width: 700px;
     }
   }
 
@@ -37,13 +38,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px 0;
+    flex-wrap: wrap;
+    padding: 50px 24px;
+    gap: 40px;
 
     .text-part {
-      width: 40%;
+      width: clamp(280px, 40%, 600px);
 
       h1 {
-        font-size: 50px;
+        font-size: clamp(28px, 4vw, 50px);
         font-weight: 700;
       }
 
@@ -73,13 +76,12 @@
     }
 
     .pic-part {
-      width: 30%;
-      height: 600px;
+      width: clamp(260px, 30%, 500px);
+      height: 500px;
       background: url("/assets/about-who.png");
       background-size: 100% 100%;
       background-repeat: no-repeat;
       border-radius: 20px;
-      margin-left: 150px;
     }
   }
 
@@ -88,30 +90,34 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 50px 50px;
-    margin-bottom: 180px;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 50px 24px;
+    margin-bottom: 80px;
 
     .title {
-      width: 50%;
-      font-size: 35px;
+      width: 100%;
+      font-size: clamp(22px, 3vw, 35px);
+      text-align: center;
     }
 
     .success {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
 
       .succes {
         color: grey;
-        font-size: 20px;
-        border-right: 3px solid #aaa6a6;
-        padding: 0 10px;
-        margin-right: 25px;
+        font-size: 18px;
+        border-right: none;
+        padding: 0 16px;
+        margin-right: 0;
+        text-align: center;
 
         h2 {
-          font-size: 60px;
-
-          span {
-            color: #c8f15c;
-          }
+          font-size: clamp(36px, 5vw, 60px);
+          span { color: #c8f15c; }
         }
       }
     }
@@ -134,28 +140,33 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      padding: 0 16px;
+      text-align: center;
 
       h1 {
-        font-size: 55px;
+        font-size: clamp(28px, 5vw, 55px);
         color: white;
       }
 
       p {
-        font-size: 25px;
+        font-size: clamp(16px, 2vw, 25px);
       }
     }
 
     .values {
       width: 100%;
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
-      padding: 0 30px;
-      margin: 80px 0;
+      flex-wrap: wrap;
+      padding: 0 16px;
+      margin: 40px 0;
+      gap: 20px;
 
       .value {
-        width: 20%;
-        height: 300px;
+        width: clamp(220px, 22%, 260px);
+        min-height: 280px;
+        height: auto;
         background: #15372E;
         display: flex;
         flex-direction: column;

@@ -73,6 +73,12 @@ export const routes: Routes = [
           import('../log-in/log-in.component').then(c => c.LogInComponent),
       },
       {
+        path: 'code-lab',
+        canActivate: [userGuard],
+        loadComponent: () =>
+          import('../coding-platform/coding-platform.component').then(c => c.CodingPlatformComponent),
+      },
+      {
         path: 'user',
         canActivate: [userGuard],
         loadComponent: () =>
