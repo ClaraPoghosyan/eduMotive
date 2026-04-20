@@ -1,17 +1,26 @@
 <app-header></app-header>
 
-<div class="blog-detail" *ngIf="blog">
+<div class="blog-detail" *ngIf="blog; else loading">
   <div class="blog-hero" [style.background-image]="'url(' + blog.imageUrl + ')'">
     <div class="overlay">
       <button class="back-btn" (click)="goBack()">← Վերադառնալ</button>
       <h1 class="blog-title">{{ blog.title }}</h1>
+      <p class="blog-meta">{{ blog.createdAt | date: 'dd MMMM yyyy' }}</p>
     </div>
   </div>
 
   <div class="blog-body">
-    <p>{{ blog.content }}</p>
+    <p class="blog-short-desc">{{ blog.shortDescription }}</p>
+    <div class="blog-divider"></div>
+    <p class="blog-content">{{ blog.content }}</p>
   </div>
 </div>
+
+<ng-template #loading>
+  <div class="blog-loading">
+    <nz-spin nzSize="large"></nz-spin>
+  </div>
+</ng-template>
 
 <app-join-part></app-join-part>
 <app-footer></app-footer>

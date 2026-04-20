@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h2>Questions</h2>
+</div>
+
+<nz-table
+  #questionsTable
+  [nzData]="questions"
+  [nzLoading]="loading"
+  nzBordered
+>
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Subject</th>
+      <th>Message</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let q of questionsTable.data">
+      <td>{{ q.fullName }}</td>
+      <td>{{ q.email }}</td>
+      <td>{{ q.title }}</td>
+      <td>{{ q.message }}</td>
+      <td>{{ q.createdAt | date: 'dd/MM/yyyy HH:mm' }}</td>
+    </tr>
+  </tbody>
+</nz-table>

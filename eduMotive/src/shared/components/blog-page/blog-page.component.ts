@@ -1,7 +1,8 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../../../footer/footer.component';
 import { JoinPartComponent } from '../../../join-part.component/join-part.component';
@@ -11,7 +12,7 @@ import { Blog } from '../../interfaces/blog.interface';
 @Component({
   selector: 'app-blog-page',
   standalone: true,
-  imports: [NgIf, HeaderComponent, FooterComponent, JoinPartComponent],
+  imports: [NgIf, DatePipe, NzSpinModule, HeaderComponent, FooterComponent, JoinPartComponent],
   templateUrl: './blog-page.component.html',
   styleUrl: './blog-page.component.scss',
 })

@@ -24,13 +24,13 @@ import {UserAuthService} from '../shared/services/user-auth.service';
 })
 export class LogInComponent implements OnInit {
   private readonly router: Router = inject(Router);
-  private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly fb: FormBuilder = inject(FormBuilder);
-  private readonly adminAuth: AdminAuthService = inject(AdminAuthService);
+  private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly userAuth: UserAuthService = inject(UserAuthService);
+  private readonly adminAuth: AdminAuthService = inject(AdminAuthService);
 
-  form!: FormGroup;
-  isForgotPass: boolean = false;
+  public form!: FormGroup;
+  public isForgotPass: boolean = false;
 
   ngOnInit() {
     this.form = this.fb.group({
