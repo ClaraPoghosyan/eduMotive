@@ -13,6 +13,7 @@
   nzTableLayout="fixed"
   [nzPageSize]="10"
   nzBordered
+  nzNoResult="No courses found"
 >
   <thead>
     <tr>
@@ -20,7 +21,6 @@
       <th>Title</th>
       <th nzWidth="120px">Group</th>
       <th nzWidth="100px">Language</th>
-      <th nzWidth="100px">Price (AMD)</th>
       <th nzWidth="80px">Rating</th>
       <th>Author</th>
       <th nzWidth="130px">Actions</th>
@@ -37,7 +37,6 @@
           </nz-tag>
         </td>
         <td>{{ course.language }}</td>
-        <td>{{ course.priceAmd | number }}</td>
         <td>{{ course.rating }}</td>
         <td>{{ course.authorName }}</td>
         <td>
@@ -62,6 +61,8 @@
   [(nzVisible)]="modalVisible"
   [nzTitle]="editingId ? 'Edit Course' : 'Add Course'"
   [nzOkLoading]="modalLoading"
+  nzOkText="Save"
+  nzCancelText="Cancel"
   (nzOnOk)="handleModalOk()"
   (nzOnCancel)="handleModalCancel()"
   nzWidth="640px"
@@ -122,7 +123,7 @@
       </div>
 
       <div nz-row [nzGutter]="16">
-        <div nz-col [nzSpan]="8">
+        <div nz-col [nzSpan]="12">
           <nz-form-item>
             <nz-form-label nzRequired>Duration</nz-form-label>
             <nz-form-control nzErrorTip="Required">
@@ -130,19 +131,11 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col [nzSpan]="8">
+        <div nz-col [nzSpan]="12">
           <nz-form-item>
             <nz-form-label nzRequired>Lessons Count</nz-form-label>
             <nz-form-control nzErrorTip="Required">
               <nz-input-number formControlName="lessonsCount" [nzMin]="1" style="width:100%"></nz-input-number>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-        <div nz-col [nzSpan]="8">
-          <nz-form-item>
-            <nz-form-label nzRequired>Price (AMD)</nz-form-label>
-            <nz-form-control nzErrorTip="Required">
-              <nz-input-number formControlName="priceAmd" [nzMin]="0" style="width:100%"></nz-input-number>
             </nz-form-control>
           </nz-form-item>
         </div>

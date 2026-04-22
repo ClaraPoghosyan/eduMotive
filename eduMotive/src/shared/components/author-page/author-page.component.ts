@@ -8,7 +8,7 @@ import {Author} from '../../interfaces/author.interface';
 import {CoursesService} from '../../services/courses.service';
 import {Course} from '../../interfaces/courses.interface';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {switchMap, forkJoin, of} from 'rxjs';
+import {switchMap, forkJoin, of, catchError} from 'rxjs';
 import {NzSpinModule} from 'ng-zorro-antd/spin';
 import {CoursesConfigComponent} from '../../../courses-config/courses-config.component';
 
@@ -33,18 +33,23 @@ export class AuthorPageComponent implements OnInit {
   public author: Author | null = null;
   public authorCourses: Course[] = [];
 
-  ngOnInit() {
+  public ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.authorService.getAuthorById(id).pipe(
-      takeUntilDestroyed(this.destroyRef),
       switchMap((data: Author) => {
         this.author = data;
         if (!data.courses?.length) return of([]);
-        return forkJoin(data.courses.map(c => this.coursesService.getCourseById(Number(c.id))));
-      })
-    ).subscribe((courses: Course[]) => {
-      this.authorCourses = courses.map(c => ({ ...c, isBlog: false }));
+        return forkJoin(
+          data.courses.map(c => this.coursesService.getCourseById(Number(c.id)))
+        ).pipe(catchError(() => of([])));
+      }),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (courses: Course[]) => {
+        this.authorCourses = courses.map(c => ({ ...c, isBlog: false }));
+      },
+      error: () => {}
     });
   }
 }

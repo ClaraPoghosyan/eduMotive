@@ -68,6 +68,14 @@
   font-size: 16px;
   font-weight: 600;
   color: #333;
+  flex: 1;
+}
+
+.home-btn {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .admin-content {

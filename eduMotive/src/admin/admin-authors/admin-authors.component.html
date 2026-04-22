@@ -1,0 +1,155 @@
+<div class="page-header">
+  <h2 class="page-title">Authors Management</h2>
+  <button nz-button nzType="primary" (click)="openAddModal()">
+    <span nz-icon nzType="plus"></span>
+    Add Author
+  </button>
+</div>
+
+<nz-table
+  #table
+  [nzData]="authors"
+  [nzLoading]="loading"
+  nzTableLayout="fixed"
+  [nzPageSize]="10"
+  nzBordered
+  nzNoResult="No authors found"
+>
+  <thead>
+    <tr>
+      <th nzWidth="60px">ID</th>
+      <th nzWidth="60px">Photo</th>
+      <th>Full Name</th>
+      <th>Specialization</th>
+      <th>Experience</th>
+      <th nzWidth="130px">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (author of table.data; track author.id) {
+      <tr>
+        <td>{{ author.id }}</td>
+        <td>
+          <nz-avatar
+            [nzSrc]="'/assets/' + author.imageUrl"
+            [nzText]="author.fullName[0]"
+            nzSize="small"
+          ></nz-avatar>
+        </td>
+        <td>{{ author.fullName }}</td>
+        <td>{{ author.specialization }}</td>
+        <td>{{ author.experience }}</td>
+        <td>
+          <button nz-button nzType="default" nzSize="small" (click)="openEditModal(author)" class="action-btn">
+            <span nz-icon nzType="edit"></span>
+          </button>
+          <button
+            nz-button nzType="default" nzDanger nzSize="small"
+            nz-popconfirm
+            nzPopconfirmTitle="Delete this author?"
+            (nzOnConfirm)="deleteAuthor(author.id)"
+          >
+            <span nz-icon nzType="delete"></span>
+          </button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</nz-table>
+
+<nz-modal
+  [(nzVisible)]="modalVisible"
+  [nzTitle]="editingId ? 'Edit Author' : 'Add Author'"
+  [nzOkLoading]="modalLoading"
+  nzOkText="Save"
+  nzCancelText="Cancel"
+  (nzOnOk)="handleModalOk()"
+  (nzOnCancel)="handleModalCancel()"
+  nzWidth="700px"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="form" nzLayout="vertical">
+
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Full Name</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <input nz-input formControlName="fullName" placeholder="Author full name" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Specialization</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <input nz-input formControlName="specialization" placeholder="e.g. Web Developer" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Image URL</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <input nz-input formControlName="imageUrl" placeholder="author.jpg" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label>Experience</nz-form-label>
+            <nz-form-control>
+              <input nz-input formControlName="experience" placeholder="e.g. 5 years" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Biography</nz-form-label>
+        <nz-form-control nzErrorTip="Required">
+          <textarea nz-input formControlName="biography" [nzAutosize]="{ minRows: 2, maxRows: 4 }" placeholder="Short biography"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>About</nz-form-label>
+        <nz-form-control>
+          <textarea nz-input formControlName="about" [nzAutosize]="{ minRows: 2, maxRows: 5 }" placeholder="Detailed about section (HTML allowed)"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Education</nz-form-label>
+        <nz-form-control>
+          <textarea nz-input formControlName="education" [nzAutosize]="{ minRows: 2, maxRows: 4 }" placeholder="Education background"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Skills</nz-form-label>
+        <nz-form-control>
+          <textarea nz-input formControlName="skills" [nzAutosize]="{ minRows: 2, maxRows: 4 }" placeholder="Skills (HTML allowed)"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Teaching Philosophy</nz-form-label>
+        <nz-form-control>
+          <textarea nz-input formControlName="teachingPhilosophy" [nzAutosize]="{ minRows: 2, maxRows: 4 }" placeholder="Teaching philosophy"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>What You'll Learn</nz-form-label>
+        <nz-form-control>
+          <textarea nz-input formControlName="whatYouLearn" [nzAutosize]="{ minRows: 2, maxRows: 4 }" placeholder="What students will learn (HTML allowed)"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+    </form>
+  </ng-container>
+</nz-modal>

@@ -13,6 +13,7 @@
   nzTableLayout="fixed"
   [nzPageSize]="10"
   nzBordered
+  nzNoResult="No blogs found"
 >
   <thead>
     <tr>
@@ -50,6 +51,8 @@
   [(nzVisible)]="modalVisible"
   [nzTitle]="editingId ? 'Edit Blog' : 'Add Blog'"
   [nzOkLoading]="modalLoading"
+  nzOkText="Save"
+  nzCancelText="Cancel"
   (nzOnOk)="handleModalOk()"
   (nzOnCancel)="handleModalCancel()"
   nzWidth="600px"

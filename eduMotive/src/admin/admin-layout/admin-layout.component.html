@@ -31,6 +31,10 @@
         <span nz-icon nzType="mail"></span>
         <span>Questions</span>
       </li>
+      <li nz-menu-item routerLink="/admin/authors" routerLinkActive="ant-menu-item-selected">
+        <span nz-icon nzType="user"></span>
+        <span>Authors</span>
+      </li>
     </ul>
 
     <div class="sider-footer">
@@ -52,6 +56,10 @@
         (click)="isCollapsed = !isCollapsed"
       ></span>
       <span class="header-title">Admin Panel</span>
+      <button nz-button nzType="default" routerLink="/home" class="home-btn">
+        <span nz-icon nzType="home"></span>
+        Go to Site
+      </button>
     </nz-header>
 
     <nz-content class="admin-content">
