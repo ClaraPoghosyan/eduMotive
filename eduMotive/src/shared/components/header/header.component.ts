@@ -1,5 +1,4 @@
 import {Component, inject} from '@angular/core';
-import {NgIf} from '@angular/common';
 import {NzMenuDirective, NzMenuItemComponent} from 'ng-zorro-antd/menu';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {NzHeaderComponent} from 'ng-zorro-antd/layout';
@@ -10,7 +9,6 @@ import {UserAuthService} from '../../services/user-auth.service';
 @Component({
   selector: 'app-header',
   imports: [
-    NgIf,
     NzMenuDirective,
     NzMenuItemComponent,
     NzButtonComponent,

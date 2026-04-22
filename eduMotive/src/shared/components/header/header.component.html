@@ -16,19 +16,17 @@
       <li nz-menu-item routerLink="/code-lab" routerLinkActive="active">Code Lab</li>
     </ul>
 
-
     <!-- Desktop Buttons -->
     <div class="header-buttons">
-      <ng-container *ngIf="!userAuth.isLoggedIn(); else loggedIn">
+      @if (!userAuth.isLoggedIn()) {
         <button nz-button nzType="default" class="btn-signin" (click)="goToLogIn(false)">Մուտք</button>
         <button nz-button nzType="primary" class="btn-signup" (click)="goToLogIn(true)">Գրանցում</button>
-      </ng-container>
-      <ng-template #loggedIn>
+      } @else {
         <div class="user-avatar" (click)="goToProfile()" nz-tooltip [nzTooltipTitle]="userAuth.getUserEmail()">
           {{ userInitial }}
         </div>
         <button nz-button nzType="default" class="btn-signin" (click)="logout()">Ելք</button>
-      </ng-template>
+      }
     </div>
 
     <!-- Mobile Menu Toggle -->

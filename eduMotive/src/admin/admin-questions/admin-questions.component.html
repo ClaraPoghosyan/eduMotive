@@ -18,12 +18,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let q of questionsTable.data">
-      <td>{{ q.fullName }}</td>
-      <td>{{ q.email }}</td>
-      <td>{{ q.title }}</td>
-      <td>{{ q.message }}</td>
-      <td>{{ q.createdAt | date: 'dd/MM/yyyy HH:mm' }}</td>
-    </tr>
+    @for (q of questionsTable.data; track q.id) {
+      <tr>
+        <td>{{ q.fullName }}</td>
+        <td>{{ q.email }}</td>
+        <td>{{ q.title }}</td>
+        <td>{{ q.message }}</td>
+        <td>{{ q.createdAt | date: 'dd/MM/yyyy HH:mm' }}</td>
+      </tr>
+    }
   </tbody>
 </nz-table>

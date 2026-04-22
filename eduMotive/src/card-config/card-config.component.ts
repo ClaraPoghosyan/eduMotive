@@ -1,4 +1,5 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
+import {DatePipe} from '@angular/common';
 import {NzColDirective, NzRowDirective} from 'ng-zorro-antd/grid';
 import {NzCardComponent} from 'ng-zorro-antd/card';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
@@ -9,6 +10,7 @@ import {AdminAuthService} from '../admin/admin-auth.service';
 @Component({
   selector: 'app-card-config',
   imports: [
+    DatePipe,
     NzRowDirective,
     NzColDirective,
     NzCardComponent,

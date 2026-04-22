@@ -23,24 +23,26 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let blog of table.data">
-      <td>{{ blog.id }}</td>
-      <td>{{ blog.title }}</td>
-      <td class="image-url">{{ blog.imageUrl }}</td>
-      <td>
-        <button nz-button nzType="default" nzSize="small" (click)="openEditModal(blog)" class="action-btn">
-          <span nz-icon nzType="edit"></span>
-        </button>
-        <button
-          nz-button nzType="default" nzDanger nzSize="small"
-          nz-popconfirm
-          nzPopconfirmTitle="Delete this blog?"
-          (nzOnConfirm)="deleteBlog(blog.id)"
-        >
-          <span nz-icon nzType="delete"></span>
-        </button>
-      </td>
-    </tr>
+    @for (blog of table.data; track blog.id) {
+      <tr>
+        <td>{{ blog.id }}</td>
+        <td>{{ blog.title }}</td>
+        <td class="image-url">{{ blog.imageUrl }}</td>
+        <td>
+          <button nz-button nzType="default" nzSize="small" (click)="openEditModal(blog)" class="action-btn">
+            <span nz-icon nzType="edit"></span>
+          </button>
+          <button
+            nz-button nzType="default" nzDanger nzSize="small"
+            nz-popconfirm
+            nzPopconfirmTitle="Delete this blog?"
+            (nzOnConfirm)="deleteBlog(blog.id)"
+          >
+            <span nz-icon nzType="delete"></span>
+          </button>
+        </td>
+      </tr>
+    }
   </tbody>
 </nz-table>
 

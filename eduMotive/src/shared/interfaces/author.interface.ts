@@ -4,6 +4,12 @@ export interface Author {
   specialization: string;
   biography: string;
   imageUrl: string;
+  experience: string;
+  education: string;
+  skills: string;
+  about: string;
+  teachingPhilosophy: string;
+  whatYouLearn: string;
   courses: AuthorCourse[];
 }
 

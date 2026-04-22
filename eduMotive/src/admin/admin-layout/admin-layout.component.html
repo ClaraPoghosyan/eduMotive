@@ -7,8 +7,11 @@
     class="admin-sider"
   >
     <div class="sider-logo">
-      <span *ngIf="!isCollapsed">eduMotive Admin</span>
-      <span *ngIf="isCollapsed">EM</span>
+      @if (!isCollapsed) {
+        <span>eduMotive Admin</span>
+      } @else {
+        <span>EM</span>
+      }
     </div>
 
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
@@ -33,7 +36,9 @@
     <div class="sider-footer">
       <button nz-button nzType="text" nzDanger (click)="logout()" class="logout-btn">
         <span nz-icon nzType="logout"></span>
-        <span *ngIf="!isCollapsed">Logout</span>
+        @if (!isCollapsed) {
+          <span>Logout</span>
+        }
       </button>
     </div>
   </nz-sider>

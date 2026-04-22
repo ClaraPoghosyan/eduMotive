@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { NgIf } from '@angular/common';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -11,7 +10,6 @@ import { AdminAuthService } from '../admin-auth.service';
   selector: 'app-admin-layout',
   standalone: true,
   imports: [
-    NgIf,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,

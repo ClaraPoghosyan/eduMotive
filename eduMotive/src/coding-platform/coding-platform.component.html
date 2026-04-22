@@ -19,11 +19,9 @@
         class="lang-select"
         [nzLoading]="runtimesLoading"
       >
-        <nz-option
-          *ngFor="let lang of languages"
-          [nzValue]="lang"
-          [nzLabel]="lang.label"
-        ></nz-option>
+        @for (lang of languages; track lang.label) {
+          <nz-option [nzValue]="lang" [nzLabel]="lang.label"></nz-option>
+        }
       </nz-select>
     </div>
 
@@ -60,7 +58,9 @@
         nz-tooltip
         nzTooltipTitle="Ctrl + Enter"
       >
-        <span nz-icon nzType="caret-right" *ngIf="!running"></span>
+        @if (!running) {
+          <span nz-icon nzType="caret-right"></span>
+        }
         Run
       </button>
     </div>
@@ -79,7 +79,9 @@
       <div class="editor-body">
         <!-- Line numbers -->
         <pre class="line-numbers" #lineNumbersEl>
-          <span *ngFor="let n of lineNumbers">{{ n }}</span>
+          @for (n of lineNumbers; track n) {
+            <span>{{ n }}</span>
+          }
         </pre>
 
         <!-- Code textarea -->
@@ -103,49 +105,45 @@
       <div class="output-header">
         <span>Output</span>
         <div class="output-header-right">
-          <nz-tag
-            *ngIf="hasRun"
-            [nzColor]="exitSuccess ? 'success' : 'error'"
-          >
-            Exit {{ output?.code }}
-          </nz-tag>
-          <button
-            *ngIf="hasRun"
-            nz-button
-            nzType="text"
-            nzSize="small"
-            (click)="clearOutput()"
-            class="clear-btn"
-          >
-            <span nz-icon nzType="delete"></span>
-          </button>
+          @if (hasRun) {
+            <nz-tag [nzColor]="exitSuccess ? 'success' : 'error'">
+              Exit {{ output?.code }}
+            </nz-tag>
+            <button
+              nz-button
+              nzType="text"
+              nzSize="small"
+              (click)="clearOutput()"
+              class="clear-btn"
+            >
+              <span nz-icon nzType="delete"></span>
+            </button>
+          }
         </div>
       </div>
 
       <div class="output-body">
-        <!-- Running spinner -->
-        <div *ngIf="running" class="running-state">
-          <nz-spin nzSimple nzSize="large"></nz-spin>
-          <p>Executing {{ selectedLanguage.label }} code…</p>
-        </div>
-
-        <!-- Empty state -->
-        <div *ngIf="!running && !hasRun" class="empty-state">
-          <span nz-icon nzType="code" style="font-size: 40px; color: #555;"></span>
-          <p>Click <strong>Run</strong> or press <kbd>Ctrl + Enter</kbd><br>to execute your code</p>
-        </div>
-
-        <!-- Result -->
-        <ng-container *ngIf="!running && hasRun && output">
-          <pre class="output-stdout" *ngIf="output.stdout">{{ output.stdout }}</pre>
-          <pre class="output-stderr" *ngIf="output.stderr">{{ output.stderr }}</pre>
-          <p
-            *ngIf="!output.stdout && !output.stderr"
-            class="output-empty"
-          >
-            (no output)
-          </p>
-        </ng-container>
+        @if (running) {
+          <div class="running-state">
+            <nz-spin nzSimple nzSize="large"></nz-spin>
+            <p>Executing {{ selectedLanguage.label }} code…</p>
+          </div>
+        } @else if (!hasRun) {
+          <div class="empty-state">
+            <span nz-icon nzType="code" style="font-size: 40px; color: #555;"></span>
+            <p>Click <strong>Run</strong> or press <kbd>Ctrl + Enter</kbd><br>to execute your code</p>
+          </div>
+        } @else if (output) {
+          @if (output.stdout) {
+            <pre class="output-stdout">{{ output.stdout }}</pre>
+          }
+          @if (output.stderr) {
+            <pre class="output-stderr">{{ output.stderr }}</pre>
+          }
+          @if (!output.stdout && !output.stderr) {
+            <p class="output-empty">(no output)</p>
+          }
+        }
       </div>
     </div>
 

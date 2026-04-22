@@ -1,7 +1,6 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgFor } from '@angular/common';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -17,7 +16,6 @@ import { Blog } from '../../shared/interfaces/blog.interface';
   selector: 'app-admin-blogs',
   standalone: true,
   imports: [
-    NgFor,
     ReactiveFormsModule,
     NzTableModule,
     NzButtonModule,

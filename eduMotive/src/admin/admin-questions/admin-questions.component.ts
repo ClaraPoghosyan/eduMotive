@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -9,7 +9,7 @@ import { QuestionService, Question } from '../../shared/services/question.servic
 @Component({
   selector: 'app-admin-questions',
   standalone: true,
-  imports: [NgFor, DatePipe, NzTableModule, NzTagModule],
+  imports: [DatePipe, NzTableModule, NzTagModule],
   templateUrl: './admin-questions.component.html',
   styleUrl: './admin-questions.component.scss',
 })

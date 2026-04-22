@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core';
 import {ScrollerFormComponent} from '../shared/components/scroller-form.component/scroller-form.component';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {Router} from '@angular/router';
+import {UserAuthService} from '../shared/services/user-auth.service';
 
 @Component({
   selector: 'app-join-part',
@@ -14,6 +15,7 @@ import {Router} from '@angular/router';
 })
 export class JoinPartComponent {
   private readonly router: Router = inject(Router);
+  private readonly userAuth: UserAuthService = inject(UserAuthService);
 
   testimonials = [
     {
@@ -54,8 +56,6 @@ export class JoinPartComponent {
   ];
 
   public onGo(): void {
-    this.router.navigate(['/courses']).then(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    this.router.navigate([this.userAuth.isLoggedIn() ? '/courses' : '/log-in']);
   }
 }

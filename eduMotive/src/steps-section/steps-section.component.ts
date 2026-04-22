@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {NzCardComponent} from 'ng-zorro-antd/card';
-import {NzColDirective} from 'ng-zorro-antd/grid';
+import {Router} from '@angular/router';
+import {UserAuthService} from '../shared/services/user-auth.service';
 
 @Component({
   selector: 'app-steps-section',
@@ -11,6 +12,8 @@ import {NzColDirective} from 'ng-zorro-antd/grid';
   styleUrl: './steps-section.component.scss'
 })
 export class StepsSectionComponent {
+  private readonly router: Router = inject(Router);
+  private readonly userAuth: UserAuthService = inject(UserAuthService);
 
   public steps = [
     {
@@ -33,5 +36,9 @@ export class StepsSectionComponent {
       title: 'Ստացիր վկայական',
       content: 'Ավարտիր դասընթացը և ստացիր պրոֆեսիոնալ վկայական՝ քո ձեռքբերումները ներկայացնելու համար։',
     }
-  ]
+  ];
+
+  public onStart(): void {
+    this.router.navigate([this.userAuth.isLoggedIn() ? '/courses' : '/log-in']);
+  }
 }
