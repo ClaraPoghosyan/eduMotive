@@ -1,0 +1,17 @@
+module.exports = [
+  {
+    context: ['/api'],
+    target: 'http://localhost:8080',
+    secure: false,
+    changeOrigin: true,
+    logLevel: 'debug'
+  },
+  {
+    context: ['/anthropic'],
+    target: 'https://api.anthropic.com',
+    secure: true,
+    changeOrigin: true,
+    pathRewrite: { '^/anthropic': '' },
+    logLevel: 'debug'
+  }
+];

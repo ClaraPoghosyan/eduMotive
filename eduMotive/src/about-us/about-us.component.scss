@@ -10,7 +10,7 @@
 
   .head-part {
     width: 100%;
-    min-height: 600px;
+    min-height: 400px;
     background-color: #062b25;
     color: #FFFFFF;
     display: flex;
@@ -18,17 +18,18 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: clamp(80px, 12vw, 150px) clamp(16px, 4vw, 60px) 40px;
 
     h1 {
-      font-size: 50px;
+      font-size: clamp(26px, 5vw, 50px);
       color: #FFFFFF;
       font-weight: 700;
     }
 
     p {
-      font-size: 20px;
+      font-size: clamp(15px, 2vw, 20px);
       font-weight: 400;
-
+      max-width: 700px;
     }
   }
 
@@ -38,20 +39,18 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 50px 24px;
+    padding: 50px clamp(16px, 4vw, 60px);
     gap: 40px;
 
     .text-part {
       width: clamp(280px, 40%, 600px);
 
       h1 {
-        font-size: 50px;
+        font-size: clamp(26px, 4vw, 50px);
         font-weight: 700;
       }
 
-      p {
-        font-size: 20px;
-      }
+      p { font-size: clamp(15px, 1.5vw, 20px); }
 
       .explore-btn {
         background-color: #c8f15c;
@@ -76,12 +75,11 @@
 
     .pic-part {
       width: clamp(260px, 30%, 500px);
-      height: 500px;
+      height: clamp(300px, 40vw, 500px);
       background: url("/assets/about-who.png");
       background-size: 100% 100%;
       background-repeat: no-repeat;
       border-radius: 20px;
-      margin-left: 0;
     }
   }
 
@@ -92,8 +90,8 @@
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 24px;
-    padding: 50px 24px;
-    margin-bottom: 80px;
+    padding: 50px clamp(16px, 4vw, 50px);
+    margin-bottom: clamp(40px, 8vw, 80px);
 
     .title {
       width: 100%;
@@ -109,14 +107,13 @@
 
       .succes {
         color: grey;
-        font-size: 18px;
+        font-size: clamp(14px, 1.5vw, 18px);
         border-right: none;
         padding: 0 16px;
-        margin-right: 0;
         text-align: center;
 
         h2 {
-          font-size: clamp(36px, 5vw, 60px);
+          font-size: clamp(32px, 5vw, 60px);
           span { color: #c8f15c; }
         }
       }
@@ -132,7 +129,7 @@
     background-color: #0E3128;
     color: white;
     margin: 30px 0;
-    padding: 30px 0;
+    padding: 40px 16px;
 
     .title-part {
       width: 100%;
@@ -140,15 +137,15 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      text-align: center;
+      padding: 0 16px;
 
       h1 {
-        font-size: 55px;
+        font-size: clamp(26px, 5vw, 55px);
         color: white;
       }
 
-      p {
-        font-size: 25px;
-      }
+      p { font-size: clamp(15px, 2vw, 25px); }
     }
 
     .values {
@@ -158,11 +155,11 @@
       justify-content: center;
       flex-wrap: wrap;
       padding: 0 16px;
-      margin: 40px 0;
+      margin: clamp(30px, 5vw, 40px) 0;
       gap: 20px;
 
       .value {
-        width: clamp(220px, 22%, 260px);
+        width: clamp(200px, 22%, 260px);
         min-height: 280px;
         height: auto;
         background: #15372E;
@@ -172,8 +169,7 @@
         justify-content: center;
         box-shadow: 0 5px 18px 0 rgba(0, 0, 0, 0.2);
         border-radius: 10px;
-        margin: 0 20px;
-        padding: 0 20px;
+        padding: 20px;
         text-align: center;
         font-size: 15px;
 
@@ -184,25 +180,23 @@
           background-repeat: no-repeat;
           margin-bottom: 30px;
 
-          &.rocket {
-            background: url("/assets/icons/rocket.svg");
-            fill: #c8f15c;
-          }
-
-          &.medal {
-            background: url("/assets/icons/medal.svg");
-          }
-
-          &.sparkle {
-            background: url("/assets/icons/sparkle.svg");
-          }
+          &.rocket { background: url("/assets/icons/rocket.svg"); }
+          &.medal  { background: url("/assets/icons/medal.svg"); }
+          &.sparkle { background: url("/assets/icons/sparkle.svg"); }
         }
 
-        h1 {
-          color: white;
-          margin-bottom: 30px;
-        }
+        h1 { color: white; margin-bottom: 20px; }
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-us-page {
+    .second-part {
+      .text-part, .pic-part { width: 100%; }
+      .pic-part { height: 280px; }
+    }
+    .values-part .values .value { width: clamp(160px, 45%, 260px); }
   }
 }

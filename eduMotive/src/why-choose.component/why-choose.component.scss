@@ -1,17 +1,17 @@
 .why-choose {
   text-align: center;
-  padding: 50px 20px;
+  padding: clamp(30px, 5vw, 50px) clamp(16px, 4vw, 40px);
   background: #fff;
-  margin: 100px 0;
+  margin: clamp(40px, 8vw, 100px) 0;
 
   h2 {
-    font-size: 50px;
+    font-size: clamp(24px, 4vw, 50px);
     font-weight: bold;
     margin-bottom: 10px;
   }
 
   .subTitle {
-    font-size: 22px;
+    font-size: clamp(14px, 1.8vw, 22px);
     font-style: italic;
   }
 
@@ -20,14 +20,15 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
-    margin-top: 70px;
+    margin-top: clamp(30px, 5vw, 70px);
 
     .card {
-      width: clamp(280px, 30vw, 370px);
+      width: clamp(260px, 28vw, 370px);
       height: 520px;
       border-radius: 20px;
       position: relative;
       overflow: hidden;
+      transition: width 0.2s ease;
 
       .card-front, .card-back {
         width: 100%;
@@ -66,9 +67,7 @@
         }
       }
 
-      .card-back {
-        display: none;
-      }
+      .card-back { display: none; }
 
       &:hover {
         animation: resizeCard 0.1s ease-in-out;
@@ -91,40 +90,29 @@
             text-align: start;
             padding: 20px;
 
-            p {
-              color: grey;
-              font-style: italic;
-            }
+            p { color: grey; font-style: italic; }
           }
         }
 
-        .card-front {
-          display: none;
-        }
+        .card-front { display: none; }
       }
     }
-
   }
 }
 
 @media (max-width: 1024px) {
   .why-choose {
     margin: 40px 0;
-    padding: 40px 16px;
 
-    h2 { font-size: 32px; }
-    .subTitle { font-size: 16px; }
-
-    .cards { gap: 20px; margin-top: 40px; }
+    h2 { font-size: 28px; }
+    .subTitle { font-size: 15px; }
+    .cards { gap: 20px; }
 
     .card {
       width: 100%;
       max-width: 420px;
 
-      &:hover {
-        width: 100%;
-        max-width: 420px;
-      }
+      &:hover { width: 100%; max-width: 420px; }
     }
   }
 }
@@ -135,19 +123,6 @@
 }
 
 @keyframes resizeCard {
-  0% {
-    width: 400px;
-  }
-  25% {
-    width: 420px;
-  }
-  50% {
-    width: 450px;
-  }
-  75% {
-    width: 470px;
-  }
-  100% {
-    width: 500px;
-  }
+  from { width: 370px; }
+  to   { width: 500px; }
 }

@@ -5,8 +5,8 @@ nz-layout {
 
   .head-part {
     width: 100%;
-    min-height: 550px;
-    padding-top: 100px;
+    min-height: 400px;
+    padding: clamp(80px, 12vw, 150px) clamp(16px, 4vw, 60px) 40px;
     background: #0E3128;
     color: #fff;
     display: flex;
@@ -15,14 +15,14 @@ nz-layout {
     justify-content: center;
 
     h1 {
-      font-size: clamp(28px, 5vw, 50px);
+      font-size: clamp(24px, 5vw, 50px);
       text-align: center;
       color: #fff;
     }
 
     p {
       width: clamp(280px, 70%, 600px);
-      font-size: clamp(16px, 2vw, 20px);
+      font-size: clamp(14px, 2vw, 20px);
       text-align: center;
     }
 
@@ -30,41 +30,43 @@ nz-layout {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      font-size: clamp(15px, 2vw, 20px);
+      font-size: clamp(14px, 2vw, 20px);
       margin-top: 30px;
 
       span {
         padding: 0 20px;
 
-        &:first-child {
-          border-right: 1px solid #c8f15c;
-        }
+        &:first-child { border-right: 1px solid #c8f15c; }
       }
     }
   }
 
   .body {
     width: 100%;
-    min-height: 800px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #0E3128;
-    font-size: 20px;
+    font-size: clamp(16px, 1.5vw, 20px);
+    padding: clamp(40px, 6vw, 80px) 16px;
 
     h1 {
       font-weight: bold;
       color: #0E3128;
+      font-size: clamp(22px, 3vw, 32px);
     }
 
     form {
-      width: clamp(300px, 60%, 600px);
+      width: clamp(280px, 60%, 600px);
       display: flex;
       align-items: start;
       flex-direction: column;
+
       nz-form-item {
         width: 100%;
+
         input[nz-input] {
           width: 100%;
           height: 50px;
@@ -75,13 +77,11 @@ nz-layout {
           margin: 10px 0;
           border: none;
 
-          &:hover {
-            border-color: #11443d !important;
-          }
+          &:hover { border-color: #11443d !important; }
 
           &::placeholder {
             color: rgba(49, 67, 49, 0.6);
-            font-size: 18px;
+            font-size: clamp(14px, 1.5vw, 18px);
           }
 
           &:focus {
@@ -103,6 +103,7 @@ nz-layout {
           }
         }
       }
+
       .explore-btn {
         width: 100%;
         background-color: #c8f15c;
@@ -124,17 +125,15 @@ nz-layout {
           border: none;
         }
       }
-
-
     }
-
-
   }
 }
 
 @media (max-width: 768px) {
   nz-layout {
-    .head-part { min-height: 400px; padding-top: 80px; }
+    .head-part {
+      .contacts span:first-child { border-right: none; }
+    }
     .body form { width: 90%; }
   }
 }

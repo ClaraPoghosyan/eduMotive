@@ -2,7 +2,7 @@
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   margin-bottom: 12px;
-  padding: 30px;
+  padding: clamp(14px, 2.5vw, 30px);
   background: #f9f9f9;
   transition: all 0.3s ease;
 
@@ -17,19 +17,27 @@
     cursor: pointer;
     font-weight: 600;
     color: #0e3128;
+
     .icon {
       font-weight: bold;
       color: #a2e17c;
       margin-right: 12px;
-      margin-bottom: 10px;
-      font-size: 30px;
+      font-size: clamp(20px, 2.5vw, 30px);
+      flex-shrink: 0;
+    }
 
+    h3 {
+      font-size: clamp(14px, 1.4vw, 17px);
+      margin: 0;
+      line-height: 1.4;
     }
   }
 
   .faq-answer {
     margin-top: 10px;
     color: #333;
-    font-size: 15px;
+    font-size: clamp(13px, 1.2vw, 15px);
+    padding-left: clamp(24px, 3vw, 44px);
+    line-height: 1.6;
   }
 }

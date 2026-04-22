@@ -1,6 +1,10 @@
 .join-box {
   max-width: 100%;
   position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .texts {
     width: 100%;
@@ -10,7 +14,7 @@
     text-align: center;
     color: white;
     z-index: 7;
-    padding: 0 20px;
+    padding: 0 clamp(16px, 5vw, 60px);
 
     .titles {
       display: flex;
@@ -20,11 +24,11 @@
 
       h1 {
         img {
-          width: clamp(30px, 4vw, 50px);
+          width: clamp(24px, 4vw, 50px);
           margin-right: 10px;
         }
 
-        font-size: clamp(24px, 4vw, 40px);
+        font-size: clamp(20px, 4vw, 40px);
         color: white;
       }
 
@@ -34,6 +38,7 @@
         h2 {
           color: white;
           font-weight: 400;
+          font-size: clamp(14px, 1.8vw, 20px);
         }
       }
 
@@ -55,7 +60,6 @@
           cursor: pointer;
         }
       }
-
     }
   }
 
@@ -66,5 +70,17 @@
     background: rgba(6, 43, 37, 0.92);
     pointer-events: none;
     z-index: 5;
+  }
+}
+
+@media (max-width: 768px) {
+  .join-box {
+    min-height: 500px;
+
+    .texts .titles {
+      h1 { font-size: clamp(18px, 5vw, 28px); }
+      .sub h2 { font-size: 14px; }
+      .explore-btn { padding: 18px 24px; }
+    }
   }
 }

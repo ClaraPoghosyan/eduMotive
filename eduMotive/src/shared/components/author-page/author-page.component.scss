@@ -4,28 +4,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 250px 200px 150px 200px;
+  flex-wrap: wrap;
+  padding: clamp(100px, 15vw, 250px) clamp(20px, 8vw, 200px) clamp(60px, 10vw, 150px);
+  gap: 40px;
 
   .pic {
-    width: 50%;
+    width: clamp(260px, 45%, 631px);
     display: flex;
     justify-content: center;
 
     img {
+      width: 100%;
       max-width: 631px;
       border-radius: 16px;
     }
   }
 
   .info {
-    width: 50%;
+    width: clamp(280px, 45%, 600px);
     color: #FFFFFF;
-    font-size: 20px;
-    padding-right: 20px;
+    font-size: clamp(15px, 1.5vw, 20px);
     display: flex;
     flex-direction: column;
     align-self: start;
-
 
     .subInfo {
       width: 100%;
@@ -34,23 +35,19 @@
 
       .sub {
         display: flex;
+        gap: 8px;
+        margin-bottom: 8px;
 
-        p {
-          width: 30%;
-        }
-
-        span {
-          width: 70%;
-        }
+        p { width: 30%; min-width: 80px; }
+        span { width: 70%; }
       }
     }
 
     h1 {
-      font-size: 50px;
+      font-size: clamp(28px, 4vw, 50px);
       color: #FFFFFF;
-      margin-bottom: 50px;
+      margin-bottom: clamp(20px, 4vw, 50px);
     }
-
   }
 }
 
@@ -58,62 +55,36 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-  padding: 100px 200px;
+  flex-wrap: wrap;
+  padding: clamp(40px, 6vw, 100px) clamp(20px, 8vw, 200px);
+  gap: 40px;
 
   h1 {
-    font-size: 35px;
+    font-size: clamp(22px, 3vw, 35px);
     font-weight: bold;
   }
 
-  p{
-    font-size: 18px;
-  }
+  p { font-size: clamp(15px, 1.5vw, 18px); }
+
   .about {
-    width: 60%;
+    width: clamp(280px, 60%, 700px);
     height: 100%;
   }
 
   .skills {
-    width: 30%;
+    width: clamp(240px, 30%, 380px);
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: start;
 
-    ul{
-      font-size: 16px;
-    }
+    ul { font-size: 16px; }
   }
-
 }
+
 .courses {
-  width: 70%;
-  padding: 0 200px 60px;
-
-  h2 {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 16px;
-  }
-
-  .courses-list {
-    list-style: disc;
-    padding-left: 24px;
-    font-size: 18px;
-
-    li {
-      margin-bottom: 8px;
-
-      a {
-        color: #0E3128;
-        text-decoration: none;
-
-        &:hover {
-          color: #c8f15c;
-        }
-      }
-    }
-  }
+  width: 100%;
+  padding: 0 clamp(20px, 8vw, 200px) 60px;
 }
 
 .author-loading {
@@ -121,4 +92,15 @@
   justify-content: center;
   align-items: center;
   min-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .head {
+    .pic, .info { width: 100%; }
+    .info .subInfo .sub { flex-direction: column; p, span { width: 100%; } }
+  }
+
+  .body {
+    .about, .skills { width: 100%; }
+  }
 }

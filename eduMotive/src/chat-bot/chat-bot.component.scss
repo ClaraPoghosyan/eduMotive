@@ -106,14 +106,32 @@ $primary: #0E3128;
         }
 
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(5px);
+          from { opacity: 0; transform: translateY(5px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        &.typing {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          padding: 14px 18px;
+
+          span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #aaa;
+            animation: bounce 1.2s infinite ease-in-out;
+
+            &:nth-child(1) { animation-delay: 0s; }
+            &:nth-child(2) { animation-delay: 0.2s; }
+            &:nth-child(3) { animation-delay: 0.4s; }
           }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        }
+
+        @keyframes bounce {
+          0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+          40%            { transform: scale(1.2); opacity: 1; }
         }
       }
 

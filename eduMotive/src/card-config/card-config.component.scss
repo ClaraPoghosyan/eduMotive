@@ -1,74 +1,87 @@
 .cards {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 0 clamp(8px, 2vw, 24px);
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 24px);
 }
 
 nz-card {
-  width: clamp(280px, 30vw, 400px);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: clamp(260px, 28vw, 380px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   border-radius: 15px;
-  margin-bottom: 10px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  margin-right: 20px;
 
-  &:hover {
-    .card-pic {
-      background-size: 110% 110%;
-
-      button {
-        background: #c8f15c;
-        color: #062b25;
-      }
+  &:hover .card-pic {
+    background-size: 110% 110%;
+    button {
+      background: #c8f15c;
+      color: #062b25;
     }
   }
 
   .card-pic {
     width: 100%;
-    height: 200px;
+    height: clamp(160px, 18vw, 220px);
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     border-radius: 15px;
-    //background: url("/assets/lesson.png");
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
     transition: background-size 0.4s ease-in-out;
+    flex-shrink: 0;
 
     button {
-      width: 120px;
-      height: 40px;
-      border-radius: 15px;
+      width: 110px;
+      height: 36px;
+      border-radius: 12px;
       margin: 10px;
       background: #ffffff;
       color: black;
       border: none;
+      font-size: 13px;
       transition: background 0.3s ease, color 0.3s ease;
-      cursor: none;
+      cursor: pointer;
     }
   }
 
+  /* ── Course card ── */
   .title-part {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 12px;
+    gap: 8px;
+
+    h1 {
+      font-size: clamp(14px, 1.4vw, 17px);
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.3;
+
+      &:last-child {
+        font-size: clamp(13px, 1.2vw, 15px);
+        color: #0E3128;
+        white-space: nowrap;
+      }
+    }
   }
 
   .writer {
     width: 100%;
+    margin-top: 4px;
 
     p {
       color: grey;
-      font-size: 16px;
+      font-size: clamp(12px, 1.1vw, 14px);
+      margin: 0;
     }
   }
 
@@ -77,17 +90,18 @@ nz-card {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 8px;
 
     .lessons {
-      border-right: 2px solid grey;
-      padding-right: 50px !important;
+      border-right: 2px solid #e0e0e0;
+      padding-right: clamp(12px, 2.5vw, 40px) !important;
     }
 
     .lessons, .times {
       display: flex;
       flex-direction: column;
-      font-size: 20px;
-      margin: 10px;
+      font-size: clamp(13px, 1.3vw, 16px);
+      margin: 8px;
 
       .title {
         display: flex;
@@ -98,20 +112,18 @@ nz-card {
           padding-left: 5px;
           font-style: italic;
           color: grey;
+          font-size: clamp(11px, 1vw, 14px);
         }
       }
 
       p {
-        margin-left: 30px;
+        margin-left: 20px;
         font-weight: bold;
+        font-size: clamp(13px, 1.2vw, 15px);
       }
 
-      img {
-        width: 30px;
-        height: 30px;
-      }
+      img { width: 24px; height: 24px; }
     }
-
   }
 
   .btn-part {
@@ -119,20 +131,67 @@ nz-card {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 12px;
 
     button {
-      width: 250px;
-      height: 50px;
+      width: 100%;
+      max-width: 240px;
+      height: 46px;
       border-radius: 15px;
       color: #0E3128;
-      font-size: 16px;
+      font-size: clamp(13px, 1.1vw, 15px);
+      font-weight: 500;
 
-      &:hover{
+      &:hover {
         background: #0E3128;
         color: #FFFFFF;
         border: none;
       }
+    }
+  }
+
+  /* ── Blog card ── */
+  .dates-part {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+
+    p {
+      font-size: clamp(11px, 1vw, 13px);
+      color: grey;
+      margin: 0;
+    }
+  }
+
+  .content {
+    width: 100%;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    h1 {
+      font-size: clamp(15px, 1.5vw, 18px);
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    p {
+      font-size: clamp(12px, 1.1vw, 14px);
+      color: #555;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.5;
     }
   }
 }
@@ -140,8 +199,10 @@ nz-card {
 .read-more {
   color: #0E3128;
   font-weight: 600;
+  font-size: clamp(12px, 1.1vw, 14px);
   cursor: pointer;
   transition: color 0.2s;
+  margin-top: 4px;
 
   &:hover {
     color: #c8f15c;
@@ -149,7 +210,21 @@ nz-card {
   }
 }
 
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  nz-card { width: clamp(260px, 44%, 380px); }
+}
+
+/* ── Mobile ── */
 @media (max-width: 768px) {
-  .cards { gap: 16px; }
-  nz-card { width: 100%; max-width: 440px; margin-right: 0; }
+  .cards { gap: 16px; padding: 0 16px; }
+  nz-card { width: 100%; max-width: 480px; }
+}
+
+/* ── Small mobile ── */
+@media (max-width: 480px) {
+  nz-card {
+    .card-pic { height: 180px; }
+    .btn-part button { max-width: 100%; }
+  }
 }

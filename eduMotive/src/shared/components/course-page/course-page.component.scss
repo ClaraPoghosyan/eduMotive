@@ -5,11 +5,11 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: clamp(100px, 15vw, 250px) clamp(20px, 10vw, 200px) clamp(60px, 10vw, 150px);
+  padding: clamp(100px, 15vw, 250px) clamp(20px, 8vw, 200px) clamp(50px, 8vw, 150px);
   gap: 40px;
 
   .pic {
-    width: clamp(260px, 50%, 631px);
+    width: clamp(260px, 45%, 631px);
     display: flex;
     justify-content: center;
 
@@ -17,14 +17,14 @@
       width: 100%;
       max-width: 631px;
       border-radius: 16px;
+      object-fit: cover;
     }
   }
 
   .info {
     width: clamp(280px, 45%, 600px);
     color: #FFFFFF;
-    font-size: clamp(16px, 2vw, 20px);
-    padding-right: 20px;
+    font-size: clamp(14px, 1.5vw, 20px);
     display: flex;
     flex-direction: column;
     align-self: start;
@@ -32,32 +32,29 @@
     .author {
       cursor: pointer;
       margin-left: 5px;
-
-      &:hover {
-        color: #c8f15c;
-      }
+      &:hover { color: #c8f15c; }
     }
 
     h1 {
-      font-size: clamp(28px, 4vw, 50px);
+      font-size: clamp(24px, 4vw, 50px);
       color: #FFFFFF;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
+    p { line-height: 1.6; }
+
     .courseBtn {
-      margin-top: clamp(30px, 6vw, 100px);
+      margin-top: clamp(24px, 5vw, 100px);
       background-color: #c8f15c;
       border: none;
       border-radius: 35px;
-      width: clamp(200px, 80%, 300px);
-      height: 70px;
+      width: clamp(200px, 80%, 340px);
+      height: clamp(50px, 6vw, 70px);
       color: black;
       font-weight: bold;
+      font-size: clamp(13px, 1.2vw, 16px);
 
-      &:hover {
-        background: black;
-        color: white;
-      }
+      &:hover { background: black; color: white; }
     }
   }
 }
@@ -65,47 +62,55 @@
 .body {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: clamp(24px, 5vw, 50px);
+  padding: clamp(24px, 5vw, 60px) clamp(16px, 4vw, 50px);
   gap: 32px;
 
   app-foldable-container {
     width: clamp(280px, 50%, 600px);
+    min-width: 0;
   }
 
   .class-info {
-    width: clamp(280px, 45%, 500px);
+    width: clamp(260px, 40%, 480px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 16px;
+
+    h1 {
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: bold;
+      align-self: flex-start;
+    }
+
     .info {
-      text-align: start;
-      font-size: 20px;
-      b{
-        margin-left: 10px;
-      }
+      width: 100%;
+      font-size: clamp(14px, 1.4vw, 20px);
+
+      p { margin-bottom: 6px; }
+      b { margin-left: 8px; }
     }
-    .courseBtn{
-      margin-top: 20px;
-    }
+
     .lesson-times {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
 
       .lessons {
         border-right: 2px solid grey;
-        padding-right: 50px !important;
+        padding-right: clamp(16px, 3vw, 50px) !important;
       }
 
       .lessons, .times {
         display: flex;
         flex-direction: column;
-        font-size: 20px;
+        font-size: clamp(14px, 1.5vw, 20px);
         margin: 10px;
 
         .title {
@@ -120,20 +125,13 @@
           }
         }
 
-        p {
-          margin-left: 30px;
-          font-weight: bold;
-        }
+        p { margin-left: 16px; font-weight: bold; }
 
-        img {
-          width: 30px;
-          height: 30px;
-        }
+        img { width: 28px; height: 28px; }
       }
-
     }
-
   }
+
   .courseBtn {
     background-color: #c8f15c;
     border: none;
@@ -143,45 +141,63 @@
     color: black;
     font-weight: bold;
 
-    &:hover {
-      background: black;
-      color: white;
-    }
+    &:hover { background: black; color: white; }
   }
-
-
 }
-.videos{
+
+.videos {
   width: 100%;
+  padding: clamp(24px, 4vw, 60px) clamp(16px, 4vw, 48px);
+
   .cards {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    align-items: stretch;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: clamp(12px, 2vw, 24px);
   }
 
   nz-card {
-    width: clamp(280px, 90%, 400px);
+    width: clamp(260px, 30%, 420px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-right: 20px;
+
+    iframe {
+      width: 100%;
+      height: clamp(180px, 20vw, 260px);
+      border-radius: 8px;
+      display: block;
+    }
   }
 }
 
+/* ── Tablet ── */
 @media (max-width: 768px) {
   .head {
-    .pic, .info { width: 100%; padding-right: 0; }
+    .pic { width: 100%; }
+    .info { width: 100%; padding-right: 0; align-items: center; text-align: center; }
   }
+
   .body {
-    app-foldable-container, .class-info { width: 100%; }
+    app-foldable-container,
+    .class-info { width: 100%; }
+  }
+
+  .videos nz-card { width: clamp(260px, 90%, 500px); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .head {
+    gap: 24px;
+    .info .courseBtn { width: 100%; }
+  }
+
+  .body { padding: 20px 16px; }
+
+  .videos nz-card {
+    width: 100%;
+    iframe { height: 200px; }
   }
 }

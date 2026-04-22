@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {HeaderComponent} from '../shared/components/header/header.component';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {WhyChooseComponent} from '../why-choose.component/why-choose.component';
@@ -6,6 +6,7 @@ import {AppFaqComponent} from '../app-faq/app-faq.component';
 import {FooterComponent} from '../footer/footer.component';
 import {JoinPartComponent} from '../join-part.component/join-part.component';
 import {ReviewsComponent} from '../reviews.component/reviews.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-about-us',
@@ -22,5 +23,9 @@ import {ReviewsComponent} from '../reviews.component/reviews.component';
   styleUrl: './about-us.component.scss'
 })
 export class AboutUsComponent {
+  private readonly router: Router = inject(Router);
 
+  public goToCourses(): void {
+    this.router.navigate(['/courses']);
+  }
 }
