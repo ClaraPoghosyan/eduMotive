@@ -1,0 +1,205 @@
+<div class="page-header">
+  <h2 class="page-title">Tests Management</h2>
+  <button nz-button nzType="primary" (click)="openAddTestModal()">
+    <span nz-icon nzType="plus"></span>
+    Add Test
+  </button>
+</div>
+
+<!-- Tests Table -->
+<nz-table
+  #table
+  [nzData]="tests"
+  [nzLoading]="loading"
+  nzTableLayout="fixed"
+  [nzPageSize]="10"
+  nzBordered
+  nzNoResult="No tests found"
+>
+  <thead>
+    <tr>
+      <th nzWidth="60px">ID</th>
+      <th>Title</th>
+      <th nzWidth="130px">Topic</th>
+      <th nzWidth="130px">Difficulty</th>
+      <th nzWidth="100px">Questions</th>
+      <th nzWidth="180px">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (test of table.data; track test.id) {
+      <tr>
+        <td>{{ test.id }}</td>
+        <td>{{ test.title }}</td>
+        <td>{{ test.topic }}</td>
+        <td>
+          <nz-tag [nzColor]="difficultyColor(test.difficulty)">{{ test.difficulty }}</nz-tag>
+        </td>
+        <td>{{ test.questionsCount }}</td>
+        <td>
+          <button nz-button nzType="default" nzSize="small" (click)="openEditTestModal(test)" class="action-btn">
+            <span nz-icon nzType="edit"></span>
+          </button>
+          <button nz-button nzType="default" nzSize="small" (click)="openQuestionsModal(test)" class="action-btn">
+            <span nz-icon nzType="unordered-list"></span>
+          </button>
+          <button
+            nz-button nzType="default" nzDanger nzSize="small"
+            nz-popconfirm nzPopconfirmTitle="Delete this test?"
+            (nzOnConfirm)="deleteTest(test.id)"
+          >
+            <span nz-icon nzType="delete"></span>
+          </button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</nz-table>
+
+<!-- Add/Edit Test Modal -->
+<nz-modal
+  [(nzVisible)]="testModalVisible"
+  [nzTitle]="editingTestId ? 'Edit Test' : 'Add Test'"
+  [nzOkLoading]="testModalLoading"
+  nzOkText="Save"
+  nzCancelText="Cancel"
+  (nzOnOk)="handleTestModalOk()"
+  (nzOnCancel)="handleTestModalCancel()"
+  nzWidth="520px"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="testForm" nzLayout="vertical">
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Title</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <input nz-input formControlName="title" placeholder="JavaScript Basics Test" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Topic</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <input nz-input formControlName="topic" placeholder="JavaScript" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <nz-form-item>
+        <nz-form-label>Description</nz-form-label>
+        <nz-form-control>
+          <textarea nz-input formControlName="description" [nzAutosize]="{ minRows: 2, maxRows: 4 }" placeholder="Short description"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Difficulty</nz-form-label>
+        <nz-form-control nzErrorTip="Required">
+          <nz-select formControlName="difficulty" nzPlaceHolder="Select difficulty">
+            @for (d of difficulties; track d) {
+              <nz-option [nzValue]="d" [nzLabel]="d"></nz-option>
+            }
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>
+
+<!-- Questions Modal -->
+<nz-modal
+  [(nzVisible)]="qModalVisible"
+  [nzTitle]="'Questions — ' + (selectedTest?.title ?? '')"
+  [nzFooter]="null"
+  nzWidth="760px"
+>
+  <ng-container *nzModalContent>
+    @if (qLoading) {
+      <div class="q-loading"><nz-spin nzSize="large"></nz-spin></div>
+    } @else if (selectedTest) {
+
+      <!-- Question Form -->
+      <div class="q-form-section">
+        <h3>{{ editingQuestionId ? 'Edit Question' : 'Add Question' }}</h3>
+        <form nz-form [formGroup]="questionForm" nzLayout="vertical">
+          <nz-form-item>
+            <nz-form-label nzRequired>Question Text</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <textarea nz-input formControlName="text" [nzAutosize]="{ minRows: 2, maxRows: 4 }" placeholder="What does console.log() do?"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+
+          <div nz-row [nzGutter]="12">
+            @for (i of [0,1,2,3]; track i) {
+              <div nz-col [nzSpan]="12">
+                <nz-form-item>
+                  <nz-form-label nzRequired>Option {{ ['A','B','C','D'][i] }}</nz-form-label>
+                  <nz-form-control nzErrorTip="Required">
+                    <input nz-input [formControlName]="'option' + i" placeholder="Answer {{ ['A','B','C','D'][i] }}" />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            }
+          </div>
+
+          <nz-form-item>
+            <nz-form-label nzRequired>Correct Answer</nz-form-label>
+            <nz-form-control nzErrorTip="Required">
+              <nz-select formControlName="correctIndex" nzPlaceHolder="Select correct option">
+                @for (i of [0,1,2,3]; track i) {
+                  <nz-option [nzValue]="i" [nzLabel]="'Option ' + ['A','B','C','D'][i]"></nz-option>
+                }
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+
+          <div class="q-form-actions">
+            <button nz-button nzType="primary" [nzLoading]="qModalLoading" (click)="saveQuestion()">
+              {{ editingQuestionId ? 'Update' : 'Add Question' }}
+            </button>
+            @if (editingQuestionId) {
+              <button nz-button (click)="cancelEditQuestion()">Cancel</button>
+            }
+          </div>
+        </form>
+      </div>
+
+      <nz-divider></nz-divider>
+
+      <!-- Questions List -->
+      <div class="q-list">
+        <h3>Questions ({{ selectedTest.questions.length }})</h3>
+        @if (selectedTest.questions.length === 0) {
+          <p class="no-questions">No questions yet. Add the first one above.</p>
+        }
+        @for (q of selectedTest.questions; track q.id) {
+          <div class="q-item" [class.editing]="editingQuestionId === q.id">
+            <div class="q-text">{{ $index + 1 }}. {{ q.text }}</div>
+            <div class="q-options">
+              @for (opt of q.options; track $index) {
+                <span class="opt" [class.correct]="q.correctIndex === $index">
+                  {{ ['A','B','C','D'][$index] }}. {{ opt }}
+                </span>
+              }
+            </div>
+            <div class="q-actions">
+              <button nz-button nzSize="small" (click)="editQuestion(q)">
+                <span nz-icon nzType="edit"></span>
+              </button>
+              <button
+                nz-button nzSize="small" nzDanger
+                nz-popconfirm nzPopconfirmTitle="Delete this question?"
+                (nzOnConfirm)="deleteQuestion(q.id)"
+              >
+                <span nz-icon nzType="delete"></span>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </ng-container>
+</nz-modal>

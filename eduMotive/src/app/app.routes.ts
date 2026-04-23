@@ -44,6 +44,11 @@ export const routes: Routes = [
             loadComponent: () =>
               import('../admin/admin-authors/admin-authors.component').then(c => c.AdminAuthorsComponent),
           },
+          {
+            path: 'tests',
+            loadComponent: () =>
+              import('../admin/admin-tests/admin-tests.component').then(c => c.AdminTestsComponent),
+          },
         ],
       },
     ],
@@ -114,6 +119,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('../shared/components/author-page/author-page.component')
             .then(c => c.AuthorPageComponent),
+      },
+      {
+        path: 'test',
+        loadComponent: () =>
+          import('../test-page/test-page.component').then(c => c.TestPageComponent),
       },
       {
         path: 'contact-us',
