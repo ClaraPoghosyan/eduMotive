@@ -88,6 +88,11 @@ export const routes: Routes = [
           import('../log-in/log-in.component').then(c => c.LogInComponent),
       },
       {
+        path: 'reset-password',
+        loadComponent: () =>
+          import('../reset-password/reset-password.component').then(c => c.ResetPasswordComponent),
+      },
+      {
         path: 'code-lab',
         canActivate: [userGuard],
         loadComponent: () =>

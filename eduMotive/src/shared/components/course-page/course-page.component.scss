@@ -162,6 +162,12 @@
     width: clamp(260px, 30%, 420px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 15px;
+    overflow: visible;
+
+    ::ng-deep .ant-card-body {
+      overflow: visible;
+      padding: 12px;
+    }
 
     iframe {
       width: 100%;

@@ -255,6 +255,14 @@
       justify-content: center;
       gap: 10px;
     }
+
+    .mobile-logout a {
+      color: #e53935;
+
+      &:hover {
+        color: darken(#e53935, 10%);
+      }
+    }
   }
   .hero-text {
     h1 {

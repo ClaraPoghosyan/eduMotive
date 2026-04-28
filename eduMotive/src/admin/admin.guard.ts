@@ -1,12 +1,12 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AdminAuthService } from './admin-auth.service';
+import { UserAuthService } from '../shared/services/user-auth.service';
 
 export const adminGuard: CanActivateFn = () => {
-  const auth = inject(AdminAuthService);
-  const router = inject(Router);
+  const userAuth = inject(UserAuthService);
+  const router   = inject(Router);
 
-  if (auth.isLoggedIn()) {
+  if (userAuth.isLoggedIn() && userAuth.isAdmin()) {
     return true;
   }
   router.navigate(['/log-in']);

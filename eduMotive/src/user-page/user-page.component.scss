@@ -47,9 +47,22 @@ $dark-bg: #062b25;
     word-break: break-all;
   }
 
+  .email {
+    color: #888;
+    font-size: 13px;
+    margin: 0 0 4px;
+    word-break: break-all;
+  }
+
   .role {
     color: $primary;
     font-size: 14px;
+    margin: 0 0 4px;
+  }
+
+  .joined {
+    color: #666;
+    font-size: 12px;
     margin: 0;
   }
 }

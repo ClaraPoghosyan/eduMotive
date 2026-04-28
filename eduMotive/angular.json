@@ -61,7 +61,8 @@
               "buildTarget": "eduMotive:build:production"
             },
             "development": {
-              "buildTarget": "eduMotive:build:development"
+              "buildTarget": "eduMotive:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

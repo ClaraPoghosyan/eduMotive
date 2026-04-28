@@ -1,24 +1,38 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserAuthService } from '../shared/services/user-auth.service';
+import { AuthService, UserProfile } from '../shared/services/auth.service';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-page',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent],
+  imports: [HeaderComponent, FooterComponent, DatePipe],
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.scss',
 })
-export class UserPageComponent {
-  private readonly userAuth = inject(UserAuthService);
-  private readonly router = inject(Router);
+export class UserPageComponent implements OnInit {
+  private readonly userAuth    = inject(UserAuthService);
+  private readonly authService = inject(AuthService);
+  private readonly router      = inject(Router);
 
-  public email: string = this.userAuth.getUserEmail() ?? '';
+  public profile: UserProfile | null = null;
 
   public get initials(): string {
-    return this.email ? this.email[0].toUpperCase() : 'U';
+    const name = this.profile?.fullName || this.userAuth.getUserEmail() || 'U';
+    return name[0].toUpperCase();
+  }
+
+  ngOnInit(): void {
+    this.authService.getProfile().subscribe({
+      next: profile => this.profile = profile,
+      error: () => {
+        this.userAuth.logout();
+        this.router.navigate(['/log-in']);
+      }
+    });
   }
 
   public goToCourses(): void {

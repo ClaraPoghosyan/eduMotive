@@ -10,53 +10,82 @@
         <h2 (click)="goToHome()">Edumotive</h2>
       </div>
 
-      <h1>Մուտք գործիր քո հաշիվ</h1>
-      <p class="subtitle">Բարի վերադարձ! Ընտրիր մուտքի ձևը</p>
+      @if (mode === 'login') {
+        <h1>Մուտք գործիր քո հաշիվ</h1>
+        <p class="subtitle">Բարի վերադարձ! Ընտրիր մուտքի ձևը</p>
+      } @else if (mode === 'register') {
+        <h1>Ստեղծիր հաշիվ</h1>
+        <p class="subtitle">Գրանցվիր և սկսիր սովորել</p>
+      } @else {
+        <h1>Վերականգնել գաղտնաբառը</h1>
+        <p class="subtitle">Մուտքագրիր քո էլ. հասցեն</p>
+      }
 
-      <form nz-form [formGroup]="form" (ngSubmit)="onSubmit()">
-        @if (isForgotPass){
-          <nz-form-item>
-          <nz-form-control>
-            <input nz-input placeholder="Full Name" formControlName="fullName" />
-          </nz-form-control>
-        </nz-form-item>
-        }
-        <nz-form-item>
-          <nz-form-control>
-            <input nz-input placeholder="Email address" formControlName="email" />
-          </nz-form-control>
-        </nz-form-item>
-
-        <nz-form-item>
-          <nz-form-control>
-            <input nz-input type="password" placeholder="Password" formControlName="password" />
-          </nz-form-control>
-        </nz-form-item>
-        @if (!isForgotPass){
-        <div class="options">
-          <a class="forgot" (click)="isForgotPass = !isForgotPass">Մոռացե՞լ ես գաղտնաբառը</a>
+      @if (mode === 'reset' && resetSent) {
+        <div class="reset-success">
+          <div class="reset-icon">✉</div>
+          <p>Վերականգնման հղումն ուղարկվել է</p>
+          <p class="reset-email">{{ form.get('email')?.value }}</p>
+          <p class="reset-note">Ստուգիր նաև spam թղթապանակը։</p>
+          <button nz-button nzType="default" class="back-btn" (click)="setMode('login')">
+            ← Վերադառնալ մուտք
+          </button>
         </div>
-        }
-        <button
-          nz-button
-          class="login-btn"
-          [disabled]="form.invalid"
-          nzType="primary"
-          nzBlock>
-          Մուտք գործել հիմա
-        </button>
+      } @else {
+        <form nz-form [formGroup]="form" (ngSubmit)="onSubmit()">
+          @if (mode === 'register') {
+            <nz-form-item>
+              <nz-form-control>
+                <input nz-input placeholder="Անուն Ազգանուն" formControlName="fullName" />
+              </nz-form-control>
+            </nz-form-item>
+          }
 
-      </form>
-      <p class="footer">
-        @if (!isForgotPass){
-          Չունե՞ս հաշիվ
-        <a (click)="isForgotPass = !isForgotPass">Գրանցվել</a>
-        }@else{
-          Արդեն ունե՞ք հաշիվ
-          <a (click)="isForgotPass = !isForgotPass">Մուտք գործել</a>
-        }
-      </p>
+          <nz-form-item>
+            <nz-form-control>
+              <input nz-input placeholder="Էլ. հասցե" formControlName="email" />
+            </nz-form-control>
+          </nz-form-item>
 
+          @if (mode !== 'reset') {
+            <nz-form-item>
+              <nz-form-control>
+                <input nz-input type="password" placeholder="Գաղտնաբառ" formControlName="password" />
+              </nz-form-control>
+            </nz-form-item>
+          }
+
+          @if (errorMsg) {
+            <p class="error-msg">{{ errorMsg }}</p>
+          }
+
+          @if (mode === 'login') {
+            <div class="options">
+              <a class="forgot" (click)="setMode('reset')">Մոռացե՞լ ես գաղտնաբառը</a>
+            </div>
+          }
+
+          <button
+            nz-button
+            class="login-btn"
+            [disabled]="!isFormValid || loading"
+            [nzLoading]="loading"
+            nzType="primary"
+            nzBlock>
+            {{ mode === 'login' ? 'Մուտք գործել հիմա' : mode === 'register' ? 'Գրանցվել' : 'Ուղարկել հղումը' }}
+          </button>
+        </form>
+
+        <p class="footer">
+          @if (mode === 'login') {
+            Չունե՞ս հաշիվ <a (click)="setMode('register')">Գրանցվել</a>
+          } @else if (mode === 'register') {
+            Արդեն ունե՞ք հաշիվ <a (click)="setMode('login')">Մուտք գործել</a>
+          } @else {
+            <a (click)="setMode('login')">← Վերադառնալ մուտք</a>
+          }
+        </p>
+      }
     </div>
   </div>
 </div>

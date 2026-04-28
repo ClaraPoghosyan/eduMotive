@@ -5,8 +5,12 @@
     <div class="avatar">{{ initials }}</div>
 
     <div class="user-info">
-      <h2 class="username">{{ email }}</h2>
+      <h2 class="username">{{ profile?.fullName || profile?.email }}</h2>
+      <p class="email">{{ profile?.email }}</p>
       <p class="role">Ուսանող</p>
+      @if (profile?.createdAt) {
+        <p class="joined">Անդամ է {{ profile!.createdAt | date:'dd.MM.yyyy' }}-ից</p>
+      }
     </div>
 
     <div class="actions">

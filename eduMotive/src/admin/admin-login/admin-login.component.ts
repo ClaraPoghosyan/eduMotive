@@ -6,7 +6,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { AdminAuthService } from '../admin-auth.service';
+import { AuthService } from '../../shared/services/auth.service';
+import { UserAuthService } from '../../shared/services/user-auth.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -22,13 +23,14 @@ import { AdminAuthService } from '../admin-auth.service';
   styleUrl: './admin-login.component.scss',
 })
 export class AdminLoginComponent {
-  private readonly fb = inject(FormBuilder);
-  private readonly auth = inject(AdminAuthService);
-  private readonly router = inject(Router);
-  private readonly message = inject(NzMessageService);
+  private readonly fb          = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
+  private readonly userAuth    = inject(UserAuthService);
+  private readonly router      = inject(Router);
+  private readonly message     = inject(NzMessageService);
 
   public form: FormGroup = this.fb.group({
-    email: [null, [Validators.required, Validators.email]],
+    email:    [null, [Validators.required, Validators.email]],
     password: [null, [Validators.required]],
   });
 
@@ -45,13 +47,21 @@ export class AdminLoginComponent {
 
     this.loading = true;
     const { email, password } = this.form.value;
-    const success = this.auth.login(email, password);
 
-    if (success) {
-      this.router.navigate(['/admin/dashboard']);
-    } else {
-      this.message.error('Invalid email or password.');
-      this.loading = false;
-    }
+    this.authService.login(email, password).subscribe({
+      next: res => {
+        if (res.role !== 'ADMIN') {
+          this.message.error('Մուտքը թույլատրված չէ։ Ադմինի իրավունք չունեք։');
+          this.loading = false;
+          return;
+        }
+        this.userAuth.login(res.token, res.email, res.fullName, res.role);
+        this.router.navigate(['/admin/dashboard']);
+      },
+      error: () => {
+        this.message.error('Սխալ էլ. հասցե կամ գաղտնաբառ։');
+        this.loading = false;
+      }
+    });
   }
 }
