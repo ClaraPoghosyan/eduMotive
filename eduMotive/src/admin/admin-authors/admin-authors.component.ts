@@ -112,7 +112,10 @@ export class AdminAuthorsComponent implements OnInit {
 
     this.modalLoading = true;
     const isEditing = this.editingId !== null;
-    const payload = this.form.value;
+    const raw = this.form.value;
+    const payload = isEditing && !raw.password
+      ? (({ password, ...rest }) => rest)(raw)
+      : raw;
 
     const request$ = isEditing
       ? this.authorService.updateAuthor(this.editingId!, payload)

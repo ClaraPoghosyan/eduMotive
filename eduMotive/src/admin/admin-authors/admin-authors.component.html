@@ -91,18 +91,21 @@
         </div>
       </div>
 
-      @if (!editingId) {
-        <div nz-row [nzGutter]="16">
-          <div nz-col [nzSpan]="12">
-            <nz-form-item>
-              <nz-form-label>Password <span style="color:#aaa;font-size:12px">(instructor login)</span></nz-form-label>
-              <nz-form-control>
-                <input nz-input type="password" formControlName="password" placeholder="Set login password" />
-              </nz-form-control>
-            </nz-form-item>
-          </div>
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label>
+              Password
+              <span style="color:#aaa;font-size:12px">
+                {{ editingId ? '(leave blank to keep current)' : '(instructor login)' }}
+              </span>
+            </nz-form-label>
+            <nz-form-control>
+              <input nz-input type="password" formControlName="password" [placeholder]="editingId ? 'New password (optional)' : 'Set login password'" />
+            </nz-form-control>
+          </nz-form-item>
         </div>
-      }
+      </div>
 
       <div nz-row [nzGutter]="16">
         <div nz-col [nzSpan]="12">
