@@ -46,6 +46,8 @@ export class AdminAuthorsComponent implements OnInit {
 
   public form: FormGroup = this.fb.group({
     fullName:           [null, [Validators.required]],
+    email:              [null, [Validators.email]],
+    password:           [null],
     specialization:     [null, [Validators.required]],
     imageUrl:           [null, [Validators.required]],
     biography:          [null, [Validators.required]],
@@ -85,6 +87,7 @@ export class AdminAuthorsComponent implements OnInit {
     this.editingId = author.id;
     this.form.patchValue({
       fullName:           author.fullName,
+      email:              author.email,
       specialization:     author.specialization,
       imageUrl:           author.imageUrl,
       biography:          author.biography,

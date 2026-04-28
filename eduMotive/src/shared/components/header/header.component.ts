@@ -38,6 +38,10 @@ export class HeaderComponent {
     this.router.navigate(['/user']);
   }
 
+  public goToAdmin(): void {
+    this.router.navigate(['/admin/dashboard']);
+  }
+
   public logout(): void {
     this.userAuth.logout();
     this.router.navigate(['/home']);

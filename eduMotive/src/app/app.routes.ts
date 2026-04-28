@@ -93,6 +93,12 @@ export const routes: Routes = [
           import('../reset-password/reset-password.component').then(c => c.ResetPasswordComponent),
       },
       {
+        path: 'chat',
+        canActivate: [userGuard],
+        loadComponent: () =>
+          import('../chat/chat.component').then(c => c.ChatComponent),
+      },
+      {
         path: 'code-lab',
         canActivate: [userGuard],
         loadComponent: () =>

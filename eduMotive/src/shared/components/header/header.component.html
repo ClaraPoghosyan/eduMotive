@@ -25,6 +25,9 @@
         <button nz-button nzType="default" class="btn-signin" (click)="goToLogIn(false)">Մուտք</button>
         <button nz-button nzType="primary" class="btn-signup" (click)="goToLogIn(true)">Գրանցում</button>
       } @else {
+        @if (userAuth.isAdmin()) {
+          <button nz-button nzType="default" class="btn-admin" (click)="goToAdmin()">Ադմին Վահանակ</button>
+        }
         <div class="user-avatar" (click)="goToProfile()" nz-tooltip [nzTooltipTitle]="userAuth.getUserEmail()">
           {{ userInitial }}
         </div>
@@ -49,12 +52,19 @@
         <li><a routerLink="/code-lab" (click)="closeMenu()">Code Lab</a></li>
       }
       <li><a routerLink="/test" (click)="closeMenu()">Թեստեր</a></li>
-      <ul class="pages-mobile">
-        <li><a routerLink="/pages/privacy" routerLinkActive="active">Գաղտնիության քաղաքականություն</a></li>
-        <li><a routerLink="/pages/terms" routerLinkActive="active">Պայմաններ և դրույթներ</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active">Կապ մեզ հետ</a></li>
-      </ul>
-      @if (userAuth.isLoggedIn()) {
+      <li><a routerLink="/contact-us" (click)="closeMenu()">Կապ մեզ հետ</a></li>
+      <li class="mobile-secondary"><a routerLink="/privacy-policy" (click)="closeMenu()">Գաղտնիության քաղաքականություն</a></li>
+      <li class="mobile-divider"></li>
+      @if (!userAuth.isLoggedIn()) {
+        <li class="mobile-auth-buttons">
+          <button class="mobile-btn-signin" (click)="goToLogIn(false); closeMenu()">Մուտք</button>
+          <button class="mobile-btn-signup" (click)="goToLogIn(true); closeMenu()">Գրանցվել</button>
+        </li>
+      } @else {
+        @if (userAuth.isAdmin()) {
+          <li><a (click)="goToAdmin(); closeMenu()" class="mobile-admin-link">Ադմին Վահանակ</a></li>
+        }
+        <li><a (click)="goToProfile(); closeMenu()">Իմ էջը</a></li>
         <li class="mobile-logout"><a (click)="logout(); closeMenu()">Ելք</a></li>
       }
     </ul>

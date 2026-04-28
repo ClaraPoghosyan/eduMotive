@@ -1,0 +1,98 @@
+@if (isOpen) {
+  <!-- Backdrop -->
+  <div class="backdrop" (click)="close()"></div>
+
+  <!-- Popup window -->
+  <div class="chat-popup">
+
+    <!-- Header -->
+    <div class="popup-header">
+      @if (activeConversation) {
+        <button class="back-btn" (click)="backToList()">‹</button>
+        <div class="header-info">
+          <div class="h-avatar">{{ getInitial(activeConversation.instructorName || activeConversation.instructorEmail) }}</div>
+          <div>
+            <p class="h-name">{{ activeConversation.instructorName || activeConversation.instructorEmail }}</p>
+            <p class="h-role">Ուսուցիչ</p>
+          </div>
+        </div>
+      } @else {
+        <p class="popup-title">Հաղորդագրություններ</p>
+        <button class="new-btn" (click)="openNewChat()" title="Նոր զրույց">+</button>
+      }
+      <button class="close-btn" (click)="close()">✕</button>
+    </div>
+
+    <!-- New chat instructor picker -->
+    @if (showNewChat) {
+      <div class="instructor-list">
+        <p class="inst-title">Ընտրիր ուսուցիչ</p>
+        @for (inst of instructors; track inst.email) {
+          <div class="inst-item" (click)="startChat(inst)">
+            <div class="conv-avatar">{{ getInitial(inst.fullName || inst.email) }}</div>
+            <div>
+              <p class="conv-name">{{ inst.fullName || inst.email }}</p>
+              <p class="conv-sub">{{ inst.email }}</p>
+            </div>
+          </div>
+        }
+        <button class="cancel-btn" (click)="showNewChat = false">Չեղարկել</button>
+      </div>
+
+    <!-- Conversation list -->
+    } @else if (!activeConversation) {
+      @if (loading) {
+        <div class="center-spin"><nz-spin nzSimple></nz-spin></div>
+      } @else if (conversations.length === 0) {
+        <div class="empty">
+          <p>Հաղորդակցություն չկա</p>
+          <span>Սեղմիր + սկսելու համար</span>
+        </div>
+      } @else {
+        <div class="conv-list">
+          @for (conv of conversations; track conv.id) {
+            <div class="conv-item" (click)="selectConversation(conv)">
+              <div class="conv-avatar">{{ getInitial(conv.instructorName || conv.instructorEmail) }}</div>
+              <div class="conv-info">
+                <p class="conv-name">{{ conv.instructorName || conv.instructorEmail }}</p>
+                <p class="conv-sub">{{ conv.lastMessage || '...' }}</p>
+              </div>
+              @if (conv.unreadCount > 0) {
+                <span class="badge">{{ conv.unreadCount }}</span>
+              }
+            </div>
+          }
+        </div>
+      }
+
+    <!-- Messages -->
+    } @else {
+      <div class="messages">
+        @for (msg of messages; track msg.id) {
+          <div class="msg-row" [class.mine]="isMyMessage(msg)">
+            @if (!isMyMessage(msg)) {
+              <div class="msg-avatar">{{ getInitial(msg.senderName || msg.senderEmail) }}</div>
+            }
+            <div class="bubble">
+              <p>{{ msg.content }}</p>
+              <span class="time">{{ msg.sentAt | date:'HH:mm' }}</span>
+            </div>
+          </div>
+        }
+        <div #messagesEnd></div>
+      </div>
+
+      <div class="input-row">
+        <textarea
+          class="msg-input"
+          [(ngModel)]="newMessage"
+          (keydown)="onKeyDown($event)"
+          placeholder="Հաղորդագրություն..."
+          rows="1">
+        </textarea>
+        <button class="send-btn" (click)="sendMessage()" [disabled]="!newMessage.trim() || sending">➤</button>
+      </div>
+    }
+
+  </div>
+}

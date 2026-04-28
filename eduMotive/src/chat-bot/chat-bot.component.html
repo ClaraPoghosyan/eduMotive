@@ -1,4 +1,4 @@
-<div class="chat-container" [class.open]="isOpen">
+<div class="chat-container" [class.open]="isOpen" [class.hidden]="chatState.isOpen()">
   <div class="chat-header" (click)="toggleChat()">
     <i class="fa-solid fa-comment"></i>
     Քո օնլայն օգնականը

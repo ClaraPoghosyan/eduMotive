@@ -10,6 +10,13 @@ $primary: #0E3128;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   z-index: 9999;
+  transition: opacity 0.2s, visibility 0.2s;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 
   .chat-header {
     background: $primary;

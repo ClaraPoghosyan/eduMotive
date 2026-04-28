@@ -5,8 +5,8 @@ nz-layout {
 
   .head-part {
     width: 100%;
-    min-height: 550px;
-    padding-top: 100px;
+    min-height: clamp(320px, 40vw, 550px);
+    padding: clamp(100px, 12vw, 160px) clamp(20px, 5vw, 80px) clamp(40px, 5vw, 80px);
     background: #0E3128;
     color: #fff;
     display: flex;
@@ -15,22 +15,23 @@ nz-layout {
     justify-content: center;
 
     h1 {
-      font-size: 50px;
+      font-size: clamp(26px, 4vw, 50px);
       text-align: center;
       color: #fff;
     }
 
     p {
-      width: 45%;
-      font-size: 20px;
+      width: clamp(280px, 70%, 700px);
+      font-size: clamp(14px, 1.4vw, 20px);
       text-align: center;
+      line-height: 1.6;
     }
 
     .contacts {
       display: flex;
-      font-size: 20px;
-      margin-top: 30px;
-
+      font-size: clamp(13px, 1.2vw, 18px);
+      margin-top: 24px;
+      color: #ccc;
     }
   }
 
@@ -40,17 +41,77 @@ nz-layout {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-size: 18px;
+    font-size: clamp(15px, 1.3vw, 18px);
     color: #0E3128;
-    padding: 40px;
+    padding: clamp(24px, 4vw, 60px) clamp(16px, 4vw, 40px);
     text-align: start;
-    .desc{
-      width: 60%;
-      margin-top: 80px;
-      margin-bottom: 100px;
+
+    .desc {
+      width: clamp(280px, 80%, 900px);
+      margin-top: clamp(40px, 6vw, 80px);
+      margin-bottom: clamp(40px, 6vw, 100px);
+      line-height: 1.7;
+      color: #333;
     }
-  .ol-container{
-    width: 50%;
+
+    .ol-container {
+      width: clamp(280px, 80%, 800px);
+      margin-bottom: clamp(40px, 6vw, 80px);
+
+      ol {
+        padding-left: 20px;
+
+        li {
+          margin-bottom: 28px;
+          line-height: 1.7;
+
+          strong { font-size: 1.05em; }
+
+          p { margin: 8px 0; color: #444; }
+
+          ul, ol {
+            margin-top: 10px;
+            padding-left: 20px;
+
+            li {
+              margin-bottom: 8px;
+              font-size: 0.95em;
+            }
+          }
+        }
+      }
+    }
   }
+
+  @media (max-width: 768px) {
+    .head-part p {
+      width: 90%;
+    }
+
+    .body {
+      padding: 24px 20px;
+
+      .desc { width: 100%; }
+      .ol-container { width: 100%; }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .head-part {
+      padding: 100px 16px 36px;
+
+      h1 { font-size: 22px; }
+      p  { font-size: 14px; width: 100%; }
+      .contacts { font-size: 12px; }
+    }
+
+    .body {
+      font-size: 14px;
+      padding: 20px 16px;
+
+      .desc { margin-top: 28px; margin-bottom: 28px; }
+
+      .ol-container ol li { margin-bottom: 20px; }
+    }
   }
 }

@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {NgClass} from '@angular/common';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {ChatStateService} from '../shared/services/chat-state.service';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -40,6 +41,7 @@ export class ChatBotComponent {
 
   private readonly apiKey = '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';
 
+  public readonly chatState = inject(ChatStateService);
   public isOpen = false;
   public loading = false;
   public messages: { from: 'user' | 'ai'; text: string | SafeHtml }[] = [];

@@ -11,6 +11,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {switchMap, forkJoin, of, catchError} from 'rxjs';
 import {NzSpinModule} from 'ng-zorro-antd/spin';
 import {CoursesConfigComponent} from '../../../courses-config/courses-config.component';
+import {NzAvatarComponent} from 'ng-zorro-antd/avatar';
 
 @Component({
   selector: 'app-author-page',
@@ -20,6 +21,7 @@ import {CoursesConfigComponent} from '../../../courses-config/courses-config.com
     FooterComponent,
     NzSpinModule,
     CoursesConfigComponent,
+    NzAvatarComponent,
   ],
   templateUrl: './author-page.component.html',
   styleUrl: './author-page.component.scss'

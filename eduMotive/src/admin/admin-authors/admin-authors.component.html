@@ -20,6 +20,7 @@
       <th nzWidth="60px">ID</th>
       <th nzWidth="60px">Photo</th>
       <th>Full Name</th>
+      <th>Email</th>
       <th>Specialization</th>
       <th>Experience</th>
       <th nzWidth="130px">Actions</th>
@@ -37,6 +38,7 @@
           ></nz-avatar>
         </td>
         <td>{{ author.fullName }}</td>
+        <td>{{ author.email || '—' }}</td>
         <td>{{ author.specialization }}</td>
         <td>{{ author.experience }}</td>
         <td>
@@ -81,9 +83,41 @@
         </div>
         <div nz-col [nzSpan]="12">
           <nz-form-item>
+            <nz-form-label>Email</nz-form-label>
+            <nz-form-control nzErrorTip="Enter a valid email">
+              <input nz-input formControlName="email" placeholder="instructor@example.com" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      @if (!editingId) {
+        <div nz-row [nzGutter]="16">
+          <div nz-col [nzSpan]="12">
+            <nz-form-item>
+              <nz-form-label>Password <span style="color:#aaa;font-size:12px">(instructor login)</span></nz-form-label>
+              <nz-form-control>
+                <input nz-input type="password" formControlName="password" placeholder="Set login password" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      }
+
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
             <nz-form-label nzRequired>Specialization</nz-form-label>
             <nz-form-control nzErrorTip="Required">
               <input nz-input formControlName="specialization" placeholder="e.g. Web Developer" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label>Experience</nz-form-label>
+            <nz-form-control>
+              <input nz-input formControlName="experience" placeholder="e.g. 5 years" />
             </nz-form-control>
           </nz-form-item>
         </div>
@@ -95,14 +129,6 @@
             <nz-form-label nzRequired>Image URL</nz-form-label>
             <nz-form-control nzErrorTip="Required">
               <input nz-input formControlName="imageUrl" placeholder="author.jpg" />
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-        <div nz-col [nzSpan]="12">
-          <nz-form-item>
-            <nz-form-label>Experience</nz-form-label>
-            <nz-form-control>
-              <input nz-input formControlName="experience" placeholder="e.g. 5 years" />
             </nz-form-control>
           </nz-form-item>
         </div>

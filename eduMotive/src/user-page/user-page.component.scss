@@ -91,6 +91,12 @@ $dark-bg: #062b25;
     color: $dark-bg;
   }
 
+  .btn-chat {
+    background-color: transparent;
+    color: $primary;
+    border: 1px solid $primary;
+  }
+
   .btn-logout {
     background-color: transparent;
     color: #ff6b6b;

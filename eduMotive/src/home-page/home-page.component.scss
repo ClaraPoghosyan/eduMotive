@@ -155,10 +155,20 @@
 
 /* ── Small mobile ── */
 @media (max-width: 480px) {
-  .hero-section { padding: 90px 16px 40px; }
+  .hero-section {
+    padding: 90px 16px 40px;
+    flex-direction: column;
+  }
+
+  .hero-text {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding-top: 0;
+  }
 
   .hero-text h1 { font-size: 26px; }
-  .hero-text p  { font-size: 14px; }
+  .hero-text p  { font-size: 14px; width: 100%; }
 
   .explore-btn {
     width: 100%;
@@ -168,7 +178,7 @@
   }
 
   .learner-img { width: 38px; height: 38px; }
+  .learners { justify-content: center; }
 
-  .hero-image-container { height: 260px; }
-  .hero-image-container .tags { height: 65%; }
+  .hero-image-container { display: none; }
 }

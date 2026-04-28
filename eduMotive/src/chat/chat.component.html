@@ -1,0 +1,106 @@
+<app-header></app-header>
+
+<div class="chat-page">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h2 class="sidebar-title">Հաղորդագրություններ</h2>
+      <button class="new-chat-btn" (click)="openNewChat()" title="Նոր զրույց">+</button>
+    </div>
+
+    @if (loading) {
+      <nz-spin nzSimple></nz-spin>
+    } @else if (conversations.length === 0) {
+      <div class="empty-state">
+        <p>Դեռ հաղորդակցություն չկա։</p>
+        <p class="hint">Գնա ուսուցչի էջ և սկսիր զրույց։</p>
+      </div>
+    } @else {
+      @for (conv of conversations; track conv.id) {
+        <div
+          class="conv-item"
+          [class.active]="activeConversation?.id === conv.id"
+          (click)="selectConversation(conv)">
+          <div class="conv-avatar">{{ getInitial(conv.instructorName || conv.instructorEmail) }}</div>
+          <div class="conv-info">
+            <p class="conv-name">{{ conv.instructorName || conv.instructorEmail }}</p>
+            <p class="conv-last">{{ conv.lastMessage || 'Հաղորդագրություն չկա' }}</p>
+          </div>
+          @if (conv.unreadCount > 0) {
+            <span class="unread-badge">{{ conv.unreadCount }}</span>
+          }
+        </div>
+      }
+    }
+  </div>
+
+  <!-- New Chat Modal -->
+  @if (showNewChat) {
+    <div class="modal-overlay" (click)="showNewChat = false">
+      <div class="modal" (click)="$event.stopPropagation()">
+        <h3>Ընտրիր ուսուցիչ</h3>
+        @for (inst of instructors; track inst.email) {
+          <div class="instructor-item" (click)="startChat(inst)">
+            <div class="conv-avatar">{{ getInitial(inst.fullName || inst.email) }}</div>
+            <div>
+              <p class="conv-name">{{ inst.fullName || inst.email }}</p>
+              <p class="conv-last">{{ inst.email }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- Chat Area -->
+  <div class="chat-area">
+    @if (!activeConversation) {
+      <div class="no-chat">
+        <div class="no-chat-icon">💬</div>
+        <p>Ընտրիր զրույց կամ սկսիր նոր:</p>
+      </div>
+    } @else {
+      <div class="chat-header">
+        <div class="chat-avatar">{{ getInitial(activeConversation.instructorName || activeConversation.instructorEmail) }}</div>
+        <div>
+          <p class="chat-name">{{ activeConversation.instructorName || activeConversation.instructorEmail }}</p>
+          <p class="chat-role">Ուսուցիչ</p>
+        </div>
+      </div>
+
+      <div class="messages">
+        @for (msg of messages; track msg.id) {
+          <div class="msg-row" [class.mine]="isMyMessage(msg)">
+            @if (!isMyMessage(msg)) {
+              <div class="msg-avatar">{{ getInitial(msg.senderName || msg.senderEmail) }}</div>
+            }
+            <div class="msg-bubble">
+              <p class="msg-text">{{ msg.content }}</p>
+              <span class="msg-time">{{ msg.sentAt | date:'HH:mm' }}</span>
+            </div>
+          </div>
+        }
+        <div #messagesEnd></div>
+      </div>
+
+      <div class="input-area">
+        <textarea
+          class="msg-input"
+          [(ngModel)]="newMessage"
+          (keydown)="onKeyDown($event)"
+          placeholder="Գրիր հաղորդագրություն..."
+          rows="1">
+        </textarea>
+        <button
+          class="send-btn"
+          (click)="sendMessage()"
+          [disabled]="!newMessage.trim() || sending">
+          ➤
+        </button>
+      </div>
+    }
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -135,6 +135,20 @@
     &:hover { opacity: 0.85; }
   }
 
+  .btn-admin {
+    border-radius: 25px;
+    height: 50px;
+    border-color: #c8f15c;
+    color: #c8f15c;
+    font-weight: 600;
+
+    &:hover {
+      background: #c8f15c;
+      color: #062b25;
+      border-color: #c8f15c;
+    }
+  }
+
   .btn-signin {
     border-radius: 25px;
     width: 130px;
@@ -226,50 +240,189 @@
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
+    max-height: calc(100dvh - 130px);
+    overflow-y: auto;
     background: white;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    padding: 20px 0;
+    padding: 16px 0 20px;
     text-align: center;
     list-style: none;
     animation: fadeIn 0.3s ease;
+    z-index: 999;
+
+    /* Thin scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #c8f15c transparent;
+    &::-webkit-scrollbar { width: 4px; }
+    &::-webkit-scrollbar-thumb { background: #c8f15c; border-radius: 4px; }
 
     li {
-      margin: 15px 0;
+      margin: 12px 0;
 
       a {
-        color: black;
+        color: #1a1a1a;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 17px;
         font-weight: 500;
+        cursor: pointer;
+        transition: color 0.2s;
 
-        &:hover {
-          color: #c8f15c;
-        }
+        &:hover { color: #0E3128; }
       }
-    }
-
-    .mobile-buttons {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
     }
 
     .mobile-logout a {
       color: #e53935;
+      font-weight: 600;
 
-      &:hover {
-        color: darken(#e53935, 10%);
+      &:hover { color: #b71c1c; }
+    }
+
+    .mobile-admin-link {
+      color: #0E3128 !important;
+      font-weight: 700 !important;
+    }
+
+    .mobile-secondary a {
+      font-size: 13px !important;
+      color: #888 !important;
+
+      &:hover { color: #0E3128 !important; }
+    }
+
+    .mobile-divider {
+      margin: 4px 24px !important;
+      height: 1px;
+      background: #eee;
+    }
+
+    /* Auth buttons row — sits outside normal li flow */
+    .mobile-auth-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 20px 8px;
+
+      .mobile-btn-signin {
+        flex: 1;
+        max-width: 140px;
+        background: transparent;
+        border: 2px solid #0E3128;
+        border-radius: 25px;
+        padding: 11px 0;
+        font-size: 15px;
+        font-weight: 600;
+        color: #0E3128;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+
+        &:hover {
+          background: #0E3128;
+          color: white;
+        }
+      }
+
+      .mobile-btn-signup {
+        flex: 1;
+        max-width: 140px;
+        background: #c8f15c;
+        border: 2px solid #c8f15c;
+        border-radius: 25px;
+        padding: 11px 0;
+        font-size: 15px;
+        font-weight: 700;
+        color: #062b25;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s, border-color 0.2s;
+
+        &:hover {
+          background: #0E3128;
+          border-color: #0E3128;
+          color: white;
+        }
       }
     }
   }
-  .hero-text {
-    h1 {
-      font-size: 20px;
+}
+
+/* Tablet adjustments */
+@media (max-width: 768px) {
+  .custom-header {
+    top: 15px;
+  }
+
+  .header-inner {
+    width: 94%;
+    height: 70px;
+    border-radius: 35px;
+    padding: 0 16px;
+  }
+
+  .logo {
+    font-size: 22px;
+    width: auto;
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
     }
   }
 
+  .mobile-menu {
+    top: 95px;
+    max-height: calc(100dvh - 110px);
+    width: 94%;
+
+    li a { font-size: 16px; }
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .custom-header {
+    top: 10px;
+  }
+
+  .header-inner {
+    width: 96%;
+    height: 62px;
+    border-radius: 30px;
+    padding: 0 14px;
+  }
+
+  .logo {
+    font-size: 20px;
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .mobile-menu {
+    top: 82px;
+    max-height: calc(100dvh - 96px);
+    width: 96%;
+    border-radius: 16px;
+    padding: 12px 0 16px;
+
+    li {
+      margin: 10px 0;
+      a { font-size: 15px; }
+    }
+
+    .mobile-auth-buttons {
+      gap: 8px;
+      padding: 12px 16px 6px;
+
+      .mobile-btn-signin,
+      .mobile-btn-signup {
+        font-size: 14px;
+        padding: 10px 0;
+      }
+    }
+  }
 }
 
 /* Animation */

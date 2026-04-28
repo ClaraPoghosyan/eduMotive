@@ -7,7 +7,7 @@
     <div class="user-info">
       <h2 class="username">{{ profile?.fullName || profile?.email }}</h2>
       <p class="email">{{ profile?.email }}</p>
-      <p class="role">Ուսանող</p>
+      <p class="role">{{ roleLabel }}</p>
       @if (profile?.createdAt) {
         <p class="joined">Անդամ է {{ profile!.createdAt | date:'dd.MM.yyyy' }}-ից</p>
       }
@@ -17,11 +17,16 @@
       <button class="btn-courses" (click)="goToCourses()">
         Դիտել դասընթացները
       </button>
+      <button class="btn-chat" (click)="chatOpen = true">
+        💬 Հաղորդագրություններ
+      </button>
       <button class="btn-logout" (click)="logout()">
         Ելք
       </button>
     </div>
   </div>
 </div>
+
+<app-chat-popup [isOpen]="chatOpen" (closed)="chatOpen = false"></app-chat-popup>
 
 <app-footer></app-footer>
