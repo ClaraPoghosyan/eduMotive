@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../environments/environment';
 
 export interface AuthResponse {
   token: string;
@@ -23,22 +24,22 @@ export class AuthService {
   private readonly base = '/api/auth';
 
   login(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.base}/login`, { email, password });
+    return this.http.post<AuthResponse>(`${environment.apiUrl}${this.base}/login`, { email, password });
   }
 
   register(email: string, password: string, fullName: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.base}/register`, { email, password, fullName });
+    return this.http.post<AuthResponse>(`${environment.apiUrl}${this.base}/register`, { email, password, fullName });
   }
 
   forgotPassword(email: string): Observable<string> {
-    return this.http.post(`${this.base}/forgot-password`, { email }, { responseType: 'text' });
+    return this.http.post(`${environment.apiUrl}${this.base}/forgot-password`, { email }, { responseType: 'text' });
   }
 
   resetPassword(token: string, password: string): Observable<string> {
-    return this.http.post(`${this.base}/reset-password`, { token, password }, { responseType: 'text' });
+    return this.http.post(`${environment.apiUrl}${this.base}/reset-password`, { token, password }, { responseType: 'text' });
   }
 
   getProfile(): Observable<UserProfile> {
-    return this.http.get<UserProfile>('/api/user/profile');
+    return this.http.get<UserProfile>(`${environment.apiUrl}/api/user/profile`);
   }
 }
